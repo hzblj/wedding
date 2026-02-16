@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import {cn} from '@/utils'
 
-import {Button} from './button'
+import {Button} from './ui'
 
 const HeaderImage = ({className = ''}: {className?: string}) => (
   <div className={cn('bg-white h-84 w-auto max-w-50 p-2 paper-texture', className)}>
