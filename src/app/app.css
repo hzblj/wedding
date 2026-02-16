@@ -28,7 +28,7 @@ body {
   overflow: auto;
   touch-action: auto;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior: none;
+  overscroll-behavior: auto;
   box-sizing: border-box;
 }
 
