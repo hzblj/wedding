@@ -1,17 +1,25 @@
 import Image from 'next/image'
 import {cn} from '@/utils'
 
+import {Button} from './button'
+
 const Right = () => (
   <>
     <div>
-      <p className="text-gray-400 text-[14px] pt-4 uppercase">[ INTRODUCTION ]</p>
-      <h2 className="text-[32px] font-bold">Place</h2>
+      <p className="text-gray-400 text-[14px] pt-4 uppercase">[ KDE ]</p>
+      <h2 className="text-[32px] font-bold">Resort Nová Polana</h2>
     </div>
     <div>
       <p className="text-[16px] max-w-130">
-        A good moment isn't loud. It doesn't ask for attention or wait to be staged. It simply happens — in passing
-        glances, quiet gestures, the way light moves across someone's face.
+        Sejdeme se ve Vile Landek, krásném místě s výhledem, zahradou a hlavně dostatkem místa pro všechny, co nás mají
+        rádi.
       </p>
+    </div>
+    <div>
+      <Button>
+        <Image src="/svg/navigate.svg" alt="navigate" width={16} height={16} className="w-4 h-4" />
+        Navigovat
+      </Button>
     </div>
   </>
 )
@@ -36,7 +44,7 @@ const PlaceImagePaper = ({variant = 'bottom-right'}: PlaceImagePaperProps) => (
 
 const PlaceImage = () => (
   <div className="flex-1 w-full md:w-px max-w-110 h-125 md:h-110 md:max-h-110 xl:h-150 xl:max-h-150 relative">
-    <div className="bg-white h-full max-h-full max-w-full w-full -rotate-[2.5deg] opacity-100 relative">
+    <div className="paper-texture bg-white h-full max-h-full max-w-full w-full -rotate-[2.5deg]">
       <div className="z-1 flex-none absolute inset-[16px_16px_64px] overflow-hidden">
         <Image src="https://picsum.photos/id/1/800/1200" alt="place" fill className="object-cover" />
       </div>

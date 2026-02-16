@@ -1,9 +1,10 @@
 import Image from 'next/image'
-
 import {cn} from '@/utils'
 
+import {Button} from './button'
+
 const HeaderImage = ({className = ''}: {className?: string}) => (
-  <div className={cn('bg-white h-84 w-auto max-w-[200px] p-2', className)}>
+  <div className={cn('bg-white h-84 w-auto max-w-50 p-2 paper-texture', className)}>
     <Image
       src="https://picsum.photos/id/1/800/1200"
       alt="image"
@@ -29,24 +30,30 @@ const HeaderImages = () => (
 )
 
 const HeaderInfo = () => (
-  <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-8 relative gap-4 md:gap-x-6 md:gap-y-4 mt-auto">
+  <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-8 relative gap-6 md:gap-x-8 md:gap-y-6 mt-auto">
     <div className="relative flex flex-col justify-center outline-none h-auto w-auto min-w-0 shrink">
-      <h1 className="font-bold text-[56px] md:text-[62px] lg:text-[104px] lg:leading-[0.9] text-blue-800">
-        Karin & Jan
+      <h1 className="font-playfair font-bold text-[56px] md:text-[62px] lg:text-[104px] lg:leading-[0.9] uppercase">
+        Blažejovi
       </h1>
     </div>
-    <div className="flex flex-col basis-0 md:basis-75 lg:basis-90 max-w-100 md:ml-auto gap-2">
+    <div className="flex flex-col basis-0 md:basis-75 lg:basis-90 max-w-100 md:ml-auto gap-4">
       <p className="text-[16px] text-white text-left">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        S radostí v srdci vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.
       </p>
-      <span className="text-gray-400 text-[14px] pt-4 uppercase">[ SCROLL TO VIEW MORE ]</span>
+      <p className="text-[14px] text-gray-400 text-left">4. července 2026, Resort Nová Polana, Dolní Lomná</p>
+      <div className="pt-2">
+        <Button>
+          <Image src="/svg/calendar-plus.svg" alt="calendar" width={16} height={16} className="w-4 h-4" />
+          Přidat do kalendáře
+        </Button>
+      </div>
+      <span className="text-gray-400 text-[14px] pt-2 uppercase">[ VÍCE INFORMACÍ ]</span>
     </div>
   </div>
 )
 
 export const Header = () => (
-  <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-36 pb-8">
+  <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-215 relative overflow-hidden pt-36 pb-8">
     <HeaderImages />
     <HeaderInfo />
   </header>

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --font-inter: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-playfair: var(--font-playfair), Georgia, serif;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -39,40 +44,16 @@ body {
   background-color: var(--color-black);
 }
 
-.border-frame {
+.paper-texture {
   position: relative;
 }
 
-.border-frame::after {
+.paper-texture::before {
   content: "";
-  border-width: 1px 0 1px 0;
-  border-color: #ffffff26;
-  border-style: solid;
-  box-sizing: border-box;
-  border-radius: inherit;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.border-frame-inner {
-  position: relative;
-}
-
-.border-frame-inner::after {
-  content: "";
-  border-width: 0 1px 0 1px;
-  border-color: #ffffff26;
-  border-style: solid;
-  box-sizing: border-box;
-  border-radius: inherit;
+  inset: 0;
+  background-image: url('/jpg/texture-paper.jpg');
+  background-size: cover;
+  opacity: 0.15;
   pointer-events: none;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
