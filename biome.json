@@ -4,6 +4,11 @@
 		"actions": { "source": { "organizeImports": "on", "useSortedKeys": "on" } },
 		"enabled": true
 	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
 	"files": {
 		"ignoreUnknown": false,
 		"includes": ["src/**/*"]
