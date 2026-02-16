@@ -41,7 +41,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-white);
-  background-color: var(--color-black);
+  background-color: #050505;
+}
+
+.app-background {
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(45, 35, 20, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 30%, rgba(35, 25, 40, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 50% at 50% 100%, rgba(40, 28, 15, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 70% 70%, rgba(50, 35, 20, 0.2) 0%, transparent 50%), #050505;
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1000;
+  background-image: url("/svg/noise.svg");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
 .paper-texture {
