@@ -4,7 +4,7 @@ import {cn} from '@/utils'
 import {Button, Eyebrow} from './ui'
 
 const HeaderImage = ({className = ''}: {className?: string}) => (
-  <div className={cn('bg-white h-84 w-auto max-w-50 p-2 paper-texture', className)}>
+  <div className={cn('bg-white h-52 sm:h-64 md:h-84 w-auto max-w-50 p-2 paper-texture', className)}>
     <Image
       src="https://picsum.photos/id/1/800/1200"
       alt="image"
@@ -17,11 +17,11 @@ const HeaderImage = ({className = ''}: {className?: string}) => (
 )
 
 const HeaderImages = () => (
-  <div className="flex flex-row items-start relative w-full px-8 gap-4 shrink-0">
-    <div className="flex relative items-start shrink-0">
+  <div className="flex flex-row items-start relative w-full px-8 gap-4 min-h-0">
+    <div className="flex relative items-start">
       <HeaderImage />
     </div>
-    <div className="flex flex-row relative p-0 w-fit ml-auto gap-4 shrink-0">
+    <div className="flex flex-row relative p-0 w-fit ml-auto gap-4">
       <HeaderImage />
       <HeaderImage className="hidden sm:block" />
       <HeaderImage className="hidden min-[1200px]:block" />
@@ -30,7 +30,7 @@ const HeaderImages = () => (
 )
 
 const HeaderInfo = () => (
-  <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-8 relative gap-6 md:gap-x-8 md:gap-y-6 mt-auto">
+  <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-8 relative gap-6 md:gap-x-8 md:gap-y-6">
     <div className="relative flex flex-col justify-center outline-none h-auto w-auto min-w-0 shrink">
       <h1 className="font-playfair font-bold text-[56px] md:text-[62px] lg:text-[104px] lg:leading-[0.9] uppercase">
         Blažejovi
@@ -53,7 +53,7 @@ const HeaderInfo = () => (
 )
 
 export const Header = () => (
-  <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-215 relative overflow-hidden pt-36 pb-8">
+  <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-36 pb-8">
     <HeaderImages />
     <HeaderInfo />
   </header>
