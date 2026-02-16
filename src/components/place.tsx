@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import {cn} from '@/utils'
 
-import {Button, Section} from './ui'
+import {Button, Eyebrow, Section} from './ui'
 
 type PlaceImagePaperProps = {
   variant?: 'top-left' | 'bottom-right'
@@ -39,7 +39,7 @@ export const Place = () => (
     right={
       <>
         <div>
-          <p className="text-gray-400 text-[14px] pt-4 uppercase">[ KDE ]</p>
+          <Eyebrow className="pt-4">Kde</Eyebrow>
           <h2 className="text-[32px] font-bold">Resort Nová Polana</h2>
         </div>
         <div>

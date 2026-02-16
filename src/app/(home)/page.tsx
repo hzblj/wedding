@@ -1,4 +1,4 @@
-import {Header, Place} from '@/components'
+import {Footer, Header, Place} from '@/components'
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <Header />
       <Place />
       <div className="h-[400px]" />
+      <Footer />
     </>
   )
 }

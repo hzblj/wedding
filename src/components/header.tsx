@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import {cn} from '@/utils'
 
-import {Button} from './ui'
+import {Button, Eyebrow} from './ui'
 
 const HeaderImage = ({className = ''}: {className?: string}) => (
   <div className={cn('bg-white h-84 w-auto max-w-50 p-2 paper-texture', className)}>
@@ -47,7 +47,7 @@ const HeaderInfo = () => (
           Přidat do kalendáře
         </Button>
       </div>
-      <span className="text-gray-400 text-[14px] pt-2 uppercase">[ VÍCE INFORMACÍ ]</span>
+      <Eyebrow className="pt-2">Více informací</Eyebrow>
     </div>
   </div>
 )

@@ -2,7 +2,7 @@ import type {FC, ReactNode} from 'react'
 
 export type SectionProps = {
   left: ReactNode
-  right: ReactNode
+  right?: ReactNode
 }
 
 export const Section: FC<SectionProps> = ({right, left}) => (
