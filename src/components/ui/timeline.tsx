@@ -37,7 +37,7 @@ const TimelineRow: FC<TimelineRowProps> = ({item, isFirst, isLast}) => (
         {item.from}
         {item.to ? ` — ${item.to}` : ''}
       </p>
-      <p className="text-[16px] leading-[150%] text-white uppercase">{item.name}</p>
+      <p className="text-[16px] leading-[150%] text-white">{item.name}</p>
     </div>
   </div>
 )
