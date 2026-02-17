@@ -111,7 +111,7 @@ export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSli
         const opacity = visible
           ? edgeDist >= 0
             ? 1
-            : gsap.utils.clamp(0.4, 1, gsap.utils.mapRange(-fadeZone, 0, 0.4, 1, edgeDist))
+            : gsap.utils.clamp(0.2, 1, gsap.utils.mapRange(-fadeZone, 0, 0.2, 1, edgeDist))
           : 0
 
         gsap.set(item, {opacity, visibility: visible ? 'visible' : 'hidden', x})
@@ -145,9 +145,11 @@ export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSli
     }
 
     navigateRef.current = (direction: -1 | 1) => {
+      stopAutoSlide()
       const snapTo = snapOffset(offset) - direction * step
       gsap.set(proxy, {x: offset})
       animateTo(snapTo)
+      startAutoSlide()
     }
 
     let autoInterval: ReturnType<typeof setInterval> | null = null
