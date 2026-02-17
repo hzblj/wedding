@@ -1,7 +1,15 @@
 import Image from 'next/image'
 import {FC} from 'react'
 
+import {PhotoCardVideo} from '@/components/photo-card-video'
 import {cn} from '@/utils'
+
+const VIDEO_EXTENSIONS = new Set(['mp4', 'mov', 'webm', 'avi', 'mkv'])
+
+const isVideo = (url: string) => {
+  const ext = url.split('.').pop()?.toLowerCase().split('?')[0] ?? ''
+  return VIDEO_EXTENSIONS.has(ext)
+}
 
 type PhotoCardProps = {
   image?: string
@@ -17,9 +25,13 @@ const PhotoCard: FC<PhotoCardProps> = ({hidden = false, image, isRight}) => (
           <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-visible">
             <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_64px] relative overflow-hidden">
               <div className="relative overflow-hidden w-px h-full flex-[1_0_0]">
-                <div className="absolute inset-0">
-                  <Image src={image} alt="image" fill className="object-cover" />
-                </div>
+                {isVideo(image) ? (
+                  <PhotoCardVideo src={image} />
+                ) : (
+                  <div className="absolute inset-0">
+                    <Image src={image} alt="image" fill className="object-cover" />
+                  </div>
+                )}
               </div>
             </div>
             <div className="opacity-80 h-auto aspect-[0.660645] z-20 flex-none w-12.25 absolute -top-8 left-1/2 overflow-visible -translate-x-1/2 rotate-90">
