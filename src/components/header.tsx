@@ -56,7 +56,7 @@ const HeaderInfo = () => (
 )
 
 export const Header = () => (
-  <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-24 pb-36 md:pt-36 md:pb-8">
+  <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-24 pb-30 md:pt-36 md:pb-8">
     <HeaderImages />
     <HeaderInfo />
   </header>
