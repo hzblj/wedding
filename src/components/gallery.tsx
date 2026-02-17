@@ -64,6 +64,6 @@ export const Gallery = () => (
         efficitur ligula. Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
       </SectionParagraph>
     </div>
-    <ListSlider items={galleryItems} />
+    <ListSlider items={galleryItems} autoSlide={5000} />
   </section>
 )

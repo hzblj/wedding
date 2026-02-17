@@ -63,7 +63,7 @@ const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSlider
   </li>
 )
 
-export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
+export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSlide?: number}) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
@@ -127,13 +127,15 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
     const proxy = document.createElement('div')
     gsap.set(proxy, {x: offset})
 
+    const smoothEase = gsap.parseEase('M0,0 C0.22,0.61 0.36,1 1,1')
+
     const animateTo = (target: number) => {
       const distance = Math.abs(target - offset)
-      const duration = gsap.utils.clamp(0.3, 0.8, distance / 800)
+      const duration = gsap.utils.clamp(0.4, 1, distance / 600)
 
       gsap.to(proxy, {
         duration,
-        ease: 'power3.out',
+        ease: smoothEase,
         onUpdate() {
           offset = gsap.getProperty(proxy, 'x') as number
           updatePositions(offset)
@@ -148,6 +150,25 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
       animateTo(snapTo)
     }
 
+    let autoInterval: ReturnType<typeof setInterval> | null = null
+
+    const startAutoSlide = () => {
+      if (!autoSlide) {
+        return
+      }
+
+      autoInterval = setInterval(() => {
+        navigateRef.current?.(1)
+      }, autoSlide)
+    }
+
+    const stopAutoSlide = () => {
+      if (autoInterval) {
+        clearInterval(autoInterval)
+        autoInterval = null
+      }
+    }
+
     const draggable = Draggable.create(proxy, {
       onDrag() {
         offset = this.x
@@ -155,23 +176,33 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
       },
       onDragEnd() {
         animateTo(snapOffset(this.x))
+        startAutoSlide()
+      },
+      onDragStart() {
+        stopAutoSlide()
       },
       trigger: wrapper,
       type: 'x',
     })
 
+    startAutoSlide()
+
     return () => {
+      stopAutoSlide()
       draggable[0]?.kill()
       proxy.remove()
     }
-  }, [])
+  }, [autoSlide])
 
   const navigate = useCallback((direction: -1 | 1) => {
     navigateRef.current?.(direction)
   }, [])
 
   return (
-    <div ref={containerRef} className="flex flex-col flex-none place-content-center items-center gap-8 w-full h-min p-0 relative overflow-hidden">
+    <div
+      ref={containerRef}
+      className="flex flex-col flex-none place-content-center items-center gap-8 w-full h-min p-0 relative overflow-hidden"
+    >
       <div
         ref={wrapperRef}
         className="aspect-[0.75] min-[800px]:aspect-[2.4] h-auto w-full min-[800px]:w-300 relative overflow-visible select-none cursor-grab active:cursor-grabbing"
