@@ -1,4 +1,4 @@
-import {Agenda, Footer, Gallery, Header, Place, SeatingArrangement} from '@/components'
+import {Agenda, FAQ, Footer, Gallery, Header, Place, SeatingArrangement} from '@/components'
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <Gallery />
       <Agenda />
       <SeatingArrangement />
+      <FAQ />
       <Footer />
     </>
   )

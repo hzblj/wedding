@@ -1,4 +1,5 @@
 export * from './agenda'
+export * from './faq'
 export * from './footer'
 export * from './gallery'
 export * from './header'
