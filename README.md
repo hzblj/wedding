@@ -1,2 +1,1 @@
 # wedding
-Zasedací pořádek
