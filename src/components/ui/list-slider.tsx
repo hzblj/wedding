@@ -17,7 +17,7 @@ export type ListSliderItem = {
 const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSliderItem}) => (
   <li
     ref={ref}
-    className="absolute top-0 h-full w-[calc(33.3333%-10.6667px)] transform-gpu will-change-[transform,opacity,visibility]"
+    className="absolute top-0 h-full w-full min-[800px]:w-[calc(33.3333%-10.6667px)] transform-gpu will-change-[transform,opacity,visibility]"
   >
     <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-hidden">
       <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_0px] relative overflow-hidden">
@@ -136,7 +136,7 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
     <div className="flex flex-col flex-none place-content-center items-center gap-12 w-full h-min p-0 relative overflow-hidden">
       <div
         ref={wrapperRef}
-        className="aspect-[2.4] h-auto w-300 relative overflow-visible select-none cursor-grab active:cursor-grabbing"
+        className="aspect-[0.75] min-[800px]:aspect-[2.4] h-auto w-full min-[800px]:w-300 relative overflow-visible select-none cursor-grab active:cursor-grabbing"
       >
         <ul className="relative w-full h-full m-0 p-0 list-none">
           {items.map((item, index) => (
