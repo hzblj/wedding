@@ -1,3 +1,5 @@
 export * from './button'
 export * from './eyebrow'
 export * from './section'
+export * from './section-paragraph'
+export * from './section-title'

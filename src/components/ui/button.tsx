@@ -1,7 +1,7 @@
 import type {ButtonHTMLAttributes, ReactNode} from 'react'
 import {cn} from '@/utils'
 
-type ButtonProps = {
+export type ButtonProps = {
   children: ReactNode
   className?: string
 } & ButtonHTMLAttributes<HTMLButtonElement>

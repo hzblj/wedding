@@ -1,7 +1,8 @@
 import Image from 'next/image'
+
 import {cn} from '@/utils'
 
-import {Button, Eyebrow, Section} from './ui'
+import {Button, Section, SectionParagraph, SectionTitle} from './ui'
 
 type PlaceImagePaperProps = {
   variant?: 'top-left' | 'bottom-right'
@@ -38,15 +39,12 @@ export const Place = () => (
     left={<PlaceImage />}
     right={
       <>
+        <SectionTitle eyebrow="Kde">Resort Nová Polana</SectionTitle>
         <div>
-          <Eyebrow className="pt-4">Kde</Eyebrow>
-          <h2 className="text-[32px] font-bold">Resort Nová Polana</h2>
-        </div>
-        <div>
-          <p className="text-[16px] max-w-130">
-            Sejdeme se ve Vile Landek, krásném místě s výhledem, zahradou a hlavně dostatkem místa pro všechny, co nás
-            mají rádi.
-          </p>
+          <SectionParagraph className="max-w-130">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur ligula.
+            Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
+          </SectionParagraph>
         </div>
         <div>
           <Button>
