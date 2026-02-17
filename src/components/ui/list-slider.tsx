@@ -64,13 +64,15 @@ const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSlider
 )
 
 export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
+  const containerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
   const navigateRef = useRef<(direction: -1 | 1) => void>(null)
 
   useEffect(() => {
+    const container = containerRef.current
     const wrapper = wrapperRef.current
-    if (!wrapper) {
+    if (!container || !wrapper) {
       return
     }
 
@@ -91,8 +93,10 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
     const updatePositions = (value: number) => {
       const center = wrapperWidth / 2
 
-      const viewLeft = -(window.innerWidth - wrapperWidth) / 2
-      const viewRight = wrapperWidth + (window.innerWidth - wrapperWidth) / 2
+      const clipWidth = container.offsetWidth
+      const overflow = Math.max(0, (clipWidth - wrapperWidth) / 2)
+      const viewLeft = -overflow
+      const viewRight = wrapperWidth + overflow
       const fadeZone = itemWidth
 
       elements.forEach((item, i) => {
@@ -167,7 +171,7 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
   }, [])
 
   return (
-    <div className="flex flex-col flex-none place-content-center items-center gap-8 w-full h-min p-0 relative overflow-hidden">
+    <div ref={containerRef} className="flex flex-col flex-none place-content-center items-center gap-8 w-full h-min p-0 relative overflow-hidden">
       <div
         ref={wrapperRef}
         className="aspect-[0.75] min-[800px]:aspect-[2.4] h-auto w-full min-[800px]:w-300 relative overflow-visible select-none cursor-grab active:cursor-grabbing"
