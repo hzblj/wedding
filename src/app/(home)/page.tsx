@@ -6,7 +6,6 @@ export default function Home() {
       <Header />
       <Place />
       <Gallery />
-      <div className="h-[400px]" />
       <Footer />
     </>
   )

@@ -1,5 +1,6 @@
 export * from './button'
 export * from './eyebrow'
+export * from './list-slider'
 export * from './section'
 export * from './section-paragraph'
 export * from './section-title'

@@ -1,7 +1,7 @@
-import {SectionParagraph, SectionTitle} from './ui'
+import {ListSlider, SectionParagraph, SectionTitle} from './ui'
 
 export const Gallery = () => (
-  <section className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-auto md:h-screen md:max-h-200 p-[96px_32px] relative overflow-hidden border-y border-solid border-white/10">
+  <section className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_32px] relative overflow-hidden border-y border-solid border-white/10">
     <div className="flex flex-col gap-6">
       <SectionTitle eyebrow="Where memory lives" className="w-full items-center">
         Gallery
@@ -11,5 +11,6 @@ export const Gallery = () => (
         efficitur ligula. Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
       </SectionParagraph>
     </div>
+    <ListSlider />
   </section>
 )
