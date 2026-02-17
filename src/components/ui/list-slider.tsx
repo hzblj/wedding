@@ -4,9 +4,29 @@ import gsap from 'gsap'
 // @ts-ignore
 import {Draggable} from 'gsap/Draggable'
 import Image from 'next/image'
-import {type Ref, useEffect, useRef} from 'react'
+import {type Ref, useCallback, useEffect, useRef} from 'react'
+import {cn} from '@/utils'
 
 gsap.registerPlugin(Draggable)
+
+type SliderArrowProps = {
+  direction: 'left' | 'right'
+  onClick: () => void
+}
+
+const SliderArrow = ({direction, onClick}: SliderArrowProps) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={cn(
+      'min-[800px]:hidden absolute top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm hover:bg-black/60 transition-colors cursor-pointer',
+      direction === 'left' ? 'left-2' : 'right-2'
+    )}
+    aria-label={direction === 'left' ? 'Previous' : 'Next'}
+  >
+    <Image src={`/svg/arrow-${direction}.svg`} alt="" width={20} height={20} className="w-5 h-5 invert" />
+  </button>
+)
 
 export type ListSliderItem = {
   image: string
@@ -32,7 +52,7 @@ const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSlider
           <p className="font-semibold text-black text-[20px] leading-[120%] uppercase">{item.title}</p>
         </div>
         <div className="flex flex-col flex-none items-end gap-1 w-min h-min p-0 relative overflow-hidden ml-auto">
-          {item.details.map((detail) => (
+          {item.details.map(detail => (
             <div key={detail} className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
               <p className="text-[12px] text-black text-right uppercase leading-[13.2px]">{detail}</p>
             </div>
@@ -46,6 +66,7 @@ const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSlider
 export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
+  const navigateRef = useRef<(direction: -1 | 1) => void>(null)
 
   useEffect(() => {
     const wrapper = wrapperRef.current
@@ -53,16 +74,16 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
       return
     }
 
-    const items = itemRefs.current.filter(Boolean) as HTMLElement[]
+    const elements = itemRefs.current.filter(Boolean) as HTMLElement[]
 
-    if (items.length === 0) {
+    if (elements.length === 0) {
       return
     }
 
     const gap = 16
-    const itemWidth = items[0].offsetWidth
+    const itemWidth = elements[0].offsetWidth
     const step = itemWidth + gap
-    const totalWidth = items.length * step
+    const totalWidth = elements.length * step
     const wrapperWidth = wrapper.offsetWidth
 
     let offset = wrapperWidth / 2 - itemWidth / 2
@@ -74,7 +95,7 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
       const viewRight = wrapperWidth + (window.innerWidth - wrapperWidth) / 2
       const fadeZone = itemWidth
 
-      items.forEach((item, i) => {
+      elements.forEach((item, i) => {
         const raw = i * step + value
         const x = ((((raw - center + totalWidth / 2) % totalWidth) + totalWidth) % totalWidth) - totalWidth / 2 + center
         const itemRight = x + itemWidth
@@ -102,25 +123,34 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
     const proxy = document.createElement('div')
     gsap.set(proxy, {x: offset})
 
+    const animateTo = (target: number) => {
+      const distance = Math.abs(target - offset)
+      const duration = gsap.utils.clamp(0.3, 0.8, distance / 800)
+
+      gsap.to(proxy, {
+        duration,
+        ease: 'power3.out',
+        onUpdate() {
+          offset = gsap.getProperty(proxy, 'x') as number
+          updatePositions(offset)
+        },
+        x: target,
+      })
+    }
+
+    navigateRef.current = (direction: -1 | 1) => {
+      const snapTo = snapOffset(offset) - direction * step
+      gsap.set(proxy, {x: offset})
+      animateTo(snapTo)
+    }
+
     const draggable = Draggable.create(proxy, {
       onDrag() {
         offset = this.x
         updatePositions(offset)
       },
       onDragEnd() {
-        const snapTo = snapOffset(this.x)
-        const distance = Math.abs(snapTo - this.x)
-        const duration = gsap.utils.clamp(0.3, 0.8, distance / 800)
-
-        gsap.to(proxy, {
-          duration,
-          ease: 'power3.out',
-          onUpdate() {
-            offset = gsap.getProperty(proxy, 'x') as number
-            updatePositions(offset)
-          },
-          x: snapTo,
-        })
+        animateTo(snapOffset(this.x))
       },
       trigger: wrapper,
       type: 'x',
@@ -132,8 +162,12 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
     }
   }, [])
 
+  const navigate = useCallback((direction: -1 | 1) => {
+    navigateRef.current?.(direction)
+  }, [])
+
   return (
-    <div className="flex flex-col flex-none place-content-center items-center gap-12 w-full h-min p-0 relative overflow-hidden">
+    <div className="flex flex-col flex-none place-content-center items-center gap-8 w-full h-min p-0 relative overflow-hidden">
       <div
         ref={wrapperRef}
         className="aspect-[0.75] min-[800px]:aspect-[2.4] h-auto w-full min-[800px]:w-300 relative overflow-visible select-none cursor-grab active:cursor-grabbing"
@@ -149,6 +183,8 @@ export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
             />
           ))}
         </ul>
+        <SliderArrow direction="left" onClick={() => navigate(-1)} />
+        <SliderArrow direction="right" onClick={() => navigate(1)} />
       </div>
     </div>
   )
