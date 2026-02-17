@@ -4,7 +4,7 @@ import gsap from 'gsap'
 // @ts-ignore
 import {Draggable} from 'gsap/Draggable'
 import Image from 'next/image'
-import {type Ref, useCallback, useEffect, useRef} from 'react'
+import {forwardRef, useCallback, useEffect, useRef} from 'react'
 import {cn} from '@/utils'
 
 gsap.registerPlugin(Draggable)
@@ -34,7 +34,7 @@ export type ListSliderItem = {
   details: string[]
 }
 
-const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSliderItem}) => (
+const ListSliderCard = forwardRef<HTMLLIElement, {item: ListSliderItem}>(({item}, ref) => (
   <li
     ref={ref}
     className="absolute top-0 h-full w-full min-[800px]:w-[calc(33.3333%-10.6667px)] transform-gpu will-change-[transform,opacity,visibility]"
@@ -61,7 +61,7 @@ const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSlider
       </div>
     </div>
   </li>
-)
+))
 
 export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSlide?: number}) => {
   const containerRef = useRef<HTMLDivElement>(null)

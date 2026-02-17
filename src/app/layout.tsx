@@ -2,6 +2,8 @@ import type {Metadata, Viewport} from 'next'
 import {Inter, Playfair_Display} from 'next/font/google'
 import type {ReactNode} from 'react'
 
+import {Navigation} from '@/components'
+
 import './app.css'
 
 export const viewport: Viewport = {
@@ -28,14 +30,17 @@ const playfair = Playfair_Display({
   weight: ['400', '500', '700'],
 })
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: ReactNode
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Navigation />
+        {children}
+      </body>
     </html>
   )
 }
