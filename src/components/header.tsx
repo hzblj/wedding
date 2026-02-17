@@ -18,7 +18,7 @@ const HeaderImage = ({className = ''}: {className?: string}) => (
 )
 
 const HeaderImages = () => (
-  <div className="flex flex-row items-start relative w-full px-8 gap-4 min-h-0">
+  <div className="flex flex-row items-start relative w-full px-6 md:px-8 gap-4 min-h-0">
     <div className="flex relative items-start">
       <HeaderImage />
     </div>
@@ -31,7 +31,7 @@ const HeaderImages = () => (
 )
 
 const HeaderInfo = () => (
-  <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-8 relative gap-6 md:gap-x-8 md:gap-y-6">
+  <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-6 md:px-8 relative gap-6 md:gap-x-8 md:gap-y-6">
     <div className="relative flex flex-col justify-center outline-none h-auto w-auto min-w-0 shrink">
       <h1 className="font-playfair tracking-normal font-bold leading-[100%] text-[56px] md:text-[62px] lg:text-[104px] lg:leading-[0.9] uppercase">
         Blažejovi

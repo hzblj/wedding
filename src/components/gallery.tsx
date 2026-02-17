@@ -54,7 +54,7 @@ const galleryItems: ListSliderItem[] = [
 ]
 
 export const Gallery = () => (
-  <section className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10">
+  <section className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10">
     <div className="flex flex-col gap-6">
       <SectionTitle eyebrow="Where memory lives" className="w-full items-center">
         Gallery
