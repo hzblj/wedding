@@ -5,6 +5,7 @@ import type {ReactNode} from 'react'
 import './app.css'
 
 export const viewport: Viewport = {
+  themeColor: 'transparent',
   viewportFit: 'cover',
 }
 
