@@ -1,4 +1,4 @@
-import {Photos} from '@/components'
+import {PhotoUpload, Photos} from '@/components'
 import {SectionParagraph, SectionTitle} from '@/ui'
 
 const PageTitle = () => (
@@ -17,6 +17,7 @@ export default function PhotosPage() {
   return (
     <>
       <PageTitle />
+      <PhotoUpload />
       <Photos
         images={[
           'https://picsum.photos/id/10/800/1200',
