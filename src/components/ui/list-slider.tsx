@@ -8,7 +8,13 @@ import {type Ref, useEffect, useRef} from 'react'
 
 gsap.registerPlugin(Draggable)
 
-const ListSliderItem = ({ref}: {ref?: Ref<HTMLLIElement>}) => (
+export type ListSliderItem = {
+  image: string
+  title: string
+  details: string[]
+}
+
+const ListSliderCard = ({ref, item}: {ref?: Ref<HTMLLIElement>; item: ListSliderItem}) => (
   <li
     ref={ref}
     className="absolute top-0 h-full w-[calc(33.3333%-10.6667px)] transform-gpu will-change-[transform,opacity,visibility]"
@@ -17,32 +23,27 @@ const ListSliderItem = ({ref}: {ref?: Ref<HTMLLIElement>}) => (
       <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_0px] relative overflow-hidden">
         <div className="relative overflow-hidden w-px h-full flex-[1_0_0]">
           <div className="absolute inset-0">
-            <Image src="https://picsum.photos/id/1/800/1200" alt="place" fill className="object-cover" />
+            <Image src={item.image} alt={item.title} fill className="object-cover" />
           </div>
         </div>
       </div>
       <div className="flex flex-none flex-row items-start place-content-[flex-start_space-between] w-full h-min p-[8px_16px_16px] relative overflow-hidden">
         <div className="flex flex-col justify-start outline-none whitespace-pre-wrap wrap-break-word break-normal flex-[1_0_0] w-px h-auto relative max-w-30">
-          <p className="font-semibold text-black text-[20px] leading-[120%] uppercase">Jan &{'\n'}Simon</p>
+          <p className="font-semibold text-black text-[20px] leading-[120%] uppercase">{item.title}</p>
         </div>
         <div className="flex flex-col flex-none items-end gap-1 w-min h-min p-0 relative overflow-hidden ml-auto">
-          <div className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
-            <p className="text-[12px] text-black text-right uppercase leading-[13.2px]">Červenec, 2024</p>
-          </div>
-          <div className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
-            <p className="text-[12px] text-black text-right uppercase leading-[13.2px]">Lorem ipsum</p>
-          </div>
-          <div className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
-            <p className="text-[12px] text-black text-right uppercase leading-[13.2px]">Praha</p>
-          </div>
+          {item.details.map((detail) => (
+            <div key={detail} className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
+              <p className="text-[12px] text-black text-right uppercase leading-[13.2px]">{detail}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </li>
 )
 
-export const ListSlider = () => {
-  const data = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+export const ListSlider = ({items}: {items: ListSliderItem[]}) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
 
@@ -138,9 +139,10 @@ export const ListSlider = () => {
         className="aspect-[2.4] h-auto w-300 relative overflow-visible select-none cursor-grab active:cursor-grabbing"
       >
         <ul className="relative w-full h-full m-0 p-0 list-none">
-          {data.map((_, index) => (
-            <ListSliderItem
+          {items.map((item, index) => (
+            <ListSliderCard
               key={index.toString()}
+              item={item}
               ref={el => {
                 itemRefs.current[index] = el
               }}
