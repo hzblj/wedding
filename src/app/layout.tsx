@@ -5,19 +5,19 @@ import type {ReactNode} from 'react'
 import './app.css'
 
 export const viewport: Viewport = {
-  viewportFit: 'cover',
   themeColor: '#050505',
-}
-
-export const metadata: Metadata = {
-  title: 'Karin & Jan Blažejovi',
+  viewportFit: 'cover',
 }
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '600', '700'],
 })
+
+export const metadata: Metadata = {
+  title: 'Karin & Jan Blažejovi',
+}
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
