@@ -1,4 +1,5 @@
 import {Photos, PhotoUpload} from '@/components'
+import {createClientServer} from '@/lib'
 import {SectionParagraph, SectionTitle} from '@/ui'
 
 const PageTitle = () => (
@@ -14,30 +15,24 @@ const PageTitle = () => (
   </section>
 )
 
-const mock = [
-  'https://picsum.photos/id/10/800/1200',
-  'https://picsum.photos/id/11/800/1200',
-  'https://picsum.photos/id/12/800/1200',
-  'https://picsum.photos/id/13/800/1200',
-  'https://picsum.photos/id/14/800/1200',
-  'https://picsum.photos/id/15/800/1200',
-  'https://picsum.photos/id/16/800/1200',
-  'https://picsum.photos/id/17/800/1200',
-  'https://picsum.photos/id/18/800/1200',
-  'https://picsum.photos/id/19/800/1200',
-  'https://picsum.photos/id/20/800/1200',
-  'https://picsum.photos/id/21/800/1200',
-  'https://picsum.photos/id/22/800/1200',
-  'https://picsum.photos/id/23/800/1200',
-]
+export default async function PhotosPage() {
+  const supabase = await createClientServer()
 
-export default function PhotosPage() {
-  const showMock = false
+  const {data} = await supabase.storage.from('public-bucket').list('', {
+    sortBy: {column: 'created_at', order: 'desc'},
+  })
+
+  const images = (data ?? [])
+    .filter(file => file.name !== '.emptyFolderPlaceholder')
+    .map(file => {
+      const {data: url} = supabase.storage.from('public-bucket').getPublicUrl(file.name)
+      return url.publicUrl
+    })
 
   return (
     <>
       <PageTitle />
-      <Photos images={!showMock ? [] : mock} />
+      <Photos images={images} />
     </>
   )
 }
