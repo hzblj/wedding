@@ -89,23 +89,51 @@ const TwoColumns: FC<{images: string[]}> = ({images}) => {
 const SECTION_CLASS =
   'flex-row gap-8 items-start h-min overflow-visible w-full p-0 flex-[0_0_auto] content-start justify-center'
 
-export const Photos: FC<PhotosProps> = ({images}) => (
-  <>
-    {/* Mobile: 1 column */}
-    <section className="flex min-[768px]:hidden flex-col gap-16 items-center w-full">
-      {images.map((image, i) => (
-        <PhotoCard key={i} image={image} isRight />
-      ))}
-    </section>
-
-    {/* Tablet: 2 columns */}
-    <section className={cn('hidden min-[768px]:flex min-[1200px]:hidden', SECTION_CLASS)}>
-      <TwoColumns images={images} />
-    </section>
-
-    {/* Desktop: 3 columns */}
-    <section className={cn('hidden min-[1200px]:flex', SECTION_CLASS)}>
-      <ThreeColumns images={images} />
-    </section>
-  </>
+const PhotoUploadEmpty = () => (
+  <div className="flex flex-col items-center py-16 text-center">
+    <svg
+      className="w-10 h-10 text-white/15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <polyline points="21 15 16 10 5 21" />
+    </svg>
+    <div className="pt-4">
+      <p className="text-white/40 text-xl font-bold">Zatím žádné fotky</p>
+      <p className="text-white/30 text-sm">Nahrajte první fotky z oslavy</p>
+    </div>
+  </div>
 )
+
+export const Photos: FC<PhotosProps> = ({images}) => {
+  if (images.length === 0) {
+    return <PhotoUploadEmpty />
+  }
+
+  return (
+    <>
+      {/* Mobile: 1 column */}
+      <section className="flex min-[768px]:hidden flex-col gap-16 items-center w-full">
+        {images.map((image, i) => (
+          <PhotoCard key={i} image={image} isRight />
+        ))}
+      </section>
+
+      {/* Tablet: 2 columns */}
+      <section className={cn('hidden min-[768px]:flex min-[1200px]:hidden', SECTION_CLASS)}>
+        <TwoColumns images={images} />
+      </section>
+
+      {/* Desktop: 3 columns */}
+      <section className={cn('hidden min-[1200px]:flex', SECTION_CLASS)}>
+        <ThreeColumns images={images} />
+      </section>
+    </>
+  )
+}
