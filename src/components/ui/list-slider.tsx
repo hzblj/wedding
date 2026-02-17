@@ -9,7 +9,10 @@ import {type Ref, useEffect, useRef} from 'react'
 gsap.registerPlugin(Draggable)
 
 const ListSliderItem = ({ref}: {ref?: Ref<HTMLLIElement>}) => (
-  <li ref={ref} className="absolute top-0 h-full w-[calc(33.3333%-10.6667px)] transform-gpu will-change-[transform,opacity,visibility]">
+  <li
+    ref={ref}
+    className="absolute top-0 h-full w-[calc(33.3333%-10.6667px)] transform-gpu will-change-[transform,opacity,visibility]"
+  >
     <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-hidden">
       <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_0px] relative overflow-hidden">
         <div className="relative overflow-hidden w-px h-full flex-[1_0_0]">
@@ -66,13 +69,24 @@ export const ListSlider = () => {
     const updatePositions = (value: number) => {
       const center = wrapperWidth / 2
 
+      const viewLeft = -(window.innerWidth - wrapperWidth) / 2
+      const viewRight = wrapperWidth + (window.innerWidth - wrapperWidth) / 2
+      const fadeZone = itemWidth
+
       items.forEach((item, i) => {
         const raw = i * step + value
         const x = ((((raw - center + totalWidth / 2) % totalWidth) + totalWidth) % totalWidth) - totalWidth / 2 + center
-        const buffer = (window.innerWidth - wrapperWidth) / 2 + itemWidth
-        const visible = x > -buffer && x < wrapperWidth + buffer - itemWidth
-        const fullyVisible = x >= -buffer + itemWidth && x + itemWidth <= wrapperWidth + buffer - itemWidth
-        const opacity = visible ? (fullyVisible ? 1 : 0.8) : 1
+        const itemRight = x + itemWidth
+        const visible = itemRight > viewLeft && x < viewRight
+
+        const distLeft = x - viewLeft
+        const distRight = viewRight - itemRight
+        const edgeDist = Math.min(distLeft, distRight)
+        const opacity = visible
+          ? edgeDist >= 0
+            ? 1
+            : gsap.utils.clamp(0.4, 1, gsap.utils.mapRange(-fadeZone, 0, 0.4, 1, edgeDist))
+          : 0
 
         gsap.set(item, {opacity, visibility: visible ? 'visible' : 'hidden', x})
       })
@@ -94,10 +108,12 @@ export const ListSlider = () => {
       },
       onDragEnd() {
         const snapTo = snapOffset(this.x)
+        const distance = Math.abs(snapTo - this.x)
+        const duration = gsap.utils.clamp(0.3, 0.8, distance / 800)
 
         gsap.to(proxy, {
-          duration: 0.4,
-          ease: 'power2.out',
+          duration,
+          ease: 'power3.out',
           onUpdate() {
             offset = gsap.getProperty(proxy, 'x') as number
             updatePositions(offset)
