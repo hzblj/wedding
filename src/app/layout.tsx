@@ -5,7 +5,6 @@ import type {ReactNode} from 'react'
 import './app.css'
 
 export const viewport: Viewport = {
-  themeColor: '#050505',
   viewportFit: 'cover',
 }
 
@@ -16,6 +15,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  appleWebApp: {
+    statusBarStyle: 'black-translucent',
+  },
   title: 'Karin & Jan Blažejovi',
 }
 
