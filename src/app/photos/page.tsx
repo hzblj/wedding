@@ -17,7 +17,24 @@ export default function PhotosPage() {
   return (
     <>
       <PageTitle />
-      <Photos />
+      <Photos
+        images={[
+          'https://picsum.photos/id/10/800/1200',
+          'https://picsum.photos/id/11/800/1200',
+          'https://picsum.photos/id/12/800/1200',
+          'https://picsum.photos/id/13/800/1200',
+          'https://picsum.photos/id/14/800/1200',
+          'https://picsum.photos/id/15/800/1200',
+          'https://picsum.photos/id/16/800/1200',
+          'https://picsum.photos/id/17/800/1200',
+          'https://picsum.photos/id/18/800/1200',
+          'https://picsum.photos/id/19/800/1200',
+          'https://picsum.photos/id/20/800/1200',
+          'https://picsum.photos/id/21/800/1200',
+          'https://picsum.photos/id/22/800/1200',
+          'https://picsum.photos/id/23/800/1200',
+        ]}
+      />
     </>
   )
 }
