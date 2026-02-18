@@ -1,5 +1,9 @@
-import Image from 'next/image'
+'use client'
 
+import Image from 'next/image'
+import {useRef} from 'react'
+
+import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 import {cn} from '@/utils'
 
 import {Button, Section, SectionParagraph, SectionTitle} from './ui'
@@ -22,38 +26,50 @@ const PlaceImagePaper = ({variant = 'bottom-right'}: PlaceImagePaperProps) => (
   </div>
 )
 
-const PlaceImage = () => (
-  <div className="flex-1 w-full md:w-px max-w-110 aspect-[0.90] max-h-150 relative p-12">
-    <div className="paper-texture bg-white h-full max-h-full max-w-full w-full -rotate-[2.5deg] p-[16px_16px_64px]">
-      <div className="z-1 flex-none absolute inset-[16px_16px_64px] overflow-hidden">
-        <Image src="https://picsum.photos/id/1/800/1200" alt="place" fill className="object-cover" />
-      </div>
-      <PlaceImagePaper variant="top-left" />
-      <PlaceImagePaper variant="bottom-right" />
-    </div>
-  </div>
-)
+export const Place = ({id}: {id?: string}) => {
+  const sectionRef = useRef<HTMLElement>(null)
+  const imageRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLDivElement>(null)
+  const textRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLDivElement>(null)
 
-export const Place = ({id}: {id?: string}) => (
-  <Section
-    id={id}
-    left={<PlaceImage />}
-    right={
-      <>
-        <SectionTitle eyebrow="Kde">Resort Nová Polana</SectionTitle>
-        <div>
-          <SectionParagraph className="max-w-130">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur ligula.
-            Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
-          </SectionParagraph>
+  useScrollReveal(sectionRef, [imageRef], {})
+  useScrollReveal(titleRef, [titleRef, textRef, buttonRef], {stagger: true, delay: 0.15})
+
+  return (
+    <Section
+      ref={sectionRef}
+      id={id}
+      left={
+        <div ref={imageRef} className="flex-1 w-full md:w-px max-w-110 aspect-[0.90] max-h-150 relative p-12">
+          <div className="paper-texture bg-white h-full max-h-full max-w-full w-full -rotate-[2.5deg] p-[16px_16px_64px]">
+            <div className="z-1 flex-none absolute inset-[16px_16px_64px] overflow-hidden">
+              <Image src="https://picsum.photos/id/1/800/1200" alt="place" fill className="object-cover" />
+            </div>
+            <PlaceImagePaper variant="top-left" />
+            <PlaceImagePaper variant="bottom-right" />
+          </div>
         </div>
-        <div>
-          <Button>
-            <Image src="/svg/navigate.svg" alt="navigate" width={16} height={16} className="w-4 h-4" />
-            Navigovat
-          </Button>
-        </div>
-      </>
-    }
-  />
-)
+      }
+      right={
+        <>
+          <div ref={titleRef}>
+            <SectionTitle eyebrow="Kde">Resort Nová Polana</SectionTitle>
+          </div>
+          <div ref={textRef}>
+            <SectionParagraph className="max-w-130">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur ligula.
+              Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
+            </SectionParagraph>
+          </div>
+          <div ref={buttonRef}>
+            <Button>
+              <Image src="/svg/navigate.svg" alt="navigate" width={16} height={16} className="w-4 h-4" />
+              Navigovat
+            </Button>
+          </div>
+        </>
+      }
+    />
+  )
+}

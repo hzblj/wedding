@@ -2,7 +2,7 @@
 
 import gsap from 'gsap'
 import Link from 'next/link'
-import {usePathname} from 'next/navigation'
+import {usePathname, useRouter} from 'next/navigation'
 import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {createPortal} from 'react-dom'
 
@@ -31,8 +31,10 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
   const sectionLinksRef = useRef<HTMLDivElement>(null)
   const savedScrollY = useRef(0)
   const pathname = usePathname()
+  const router = useRouter()
   const isHome = pathname === '/'
   const isPhotos = pathname === '/photos'
+  const pendingNavigation = useRef<string | null>(null)
 
   const lockScroll = useCallback(() => {
     savedScrollY.current = window.scrollY
@@ -112,6 +114,21 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
     onClose()
   }, [onClose])
 
+  const handleNavigate = useCallback(
+    (event: React.MouseEvent, href: string) => {
+      event.preventDefault()
+
+      if (pathname === href) {
+        onClose()
+        return
+      }
+
+      pendingNavigation.current = href
+      onClose()
+    },
+    [onClose, pathname]
+  )
+
   const handleSectionClick = useCallback(
     (href: string) => {
       const targetId = href.replace('#', '')
@@ -172,6 +189,11 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
         unlockScroll()
         setIsMounted(false)
 
+        if (pendingNavigation.current) {
+          router.push(pendingNavigation.current)
+          pendingNavigation.current = null
+        }
+
         if (sectionScrollTarget.current) {
           sectionScrollTarget.current()
           sectionScrollTarget.current = null
@@ -229,7 +251,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                     'text-2xl font-semibold uppercase tracking-wide transition-colors duration-500',
                     isHome ? 'text-white' : 'text-white/60'
                   )}
-                  onClick={handleBackdropClose}
+                  onClick={event => handleNavigate(event, '/')}
                 >
                   Home
                 </Link>
@@ -267,7 +289,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                   'text-2xl font-semibold uppercase tracking-wide transition-colors duration-500',
                   isPhotos ? 'text-white' : 'text-white/60'
                 )}
-                onClick={handleBackdropClose}
+                onClick={event => handleNavigate(event, '/photos')}
               >
                 Photos
               </Link>
@@ -278,7 +300,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
       <Link
         href="/"
         className="fixed top-3 left-8 z-1003 text-white font-semibold text-[14px] pt-[env(safe-area-inset-top)] transition-colors duration-500 hover:text-white/60"
-        onClick={handleBackdropClose}
+        onClick={event => handleNavigate(event, '/')}
       >
         [ Karin & Jan ]
       </Link>
