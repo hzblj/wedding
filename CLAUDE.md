@@ -1,6 +1,7 @@
 Read and follow all guidelines in:
 
 - .claude/skills/web/agent-web-developer.md
+- .claude/skills/frontend-design/SKILL.md
 - .claude/skills/shared/utils/code-style.md
 - .claude/skills/shared/utils/type-safety.md
 - .claude/skills/shared/utils/project-structure.md
