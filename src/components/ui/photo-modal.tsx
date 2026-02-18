@@ -119,13 +119,13 @@ export const PhotoModal: FC<PhotoModalProps> = ({src, isVideo, onClose, videoRen
   return (
     <div
       ref={backdropRef}
-      className="fixed inset-0 z-1002 flex items-center justify-center bg-black/80 backdrop-blur-sm overscroll-none touch-none"
+      className="fixed inset-0 z-1004 flex items-center justify-center bg-black/80 backdrop-blur-sm overscroll-none touch-none"
       onClick={startClose}
     >
       <button
         ref={closeButtonRef}
         type="button"
-        className="absolute top-6 right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-white/20"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 w-10 h-10 md:hidden flex items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-white/20"
         onClick={startClose}
       >
         <svg
