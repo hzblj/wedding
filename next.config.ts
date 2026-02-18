@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
             new URL('https://hmhwnelhxbrgxirdlrzc.supabase.co/**')
         ],
     },
+    experimental: {
+        viewTransition: true,
+    },
 };
 
 export default nextConfig;
