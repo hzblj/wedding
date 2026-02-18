@@ -36,6 +36,20 @@ const GAP = 4 as const
 const ANIMATION_DURATION = 300 as const
 ```
 
+## Conditional ClassNames
+
+- Always use `cn()` for conditional or dynamic class names.
+- Never use template literals or string concatenation for className.
+
+```ts
+// Good
+className={cn('base-class', isActive && 'active-class')}
+className={cn('base-class', isActive ? 'text-white' : 'text-white/60')}
+
+// Bad
+className={`base-class ${isActive ? 'active-class' : ''}`}
+```
+
 ## Exports
 
 - Do not use default exports.

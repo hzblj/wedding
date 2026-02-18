@@ -12,8 +12,9 @@ const PlaceImage = () => (
   </div>
 )
 
-export const FAQ = () => (
+export const FAQ = ({id}: {id?: string}) => (
   <Section
+    id={id}
     left={<PlaceImage />}
     right={
       <>

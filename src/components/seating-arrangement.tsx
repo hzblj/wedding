@@ -1,7 +1,7 @@
 import {SeatingArrangementTables, SectionParagraph, SectionTitle} from './ui'
 
-export const SeatingArrangement = () => (
-  <section className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10">
+export const SeatingArrangement = ({id}: {id?: string}) => (
+  <section id={id} className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10">
     <div className="flex flex-col gap-6">
       <SectionTitle eyebrow="Kde sedím" className="w-full items-center text-center">
         Zasedací pořádek

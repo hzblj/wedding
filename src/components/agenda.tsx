@@ -1,7 +1,8 @@
 import {Section, SectionParagraph, SectionTitle, Timeline} from './ui'
 
-export const Agenda = () => (
+export const Agenda = ({id}: {id?: string}) => (
   <Section
+    id={id}
     left={
       <div className="flex flex-col gap-6 w-full">
         <SectionTitle eyebrow="Plán">Svatební den</SectionTitle>
