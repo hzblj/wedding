@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {FC, useCallback, useRef, useState} from 'react'
 
+import {MobileMenu} from '@/components/mobile-menu'
 import {cn} from '@/utils'
 
 const SECTION_LINKS = [
@@ -83,8 +84,9 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-1001 bg-transparent backdrop-blur-lg flex justify-center pt-[env(safe-area-inset-top)]">
-      <div className="flex flex-row items-center w-full max-w-full h-min py-3 px-8 relative overflow-visible">
-        <Link href="/" className="text-white/60 font-normal text-[14px] transition-colors duration-500 hover:text-white">[ Karin & Jan ]</Link>
+      <div className="flex flex-row items-center justify-between w-full max-w-full h-min py-3 px-8 relative overflow-visible">
+        <Link href="/" className="text-white font-semibold text-[14px] transition-colors duration-500 hover:text-white/60">[ Karin & Jan ]</Link>
+        <MobileMenu />
         <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
           {isHome ? (
             <HomeDropdown />
