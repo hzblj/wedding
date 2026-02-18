@@ -42,7 +42,7 @@ const PhotoCard: FC<PhotoCardProps> = ({hidden = false, image, onSelect}) => {
                 )}
               </div>
             </div>
-            <div className="opacity-80 h-auto aspect-[0.660645] z-20 flex-none w-12.25 absolute -top-8 left-1/2 overflow-visible -translate-x-1/2 rotate-90">
+            <div className="opacity-80 h-auto aspect-[0.660645] z-20 flex-none w-6 md:w-9 lg:w-12.25 absolute -top-4 md:-top-6 lg:-top-8 left-1/2 overflow-visible -translate-x-1/2 rotate-90">
               <div className="absolute inset-0">
                 <Image src="/png/paper.png" alt="paper" fill className="object-cover" />
               </div>
