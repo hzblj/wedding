@@ -28,6 +28,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
   const backdropRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const linksRef = useRef<HTMLDivElement>(null)
+  const sectionLinksRef = useRef<HTMLDivElement>(null)
   const savedScrollY = useRef(0)
   const pathname = usePathname()
   const isHome = pathname === '/'
@@ -60,12 +61,24 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
     gsap.set(contentRef.current, {autoAlpha: 0})
     gsap.set(linksRef.current.children, {autoAlpha: 0, y: 20})
 
+    if (sectionLinksRef.current) {
+      gsap.set(sectionLinksRef.current.children, {autoAlpha: 0, y: 10})
+    }
+
     const timeline = gsap.timeline()
 
     timeline
-      .to(backdropRef.current, {duration: 0.4, ease: 'power3.inOut', yPercent: 0})
-      .to(contentRef.current, {autoAlpha: 1, duration: 0.01})
-      .to(linksRef.current.children, {autoAlpha: 1, duration: 0.3, ease: 'power2.out', stagger: 0.08, y: 0}, '-=0.01')
+      .to(backdropRef.current, {duration: 0.6, ease: 'power3.inOut', yPercent: 0})
+      .to(contentRef.current, {autoAlpha: 1, duration: 0.01}, 0.25)
+      .to(linksRef.current.children, {autoAlpha: 1, duration: 0.3, ease: 'power2.out', stagger: 0.08, y: 0}, 0.3)
+
+    if (sectionLinksRef.current) {
+      timeline.to(
+        sectionLinksRef.current.children,
+        {autoAlpha: 1, duration: 0.25, ease: 'power2.out', stagger: 0.05, y: 0},
+        0.5
+      )
+    }
   }, [])
 
   const animateClose = useCallback((onComplete: () => void) => {
@@ -78,6 +91,10 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
 
     if (linksRef.current) {
       gsap.killTweensOf(linksRef.current.children)
+    }
+
+    if (sectionLinksRef.current) {
+      gsap.killTweensOf(sectionLinksRef.current.children)
     }
 
     const timeline = gsap.timeline({onComplete})
@@ -185,11 +202,15 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
     <>
       <div
         ref={backdropRef}
-        className="fixed inset-0 z-1002 flex flex-col justify-end bg-black/95 backdrop-blur-2xl"
+        className="fixed inset-0 z-1002 bg-black/95 backdrop-blur-2xl"
         onClick={handleBackdropClose}
+      />
+      <div
+        ref={contentRef}
+        className="fixed bottom-0 left-0 right-0 z-1003 flex flex-col p-8 pb-16"
+        onClick={event => event.stopPropagation()}
       >
-        <div ref={contentRef} className="flex flex-col p-8 pb-16" onClick={event => event.stopPropagation()}>
-        <div ref={linksRef} className="flex flex-col gap-10">
+        <div ref={linksRef} className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <div className="h-px w-full bg-white/15" />
             <div className="flex items-baseline gap-3">
@@ -213,7 +234,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                   Home
                 </Link>
                 {isHome && (
-                  <div className="flex flex-col gap-3">
+                  <div ref={sectionLinksRef} className="flex flex-col gap-3">
                     {SECTION_LINKS.map(link => (
                       <button
                         key={link.href}
@@ -253,7 +274,6 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
             </div>
           </div>
         </div>
-      </div>
       </div>
       <Link
         href="/"
@@ -330,7 +350,7 @@ export const MobileMenu: FC = () => {
             </span>
           </span>
         </button>,
-        document.body,
+        document.body
       )}
       <MobileMenuModal isOpen={isOpen} onClose={handleClose} />
     </>
