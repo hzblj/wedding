@@ -81,7 +81,7 @@ export const Header = () => {
         </div>
         <div ref={contentRef} className="flex flex-col basis-0 md:basis-75 lg:basis-90 max-w-100 md:ml-auto gap-4">
           <SectionParagraph>
-            S radostí v srdci vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.
+            S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.
           </SectionParagraph>
           <p className="text-[14px] leading-[150%] tracking-normal text-gray-400 text-left">
             4. července 2026, Resort Nová Polana, Dolní Lomná

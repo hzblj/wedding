@@ -34,7 +34,7 @@ export const Place = ({id}: {id?: string}) => {
   const buttonRef = useRef<HTMLDivElement>(null)
 
   useScrollReveal(sectionRef, [imageRef], {})
-  useScrollReveal(titleRef, [titleRef, textRef, buttonRef], {stagger: true, delay: 0.15})
+  useScrollReveal(titleRef, [titleRef, textRef, buttonRef], {delay: 0.15, stagger: true})
 
   return (
     <Section
@@ -58,8 +58,10 @@ export const Place = ({id}: {id?: string}) => {
           </div>
           <div ref={textRef}>
             <SectionParagraph className="max-w-130">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur ligula.
-              Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
+              Svatba se bude konat v&nbsp;Resortu Nová Polana v&nbsp;Dolní Lomné.
+              <br />
+              V&nbsp;místě obklopeném horami a&nbsp;přírodou, kde spolu strávíme celý den, od prvního přípitku až po
+              večerní tanec.
             </SectionParagraph>
           </div>
           <div ref={buttonRef}>

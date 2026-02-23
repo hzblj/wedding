@@ -24,10 +24,6 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
         <SectionTitle eyebrow="Kde sedím" className="w-full items-center text-center">
           Zasedací pořádek
         </SectionTitle>
-        <SectionParagraph className="max-w-130 text-center">
-          Lorem ipsum dolor sit amet, consectetur <strong>adipiscing</strong> elit. Donec suscipit auctor dui, sed
-          efficitur ligula. Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
-        </SectionParagraph>
       </div>
       <SeatingArrangementTables
         ref={tablesRef}
@@ -37,17 +33,13 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
             head: 'Marta Dänemarková',
             seats: [
               ['Andrzej Dänemark', 'Dawid Lebeda'],
-              ['Krystyna Lebeda', 'Barbara Firla'],
-              ['Rychard Lebeda', 'Hana Donociková'],
-              ['Jiřina Lebeda', 'Vladimír Sedlák'],
-              ['Bogdan Lebeda', 'Małgorzata Franek'],
-              ['Ester Kendziurová', 'Barbara Lebeda'],
-              ['Radka Dänemarková', 'Nela Dänemarková'],
-              ['Roman Dänemark', 'Adam Dänemark'],
-              ['Dorota Giemza', 'Magdalena Bubík'],
-              ['Łukasz Giemza', 'Janina Gaurová'],
-              ['Edyta Giemzová', 'Krystyna Ivanov'],
-              ['Marcel Giemza', ''],
+              ['Adam Dänemark', 'Nela Dänemarková'],
+              ['Roman Dänemark', 'Radka Dänemarková'],
+              ['Dorota Giemza', 'Barbara Firla'],
+              ['Łukasz Giemza', 'Hana Donociková'],
+              ['Edyta Giemzová', 'Vladimír Sedlák'],
+              ['Marcel Giemza', 'Magdalena Bubík'],
+              ['Krystyna Ivanov', 'Janina Gaurová'],
             ],
           },
         ]}
@@ -58,13 +50,13 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
               ['Marek Buš', 'Jiří Teichman'],
               ['Kristýna Buš', 'Radim Teichman'],
               ['Lukáš Teichman', 'Miriam Teichmanová'],
-              ['Šimon Rico', 'Jaroslav Maťas'],
-              ['Kateryna Holotova', 'Ema'],
-              ['Eva Rojíková', 'Tereza Balejová'],
-              ['Vojta Bínek', 'Tomáš Balej'],
-              ['Miroslav Honysch', 'Klára Honysch'],
-              ['Ondřej Valuštík', 'Veronika Valuštíková'],
-              ['Jan Holínka', 'Kateřina Faktorová'],
+              ['holka', 'Tomáš Balej'],
+              ['Šimon Rico', 'Tereza Balejová'],
+              ['Kateryna Holotova', 'Eva Rojíková'],
+              ['Jaroslav Maťas', 'Vojta Bínek'],
+              ['Ema Kmeťová', 'Klára Honysch'],
+              ['Kateřina Faktorová', 'Miroslav Honysch'],
+              ['Jan Holínka', 'Ondřej Valuštík'],
               ['Foto Pavel', 'DJ Štěpa'],
               ['Kamera Vít', ''],
             ],

@@ -5,8 +5,8 @@ export default function HomePage() {
     <>
       <Header />
       <Place id="where" />
-      <Gallery id="gallery" />
       <Agenda id="agenda" />
+      <Gallery id="gallery" />
       <SeatingArrangement id="seating" />
       <FAQ id="faq" />
       <Footer />

@@ -68,14 +68,19 @@ export const Gallery = ({id}: {id?: string}) => {
   useScrollReveal(sectionRef, [sliderRef], {delay: 0.2})
 
   return (
-    <section ref={sectionRef} id={id} className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10">
+    <section
+      ref={sectionRef}
+      id={id}
+      className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10"
+    >
       <div ref={headerRef} className="flex flex-col gap-6">
-        <SectionTitle eyebrow="Where memory lives" className="w-full items-center text-center">
-          Gallery
+        <SectionTitle eyebrow="KDO" className="w-full items-center text-center">
+          RODINA A PŘÁTELÉ
         </SectionTitle>
         <SectionParagraph className="max-w-130 text-center">
-          Lorem ipsum dolor sit amet, consectetur <strong>adipiscing</strong> elit. Donec suscipit auctor dui, sed
-          efficitur ligula. Donec a nunc eget nisl convallis commodo. Donec ut nisi sed enim efficitur efficitur.
+          <strong>Jsme tím, kým jsme, i díky vám.</strong> <br /> Každý z vás je součástí našeho příběhu. Vaše podpora,
+          přátelství a&nbsp;společně prožitý čas nás formovaly víc, než si možná uvědomujeme. Bez vás by naše cesta
+          nebyla stejná. O to víc si vážíme, že tento den můžeme prožít právě s vámi.
         </SectionParagraph>
       </div>
       <div ref={sliderRef} className="w-full">
