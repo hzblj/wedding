@@ -1,6 +1,6 @@
 import type {Metadata, Viewport} from 'next'
 import {Inter, Playfair_Display} from 'next/font/google'
-import {type ReactNode, ViewTransition} from 'react'
+import {type ReactNode} from 'react'
 
 import {Navigation} from '@/components'
 
@@ -36,12 +36,10 @@ export default function Layout({
   children: ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="cz" className={`${inter.variable} ${playfair.variable}`}>
       <body>
         <Navigation />
-        <ViewTransition name="page">
-          {children}
-        </ViewTransition>
+        {children}
       </body>
     </html>
   )

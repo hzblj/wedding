@@ -84,7 +84,7 @@ export const Navigation = () => {
   const isPhotos = pathname === '/photos'
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-1001 bg-transparent backdrop-blur-lg flex justify-center pt-[env(safe-area-inset-top)]">
+    <nav style={{viewTransitionName: 'navigation'}} className="fixed top-0 left-0 right-0 z-1001 bg-transparent backdrop-blur-lg flex justify-center pt-[env(safe-area-inset-top)]">
       <div className="flex flex-row items-center justify-between w-full max-w-full h-min py-3 px-8 relative overflow-visible">
         <Link
           href="/"

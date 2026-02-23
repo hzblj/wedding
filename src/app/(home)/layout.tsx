@@ -1,4 +1,4 @@
-import {type ReactNode} from 'react'
+import {type ReactNode, ViewTransition} from 'react'
 
 type Props = Readonly<{
   children: ReactNode
@@ -6,12 +6,14 @@ type Props = Readonly<{
 
 export default function Layout({children}: Props) {
   return (
-    <div className="min-h-screen w-auto app-background grain flex flex-col flex-wrap items-center gap-0 p-0 overflow-visible relative">
-      <div className="min-h-screen h-min p-0 relative flex-col flex-wrap w-full contents">
-        <main className="flex flex-col flex-wrap flex-none items-start gap-0 w-full max-w-450 h-min p-0 relative">
-          {children}
-        </main>
+    <ViewTransition name="page" update="none">
+      <div className="min-h-screen w-auto app-background grain flex flex-col flex-wrap items-center gap-0 p-0 overflow-visible relative">
+        <div className="min-h-screen h-min p-0 relative flex-col flex-wrap w-full contents">
+          <main className="flex flex-col flex-wrap flex-none items-start gap-0 w-full max-w-450 h-min p-0 relative">
+            {children}
+          </main>
+        </div>
       </div>
-    </div>
+    </ViewTransition>
   )
 }

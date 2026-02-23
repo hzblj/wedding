@@ -33,12 +33,15 @@ const SkeletonCard = ({hidden = false}: {hidden?: boolean}) => (
   </div>
 )
 
-const SKELETON_ROWS = 3
+const SKELETON_ROWS = 1
 
 const PhotosSkeleton = () => (
   <section className="flex flex-row gap-4 md:gap-6 lg:gap-8 items-start justify-center w-full max-w-278.5 mx-auto">
     {Array.from({length: 3}, (_, colIdx) => (
-      <div key={colIdx} className="flex items-start flex-1 min-w-0 flex-col gap-16 md:gap-24 lg:gap-32 h-min p-0 relative">
+      <div
+        key={colIdx}
+        className="flex items-start flex-1 min-w-0 flex-col gap-16 md:gap-24 lg:gap-32 h-min p-0 relative"
+      >
         {Array.from({length: SKELETON_ROWS}, (_, rowIdx) => (
           <div key={rowIdx} className="contents">
             {[0, 1, 2].map(slot => (
