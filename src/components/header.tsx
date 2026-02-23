@@ -13,7 +13,16 @@ const REVEAL_EASE = 'power2.out'
 
 const HeaderImage = ({className = '', url}: {className?: string; url: string}) => (
   <div className={cn('bg-white h-52 sm:h-64 md:h-84 w-auto max-w-50 p-2 paper-texture', className)}>
-    <Image src={url} alt="image" width={256} height={306} className="h-full w-full object-cover" draggable={false} />
+    <Image
+      src={url}
+      alt="image"
+      width={256}
+      height={306}
+      className="h-full w-full object-cover"
+      draggable={false}
+      priority
+      fetchPriority="high"
+    />
   </div>
 )
 
