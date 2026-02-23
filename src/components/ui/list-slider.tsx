@@ -45,6 +45,7 @@ const ListSliderCard = forwardRef<HTMLLIElement, {item: ListSliderItem}>(({item}
           <div className="absolute inset-0">
             <Image src={item.image} alt={item.title} fill className="object-cover" />
           </div>
+          <div className="absolute inset-0 z-2 bg-[url('/jpg/texture-paper.jpg')] bg-cover mix-blend-multiply pointer-events-none opacity-[0.15]" />
         </div>
       </div>
       <div className="flex flex-none flex-row items-start place-content-[flex-start_space-between] w-full h-min p-[8px_16px_16px] relative overflow-hidden">

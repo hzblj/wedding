@@ -11,16 +11,9 @@ import {Button, Eyebrow, SectionParagraph} from './ui'
 const REVEAL_DURATION = 0.8
 const REVEAL_EASE = 'power2.out'
 
-const HeaderImage = ({className = ''}: {className?: string}) => (
+const HeaderImage = ({className = '', url}: {className?: string; url: string}) => (
   <div className={cn('bg-white h-52 sm:h-64 md:h-84 w-auto max-w-50 p-2 paper-texture', className)}>
-    <Image
-      src="https://picsum.photos/id/1/800/1200"
-      alt="image"
-      width={256}
-      height={306}
-      className="h-full w-full object-cover"
-      draggable={false}
-    />
+    <Image src={url} alt="image" width={256} height={306} className="h-full w-full object-cover" draggable={false} />
   </div>
 )
 
@@ -65,12 +58,12 @@ export const Header = () => {
     <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-8">
       <div ref={imagesRef} className="flex flex-row items-start relative w-full px-6 md:px-8 gap-4 min-h-0">
         <div className="flex relative items-start">
-          <HeaderImage />
+          <HeaderImage url="/png/header-1.png" />
         </div>
         <div className="flex flex-row relative p-0 w-fit ml-auto gap-4">
-          <HeaderImage />
-          <HeaderImage className="hidden sm:block" />
-          <HeaderImage className="hidden min-[1200px]:block" />
+          <HeaderImage url="/png/header-2.png" />
+          <HeaderImage className="hidden sm:block" url="/png/header-3.png" />
+          <HeaderImage className="hidden min-[1200px]:block" url="/png/header-4.png" />
         </div>
       </div>
       <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-6 md:px-8 relative gap-6 md:gap-x-8 md:gap-y-6">

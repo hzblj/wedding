@@ -7,56 +7,26 @@ import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 import {ListSlider, type ListSliderItem, SectionParagraph, SectionTitle} from './ui'
 
 const galleryItems: ListSliderItem[] = [
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/1/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/2/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/3/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/4/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/5/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/6/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/7/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/8/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/9/800/1200',
-    title: 'Jan &\nSimon',
-  },
-  {
-    details: ['Červenec, 2024', 'Lorem ipsum', 'Praha'],
-    image: 'https://picsum.photos/id/10/800/1200',
-    title: 'Jan &\nSimon',
-  },
+  {details: [], image: '/png/gallery-1.png', title: ''},
+  {details: [], image: '/png/gallery-2.png', title: ''},
+  {details: [], image: '/png/gallery-3.png', title: ''},
+  {details: [], image: '/png/gallery-4.png', title: ''},
+  {details: [], image: '/png/gallery-5.png', title: ''},
+  {details: [], image: '/png/gallery-6.png', title: ''},
+  {details: [], image: '/png/gallery-7.png', title: ''},
+  {details: [], image: '/png/gallery-8.png', title: ''},
+  {details: [], image: '/png/gallery-9.png', title: ''},
+  {details: [], image: '/png/gallery-10.png', title: ''},
+  {details: [], image: '/png/gallery-11.png', title: ''},
+  {details: [], image: '/png/gallery-12.png', title: ''},
+  {details: [], image: '/png/gallery-13.png', title: ''},
+  {details: [], image: '/png/gallery-14.png', title: ''},
+  {details: [], image: '/png/gallery-15.png', title: ''},
+  {details: [], image: '/png/gallery-16.png', title: ''},
+  {details: [], image: '/png/gallery-17.png', title: ''},
+  {details: [], image: '/png/gallery-18.png', title: ''},
+  {details: [], image: '/png/gallery-19.png', title: ''},
+  {details: [], image: '/png/gallery-20.png', title: ''},
 ]
 
 export const Gallery = ({id}: {id?: string}) => {

@@ -111,6 +111,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
   background-image: url("/jpg/texture-paper.jpg");
   background-size: cover;
   opacity: 0.15;
