@@ -17,18 +17,31 @@ const inter = Inter({
   weight: ['400', '500', '600', '700'],
 })
 
-export const metadata: Metadata = {
-  appleWebApp: {
-    statusBarStyle: 'black-translucent',
-  },
-  title: 'Karin & Jan Blažejovi',
-}
-
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   weight: ['400', '500', '700'],
 })
+
+export const metadata: Metadata = {
+  appleWebApp: {
+    statusBarStyle: 'black-translucent',
+  },
+  description: 'Svatba Karin & Jana — všechny informace o našem velkém dni.',
+  icons: {
+    apple: '/apple-touch-icon.png',
+    icon: [
+      {sizes: '32x32', url: '/favicon-32x32.png'},
+      {sizes: '16x16', url: '/favicon-16x16.png'},
+    ],
+  },
+  manifest: '/site.webmanifest',
+  openGraph: {
+    images: ['/png/og-image.png'],
+    title: 'Karin & Jan Blažejovi',
+  },
+  title: 'Karin & Jan Blažejovi',
+}
 
 export default function Layout({
   children,
