@@ -2,7 +2,7 @@
 
 import gsap from 'gsap'
 import Image from 'next/image'
-import {useEffect, useRef} from 'react'
+import {useCallback, useEffect, useRef} from 'react'
 
 import {cn} from '@/utils'
 
@@ -26,10 +26,61 @@ const HeaderImage = ({className = '', url}: {className?: string; url: string}) =
   </div>
 )
 
+const ICS_CONTENT = [
+  'BEGIN:VCALENDAR',
+  'VERSION:2.0',
+  'PRODID:-//Blazejovi//Wedding//CS',
+  'BEGIN:VTIMEZONE',
+  'TZID:Europe/Prague',
+  'BEGIN:DAYLIGHT',
+  'DTSTART:19700329T020000',
+  'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU',
+  'TZOFFSETFROM:+0100',
+  'TZOFFSETTO:+0200',
+  'TZNAME:CEST',
+  'END:DAYLIGHT',
+  'BEGIN:STANDARD',
+  'DTSTART:19701025T030000',
+  'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU',
+  'TZOFFSETFROM:+0200',
+  'TZOFFSETTO:+0100',
+  'TZNAME:CET',
+  'END:STANDARD',
+  'END:VTIMEZONE',
+  'BEGIN:VEVENT',
+  'DTSTART;TZID=Europe/Prague:20260704T110000',
+  'DTEND;TZID=Europe/Prague:20260705T000000',
+  'SUMMARY:Svatba - Blažejovi',
+  'LOCATION:Resort Nová Polana\\, Dolní Lomná 126\\, 739 91 Dolní Lomná',
+  'GEO:49.551680;18.687632',
+  'URL:https://wedding.janblazej.dev',
+  'DESCRIPTION:Těšíme se na vás! Přijďte oslavit náš velký den plný lásky\\,',
+  ' smíchu a nezapomenutelných okamžiků. Bude to den\\, na který budeme',
+  ' vzpomínat celý život — a chceme ho prožít právě s vámi.',
+  'STATUS:CONFIRMED',
+  'BEGIN:VALARM',
+  'TRIGGER:-P7D',
+  'ACTION:DISPLAY',
+  'DESCRIPTION:Za týden je svatba Karin & Jana!',
+  'END:VALARM',
+  'END:VEVENT',
+  'END:VCALENDAR',
+].join('\r\n')
+
 export const Header = () => {
   const imagesRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+
+  const handleAddToCalendar = useCallback(() => {
+    const blob = new Blob([ICS_CONTENT], {type: 'text/calendar;charset=utf-8'})
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'svatba-blazejovi.ics'
+    link.click()
+    URL.revokeObjectURL(url)
+  }, [])
 
   useEffect(() => {
     const context = gsap.context(() => {
@@ -70,9 +121,9 @@ export const Header = () => {
           <HeaderImage url="/png/header-1.png" />
         </div>
         <div className="flex flex-row relative p-0 w-fit ml-auto gap-4">
-          <HeaderImage url="/png/header-2.png" />
+          <HeaderImage url="/png/header-4.png" />
           <HeaderImage className="hidden sm:block" url="/png/header-3.png" />
-          <HeaderImage className="hidden min-[1200px]:block" url="/png/header-4.png" />
+          <HeaderImage className="hidden min-[1200px]:block" url="/png/header-2.png" />
         </div>
       </div>
       <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-6 md:px-8 relative gap-6 md:gap-x-8 md:gap-y-6">
@@ -89,7 +140,7 @@ export const Header = () => {
             4. července 2026, Resort Nová Polana, Dolní Lomná
           </p>
           <div className="pt-2">
-            <Button>
+            <Button onClick={handleAddToCalendar}>
               <Image src="/svg/calendar-plus.svg" alt="calendar" width={16} height={16} className="w-4 h-4" />
               Přidat do kalendáře
             </Button>

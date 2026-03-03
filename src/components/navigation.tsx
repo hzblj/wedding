@@ -8,10 +8,10 @@ import {MobileMenu} from '@/components/mobile-menu'
 import {cn} from '@/utils'
 
 const SECTION_LINKS = [
-  {href: '#where', label: 'Where'},
-  {href: '#gallery', label: 'Gallery'},
-  {href: '#agenda', label: 'Agenda'},
-  {href: '#seating', label: 'Seating'},
+  {href: '#where', label: 'Místo'},
+  {href: '#gallery', label: 'Galerie'},
+  {href: '#agenda', label: 'Program'},
+  {href: '#seating', label: 'Zasedací pořádek'},
   {href: '#faq', label: 'FAQ'},
 ] as const
 
@@ -54,7 +54,7 @@ const HomeDropdown: FC = () => {
         href="/"
         className="text-white text-[14px] leading-4.25 font-semibold uppercase transition-colors duration-500"
       >
-        Home
+        Úvod
       </Link>
       {isOpen && (
         <div className="fixed top-full left-1/2 -translate-x-1/2 pt-4">
@@ -101,7 +101,7 @@ export const Navigation = () => {
               href="/"
               className="text-white/60 text-[14px] leading-4.25 font-semibold uppercase transition-colors duration-500 hover:text-white"
             >
-              Home
+              Úvod
             </Link>
           )}
           <span className="text-[14px] leading-4.25 font-semibold uppercase text-white/60">/</span>
@@ -112,7 +112,7 @@ export const Navigation = () => {
               isPhotos ? 'text-white' : 'text-white/60 hover:text-white'
             )}
           >
-            Photos
+            Fotky
           </Link>
         </div>
       </div>

@@ -100,10 +100,15 @@ export const Place = ({id}: {id?: string}) => {
             </SectionParagraph>
           </div>
           <div ref={buttonRef}>
-            <Button>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=49.551680,18.687632"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 uppercase text-sm font-medium bg-white text-black px-6 py-3 rounded-full hover:bg-white/80 transition-all duration-300 cursor-pointer"
+            >
               <Image src="/svg/navigate.svg" alt="navigate" width={16} height={16} className="w-4 h-4" />
               Navigovat
-            </Button>
+            </a>
           </div>
         </>
       }

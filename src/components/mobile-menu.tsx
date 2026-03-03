@@ -11,10 +11,10 @@ import {cn} from '@/utils'
 const SCROLL_OFFSET = 80
 
 const SECTION_LINKS = [
-  {href: '#where', label: 'Where'},
-  {href: '#gallery', label: 'Gallery'},
-  {href: '#agenda', label: 'Agenda'},
-  {href: '#seating', label: 'Seating'},
+  {href: '#where', label: 'Místo'},
+  {href: '#gallery', label: 'Galerie'},
+  {href: '#agenda', label: 'Program'},
+  {href: '#seating', label: 'Zasedací pořádek'},
   {href: '#faq', label: 'FAQ'},
 ] as const
 
@@ -253,7 +253,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                   )}
                   onClick={event => handleNavigate(event, '/')}
                 >
-                  Home
+                  Úvod
                 </Link>
                 {isHome && (
                   <div ref={sectionLinksRef} className="flex flex-col gap-3">
@@ -291,7 +291,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                 )}
                 onClick={event => handleNavigate(event, '/photos')}
               >
-                Photos
+                Fotky
               </Link>
             </div>
           </div>
