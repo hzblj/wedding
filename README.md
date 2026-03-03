@@ -1,5 +1,7 @@
 # Karin & Jan — Wedding Website
 
+![Preview](public/png/preview.png)
+
 A modern, animated wedding website for Karin & Jan. Guests can browse event details, view the seating arrangement, explore the photo gallery, and upload their own photos.
 
 [wedding.janblazej.dev](https://wedding.janblazej.dev)
