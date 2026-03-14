@@ -71,7 +71,7 @@ export const Header = () => {
   }, [])
 
   return (
-    <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-8">
+    <header className="flex flex-col flex-none items-center w-full h-auto md:h-screen md:max-h-200 relative overflow-hidden pt-24 pb-12 md:pb-20 md:pt-36 md:pb-8 gap-24 md:justify-between">
       <div ref={imagesRef} className="flex flex-row items-start relative w-full px-6 md:px-8 gap-4 min-h-0">
         <div className="flex relative items-start">
           <HeaderImage url="/png/header-1.png" />
@@ -91,7 +91,8 @@ export const Header = () => {
         <div ref={contentRef} className="flex flex-col basis-0 md:basis-75 lg:basis-90 max-w-100 md:ml-auto gap-4">
           <Eyebrow className="pt-2">Milí hosté</Eyebrow>
           <SectionParagraph>
-            S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – <strong>den naší svatby</strong>.
+            S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života –{' '}
+            <strong>den naší svatby</strong>.
           </SectionParagraph>
         </div>
       </div>

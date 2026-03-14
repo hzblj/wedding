@@ -96,8 +96,10 @@ export const Place = ({id}: {id?: string}) => {
           </div>
           <div ref={textRef}>
             <SectionParagraph className="max-w-140">
-              Svatba se bude konat v&nbsp;<strong>Resortu Nová Polana v&nbsp;Dolní Lomné</strong>. V&nbsp;místě
-              obklopeném horami a&nbsp;přírodou, kde spolu strávíme celý den, od obřadu až po večerní párty.
+              Svatba se bude konat v&nbsp;<strong>Resortu Nová Polana v&nbsp;Dolní Lomné</strong>.
+              <br />
+              V&nbsp;místě obklopeném horami a&nbsp;přírodou, kde spolu strávíme celý den, od obřadu až po večerní
+              párty.
             </SectionParagraph>
           </div>
           <div ref={buttonRef}>

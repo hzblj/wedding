@@ -91,7 +91,7 @@ export const Navigation = () => {
       <div className="flex flex-row items-center justify-between w-full max-w-full h-min py-3 px-8 relative overflow-visible">
         <Link
           href="/"
-          className="text-heading font-semibold text-[16px] transition-colors duration-500 hover:text-body"
+          className="text-heading font-semibold text-[14px] md:text-[16px] transition-colors duration-500 hover:text-body"
         >
           [ Karin & Jan ]
         </Link>

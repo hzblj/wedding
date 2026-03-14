@@ -342,7 +342,7 @@ export const MobileMenu: FC = () => {
       {createPortal(
         <button
           type="button"
-          className="md:hidden fixed top-3 right-8 z-1003 text-heading font-semibold text-[16px] uppercase cursor-pointer pt-[env(safe-area-inset-top)]"
+          className="md:hidden fixed top-3 right-8 z-1003 text-heading font-semibold text-[14px] md:text-[16px] uppercase cursor-pointer pt-[env(safe-area-inset-top)]"
           style={{perspective: '200px'}}
           onClick={handleToggle}
         >
