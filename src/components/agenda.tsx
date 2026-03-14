@@ -2,18 +2,17 @@
 
 import {useRef} from 'react'
 
-import {useScrollReveal} from '@/hooks/use-scroll-reveal'
+import {useScrollReveal, useScrollRevealChildren} from '@/hooks/use-scroll-reveal'
 
 import {Section, SectionParagraph, SectionTitle, Timeline} from './ui'
 
 export const Agenda = ({id}: {id?: string}) => {
   const sectionRef = useRef<HTMLElement>(null)
   const leftRef = useRef<HTMLDivElement>(null)
-  const timelineTriggerRef = useRef<HTMLDivElement>(null)
   const timelineRef = useRef<HTMLDivElement>(null)
 
-  useScrollReveal(sectionRef, [leftRef], {})
-  useScrollReveal(timelineTriggerRef, [timelineRef], {delay: 0.2})
+  useScrollReveal(sectionRef, [leftRef], {start: 'top 50%'})
+  useScrollRevealChildren(timelineRef, timelineRef, {delay: 0.2, stagger: 0.08})
 
   return (
     <Section
@@ -24,18 +23,20 @@ export const Agenda = ({id}: {id?: string}) => {
           <SectionTitle eyebrow="Plán">Svatební den</SectionTitle>
           <div className="flex flex-col gap-4">
             <SectionParagraph className="max-w-130 text-justify">
-              Tady najdete <strong>orientační plán</strong> našeho svatebního dne. Berte ho prosím s&nbsp;rezervou.
+              Zde najdete <strong>orientační plán</strong> našeho svatebního dne. Berte ho prosím s&nbsp;rezervou.
             </SectionParagraph>
             <SectionParagraph className="max-w-130 text-justify">
-              <strong>Nejdůležitější pro nás je, abyste si den užili spolu s&nbsp;námi.</strong> Pokud se něco posune o&nbsp;pár minut
-              (nebo i&nbsp;víc), nic se neděje. Hlavní je pohoda, dobrá nálada a&nbsp;společně strávený&nbsp;čas.
+              <strong>Nejdůležitější pro nás je, abyste si den užili spolu s&nbsp;námi.</strong> Pokud se něco posune
+              o&nbsp;pár minut (nebo i&nbsp;víc), nic se neděje. Hlavní je pohoda, dobrá nálada a&nbsp;společně
+              strávený&nbsp;čas.
             </SectionParagraph>
           </div>
         </div>
       }
       right={
-        <div ref={timelineRef} className="flex flex-col w-full items-center justify-center">
+        <div className="flex flex-col w-full items-center justify-center">
           <Timeline
+            ref={timelineRef}
             items={[
               {from: '11:00', name: 'Příjezd hostů', to: '11:50'},
               {from: '12:00', name: 'Svatební obřad', to: '12:30'},

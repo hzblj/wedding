@@ -35,7 +35,7 @@ export const Gallery = ({id}: {id?: string}) => {
   const headerRef = useRef<HTMLDivElement>(null)
   const sliderRef = useRef<HTMLDivElement>(null)
 
-  useScrollReveal(sectionRef, [headerRef], {})
+  useScrollReveal(sectionRef, [headerRef], {start: 'top 70%'})
 
   const handleSliderReady = useCallback(() => {
     const el = sliderRef.current

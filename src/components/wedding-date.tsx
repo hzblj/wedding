@@ -37,9 +37,8 @@ const ICS_CONTENT = [
   'LOCATION:Resort Nová Polana\\, Dolní Lomná 126\\, 739 91 Dolní Lomná',
   'GEO:49.551680;18.687632',
   'URL:https://wedding.janblazej.dev',
-  'DESCRIPTION:Těšíme se na vás! Přijďte oslavit náš velký den plný lásky\\,',
-  ' smíchu a nezapomenutelných okamžiků. Bude to den\\, na který budeme',
-  ' vzpomínat celý život — a chceme ho prožít právě s vámi.',
+  'DESCRIPTION:S radostí vás zveme\\, abyste s námi sdíleli jeden z',
+  ' nejkrásnějších dnů našeho života – den naší svatby.',
   'STATUS:CONFIRMED',
   'BEGIN:VALARM',
   'TRIGGER:-P7D',
@@ -78,27 +77,6 @@ const getTimeLeft = () => {
   return {days, hours, minutes, seconds}
 }
 
-type UnitRefs = {value: HTMLSpanElement | null; label: HTMLSpanElement | null}
-
-const CountdownUnit = ({refs}: {refs: (el: UnitRefs) => void}) => {
-  const valueRef = useRef<HTMLSpanElement>(null)
-  const labelRef = useRef<HTMLSpanElement>(null)
-
-  useEffect(() => {
-    refs({label: labelRef.current, value: valueRef.current})
-  }, [refs])
-
-  return (
-    <div className="flex flex-col items-center">
-      <span
-        ref={valueRef}
-        className="font-mono font-bold text-[36px] md:text-[64px] lg:text-[80px] leading-[0.9] text-heading"
-      />
-      <span ref={labelRef} className="text-[14px] md:text-[16px] uppercase tracking-wider text-body/60 mt-4" />
-    </div>
-  )
-}
-
 const Separator = () => (
   <div className="flex flex-col items-center self-start">
     <span className="font-playfair font-bold text-[36px] md:text-[64px] lg:text-[80px] leading-[0.9] text-heading/30">
@@ -114,12 +92,67 @@ const UNITS = [
   {few: 'Sekundy', key: 'seconds' as const, many: 'Sekund', one: 'Sekunda'},
 ]
 
+const Countdown = () => {
+  const valueRefs = useRef<(HTMLSpanElement | null)[]>([])
+  const labelRefs = useRef<(HTMLSpanElement | null)[]>([])
+
+  useEffect(() => {
+    const update = () => {
+      const time = getTimeLeft()
+      UNITS.forEach((unit, i) => {
+        const val = time[unit.key]
+        const valueEl = valueRefs.current[i]
+        const labelEl = labelRefs.current[i]
+        if (valueEl) {
+          valueEl.textContent = formatNumber(val)
+        }
+        if (labelEl) {
+          labelEl.textContent = czechPlural(val, unit.one, unit.few, unit.many)
+        }
+      })
+    }
+
+    update()
+    const interval = setInterval(update, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const initial = getTimeLeft()
+
+  return (
+    <>
+      {UNITS.map((unit, i) => (
+        <div key={unit.key} className="contents">
+          {i > 0 && <Separator />}
+          <div className="flex flex-col items-center">
+            <span
+              ref={el => {
+                valueRefs.current[i] = el
+              }}
+              className="font-mono font-bold text-[36px] md:text-[64px] lg:text-[80px] leading-[0.9] text-heading"
+            >
+              {formatNumber(initial[unit.key])}
+            </span>
+            <span
+              ref={el => {
+                labelRefs.current[i] = el
+              }}
+              className="text-[14px] md:text-[16px] uppercase tracking-wider text-body/60 mt-4"
+            >
+              {czechPlural(initial[unit.key], unit.one, unit.few, unit.many)}
+            </span>
+          </div>
+        </div>
+      ))}
+    </>
+  )
+}
+
 export const WeddingDate = ({id}: {id?: string}) => {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const countdownRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLDivElement>(null)
-  const unitRefs = useRef<Map<string, UnitRefs>>(new Map())
 
   useScrollReveal(sectionRef, [headerRef], {})
   useScrollReveal(sectionRef, [countdownRef, buttonRef], {delay: 0.2, stagger: true})
@@ -134,29 +167,6 @@ export const WeddingDate = ({id}: {id?: string}) => {
     URL.revokeObjectURL(url)
   }, [])
 
-  useEffect(() => {
-    const update = () => {
-      const time = getTimeLeft()
-      UNITS.forEach(unit => {
-        const refs = unitRefs.current.get(unit.key)
-        if (!refs) {
-          return
-        }
-        const val = time[unit.key]
-        if (refs.value) {
-          refs.value.textContent = formatNumber(val)
-        }
-        if (refs.label) {
-          refs.label.textContent = czechPlural(val, unit.one, unit.few, unit.many)
-        }
-      })
-    }
-
-    update()
-    const interval = setInterval(update, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <section
       ref={sectionRef}
@@ -169,12 +179,7 @@ export const WeddingDate = ({id}: {id?: string}) => {
         </SectionTitle>
       </div>
       <div ref={countdownRef} className="flex items-center gap-2 md:gap-6 lg:gap-8">
-        {UNITS.map((unit, i) => (
-          <div key={unit.key} className="contents">
-            {i > 0 && <Separator />}
-            <CountdownUnit refs={el => unitRefs.current.set(unit.key, el)} />
-          </div>
-        ))}
+        <Countdown />
       </div>
       <div ref={buttonRef}>
         <Button onClick={handleAddToCalendar}>

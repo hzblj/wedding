@@ -40,7 +40,11 @@ export const Place = ({id}: {id?: string}) => {
   const buttonRef = useRef<HTMLDivElement>(null)
 
   useScrollReveal(sectionRef, [imageRef], {})
-  useScrollReveal(titleRef, [titleRef, textRef, buttonRef], {delay: 0.15, stagger: true})
+  useScrollReveal(titleRef, [titleRef, textRef, buttonRef], {
+    delay: 0.15,
+    stagger: true,
+    start: 'top 90%',
+  })
 
   useEffect(() => {
     const container = imagesContainerRef.current

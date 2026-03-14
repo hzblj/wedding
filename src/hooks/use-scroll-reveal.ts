@@ -10,11 +10,14 @@ const REVEAL_DURATION = 0.8
 const REVEAL_EASE = 'power2.out'
 const REVEAL_Y = 40
 const STAGGER_DELAY = 0.12
-const TRIGGER_START = 'top 90%'
+const TRIGGER_START = 'top 80%'
+const TRIGGER_END = 'bottom 40%'
 
 type ScrollRevealOptions = {
   stagger?: boolean
   delay?: number
+  once?: boolean
+  start?: string
 }
 
 export const useScrollReveal = (
@@ -22,7 +25,7 @@ export const useScrollReveal = (
   targetRefs: RefObject<HTMLElement | null>[],
   options: ScrollRevealOptions = {}
 ) => {
-  const {stagger = false, delay = 0} = options
+  const {stagger = false, delay = 0, once = false, start = TRIGGER_START} = options
 
   useEffect(() => {
     if (!triggerRef.current) {
@@ -44,8 +47,9 @@ export const useScrollReveal = (
         duration: REVEAL_DURATION,
         ease: REVEAL_EASE,
         scrollTrigger: {
-          start: TRIGGER_START,
-          toggleActions: 'play reverse play reverse',
+          end: TRIGGER_END,
+          start,
+          toggleActions: once ? 'play none none none' : 'play reverse play reverse',
           trigger: triggerRef.current,
         },
         stagger: stagger ? STAGGER_DELAY : 0,
@@ -56,7 +60,7 @@ export const useScrollReveal = (
     return () => {
       context.revert()
     }
-  }, [triggerRef, targetRefs, stagger, delay])
+  }, [triggerRef, targetRefs, stagger, delay, once, start])
 }
 
 type ScrollRevealChildrenOptions = {
@@ -91,6 +95,7 @@ export const useScrollRevealChildren = (
         duration: REVEAL_DURATION,
         ease: REVEAL_EASE,
         scrollTrigger: {
+          end: TRIGGER_END,
           start: TRIGGER_START,
           toggleActions: 'play reverse play reverse',
           trigger: triggerRef.current,

@@ -1,4 +1,4 @@
-import type {FC} from 'react'
+import {type FC, type Ref} from 'react'
 
 import {cn} from '@/utils'
 
@@ -44,10 +44,11 @@ const TimelineRow: FC<TimelineRowProps> = ({item, isFirst, isLast}) => (
 
 export type TimelineProps = {
   items: TimelineItem[]
+  ref?: Ref<HTMLDivElement>
 }
 
-export const Timeline = ({items}: TimelineProps) => (
-  <div className="flex flex-col">
+export const Timeline = ({items, ref}: TimelineProps) => (
+  <div ref={ref} className="flex flex-col">
     {items.map((item, index) => (
       <TimelineRow key={index.toString()} item={item} isFirst={index === 0} isLast={index === items.length - 1} />
     ))}

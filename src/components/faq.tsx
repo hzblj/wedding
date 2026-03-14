@@ -9,7 +9,8 @@ import {Accordion, Section, SectionTitle} from './ui'
 
 const faq = [
   {
-    content: 'Prosíme hosty o příjezd mezi 11:00–11:30, aby mohl obřad začít včas ve 12:00.',
+    content:
+      'Prosíme hosty o příjezd mezi 11:00–11:30, aby mohl obřad začít včas ve 12:00. Bude pro Vás nachystáno občerstvení.',
     title: 'V kolik mají hosté dorazit?',
   },
   {
@@ -64,8 +65,8 @@ export const FAQ = ({id}: {id?: string}) => {
   const titleRef = useRef<HTMLDivElement>(null)
   const accordionRef = useRef<HTMLDivElement>(null)
 
-  useScrollReveal(sectionRef, [imageRef], {})
-  useScrollReveal(titleRef, [titleRef, accordionRef], {delay: 0.15, stagger: true})
+  useScrollReveal(sectionRef, [imageRef], {once: true})
+  useScrollReveal(titleRef, [titleRef, accordionRef], {delay: 0.15, once: true, start: 'top 50%', stagger: true})
 
   return (
     <Section
