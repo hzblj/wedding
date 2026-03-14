@@ -91,7 +91,7 @@ export const Header = () => {
         <div ref={contentRef} className="flex flex-col basis-0 md:basis-75 lg:basis-90 max-w-100 md:ml-auto gap-4">
           <Eyebrow className="pt-2">Pozvání</Eyebrow>
           <SectionParagraph>
-            S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.
+            S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – <strong>den naší svatby</strong>.
           </SectionParagraph>
         </div>
       </div>

@@ -56,9 +56,7 @@ export const Gallery = ({id}: {id?: string}) => {
           RODINA A PŘÁTELÉ
         </SectionTitle>
         <SectionParagraph className="max-w-130 text-center">
-          <strong>Jsme tím, kým jsme, i díky vám.</strong> <br /> Každý z vás je součástí našeho příběhu. Vaše podpora,
-          přátelství a&nbsp;společně prožitý čas nás formovaly víc, než si možná uvědomujeme. Bez vás by naše cesta
-          nebyla stejná. O to víc si vážíme, že tento den můžeme prožít právě s vámi.
+          Každý z vás je součástí našeho příběhu a jsme rádi, že tento den můžeme prožít právě s vámi.
         </SectionParagraph>
       </div>
       <div ref={sliderRef} className="w-full">

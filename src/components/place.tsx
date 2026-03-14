@@ -95,11 +95,9 @@ export const Place = ({id}: {id?: string}) => {
             <SectionTitle eyebrow="Kde">Resort Nová Polana</SectionTitle>
           </div>
           <div ref={textRef}>
-            <SectionParagraph className="max-w-130">
-              Svatba se bude konat v&nbsp;Resortu Nová Polana v&nbsp;Dolní Lomné.
-              <br />
-              V&nbsp;místě obklopeném horami a&nbsp;přírodou, kde spolu strávíme celý den, od prvního přípitku až po
-              večerní tanec.
+            <SectionParagraph className="max-w-140">
+              Svatba se bude konat v&nbsp;<strong>Resortu Nová Polana v&nbsp;Dolní Lomné</strong>. V&nbsp;místě
+              obklopeném horami a&nbsp;přírodou, kde spolu strávíme celý den, od obřadu až po večerní párty.
             </SectionParagraph>
           </div>
           <div ref={buttonRef}>

@@ -22,16 +22,11 @@ export const Agenda = ({id}: {id?: string}) => {
       left={
         <div ref={leftRef} className="flex flex-col gap-6 w-full">
           <SectionTitle eyebrow="Plán">Svatební den</SectionTitle>
-          <div>
-            <SectionParagraph className="max-w-130">
-              Vedle najdete orientační plán celého dne. <br /> Berte ho prosím s&nbsp;rezervou, čas může plynout trochu
-              jinak ;) <br /> <strong>Nejdůležitější pro nás je, abyste si den užili spolu s&nbsp;námi.</strong> <br />{' '}
-              Pokud se něco posune o&nbsp;pár minut (nebo i&nbsp;víc), nic se neděje. <br /> Hlavní je pohoda, dobrá
-              nálada a&nbsp;společně strávený čas.
-            </SectionParagraph>
-            <SectionParagraph className="max-w-130">
-              <br /> Prosíme, dorazte nejpozději v <strong>11:50</strong> , abychom mohli začít obřad ve&nbsp;12:00.
-              Pokud přijedete dříve, bude pro vás připraveno malé občerstvení.
+          <div className="flex flex-col gap-4">
+            <SectionParagraph className="max-w-130 text-justify">
+              Tady najdete <strong>orientační plán</strong> našeho svatebního dne. Berte ho prosím s&nbsp;rezervou. Nejdůležitější pro
+              nás je, abyste si den užili spolu s&nbsp;námi. Pokud se něco posune o&nbsp;pár minut (nebo i&nbsp;víc), nic
+              se neděje. Hlavní je pohoda, dobrá nálada a&nbsp;společně strávený&nbsp;čas.
             </SectionParagraph>
           </div>
         </div>

@@ -40,6 +40,8 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
               ['Edyta Giemzová', 'Vladimír Sedlák'],
               ['Marcel Giemza', 'Magdalena Bubík'],
               ['Krystyna Ivanov', 'Janina Gaurová'],
+              ['Foto Pavel', 'DJ Štěpa'],
+              ['Kamera Vít', ''],
             ],
           },
         ]}
@@ -57,8 +59,6 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
               ['Ema Kmeťová', 'Klára Honysch'],
               ['Kateřina Faktorová', 'Miroslav Honysch'],
               ['Jan Holínka', 'Ondřej Valuštík'],
-              ['Foto Pavel', 'DJ Štěpa'],
-              ['Kamera Vít', ''],
             ],
           },
         ]}

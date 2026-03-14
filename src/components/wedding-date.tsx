@@ -92,7 +92,7 @@ const CountdownUnit = ({refs}: {refs: (el: UnitRefs) => void}) => {
     <div className="flex flex-col items-center">
       <span
         ref={valueRef}
-        className="font-mono font-bold text-[48px] md:text-[64px] lg:text-[80px] leading-[0.9] text-heading"
+        className="font-mono font-bold text-[36px] md:text-[64px] lg:text-[80px] leading-[0.9] text-heading"
       />
       <span ref={labelRef} className="text-[14px] md:text-[16px] uppercase tracking-wider text-body/60 mt-4" />
     </div>
@@ -101,7 +101,7 @@ const CountdownUnit = ({refs}: {refs: (el: UnitRefs) => void}) => {
 
 const Separator = () => (
   <div className="flex flex-col items-center self-start">
-    <span className="font-playfair font-bold text-[48px] md:text-[64px] lg:text-[80px] leading-[0.9] text-heading/30">
+    <span className="font-playfair font-bold text-[36px] md:text-[64px] lg:text-[80px] leading-[0.9] text-heading/30">
       :
     </span>
   </div>
@@ -168,7 +168,7 @@ export const WeddingDate = ({id}: {id?: string}) => {
           4. ČERVENCE 2026
         </SectionTitle>
       </div>
-      <div ref={countdownRef} className="flex items-center gap-4 md:gap-6 lg:gap-8">
+      <div ref={countdownRef} className="flex items-center gap-2 md:gap-6 lg:gap-8">
         {UNITS.map((unit, i) => (
           <div key={unit.key} className="contents">
             {i > 0 && <Separator />}

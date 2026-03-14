@@ -7,5 +7,5 @@ export type EyebrowProps = {
 }
 
 export const Eyebrow = ({children, className}: EyebrowProps) => (
-  <p className={cn('text-body/60 text-[16px] leading-4 uppercase', className)}>[ {children} ]</p>
+  <p className={cn('text-body/60 text-[16px] leading-5 uppercase', className)}>[ {children} ]</p>
 )

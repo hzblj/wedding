@@ -119,7 +119,7 @@ const AccordionRow: FC<{
                 isOpen ? 'text-heading' : 'text-body/40 group-hover:text-body/70'
               )}
             >
-              (0{index + 1})
+              ({String(index + 1).padStart(2, '0')})
             </span>
             <span
               className={cn(
