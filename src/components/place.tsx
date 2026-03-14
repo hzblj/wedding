@@ -42,6 +42,7 @@ export const Place = ({id}: {id?: string}) => {
   useScrollReveal(sectionRef, [imageRef], {})
   useScrollReveal(titleRef, [titleRef, textRef, buttonRef], {
     delay: 0.15,
+    end: 'bottom 10%',
     stagger: true,
     start: 'top 90%',
   })

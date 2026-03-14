@@ -8,11 +8,12 @@ import {MobileMenu} from '@/components/mobile-menu'
 import {cn} from '@/utils'
 
 const SECTION_LINKS = [
-  {href: '#where', label: 'Místo'},
-  {href: '#gallery', label: 'Galerie'},
-  {href: '#agenda', label: 'Program'},
-  {href: '#seating', label: 'Zasedací pořádek'},
-  {href: '#faq', label: 'FAQ'},
+  {href: '#date', label: 'Kdy'},
+  {href: '#where', label: 'Kde'},
+  {href: '#agenda', label: 'Plán'},
+  {href: '#gallery', label: 'Kdo'},
+  {href: '#seating', label: 'Kde sedím'},
+  {href: '#faq', label: 'Otázky'},
 ] as const
 
 const HOVER_DELAY = 150
