@@ -2,11 +2,11 @@
 
 import gsap from 'gsap'
 import Image from 'next/image'
-import {useCallback, useEffect, useRef} from 'react'
+import {useEffect, useRef} from 'react'
 
 import {cn} from '@/utils'
 
-import {Button, Eyebrow, SectionParagraph} from './ui'
+import {Eyebrow, SectionParagraph} from './ui'
 
 const REVEAL_DURATION = 0.8
 const REVEAL_EASE = 'power2.out'
@@ -28,61 +28,10 @@ const HeaderImage = ({className = '', url}: {className?: string; url: string}) =
   </div>
 )
 
-const ICS_CONTENT = [
-  'BEGIN:VCALENDAR',
-  'VERSION:2.0',
-  'PRODID:-//Blazejovi//Wedding//CS',
-  'BEGIN:VTIMEZONE',
-  'TZID:Europe/Prague',
-  'BEGIN:DAYLIGHT',
-  'DTSTART:19700329T020000',
-  'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU',
-  'TZOFFSETFROM:+0100',
-  'TZOFFSETTO:+0200',
-  'TZNAME:CEST',
-  'END:DAYLIGHT',
-  'BEGIN:STANDARD',
-  'DTSTART:19701025T030000',
-  'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU',
-  'TZOFFSETFROM:+0200',
-  'TZOFFSETTO:+0100',
-  'TZNAME:CET',
-  'END:STANDARD',
-  'END:VTIMEZONE',
-  'BEGIN:VEVENT',
-  'DTSTART;TZID=Europe/Prague:20260704T110000',
-  'DTEND;TZID=Europe/Prague:20260705T000000',
-  'SUMMARY:Svatba - Blažejovi',
-  'LOCATION:Resort Nová Polana\\, Dolní Lomná 126\\, 739 91 Dolní Lomná',
-  'GEO:49.551680;18.687632',
-  'URL:https://wedding.janblazej.dev',
-  'DESCRIPTION:Těšíme se na vás! Přijďte oslavit náš velký den plný lásky\\,',
-  ' smíchu a nezapomenutelných okamžiků. Bude to den\\, na který budeme',
-  ' vzpomínat celý život — a chceme ho prožít právě s vámi.',
-  'STATUS:CONFIRMED',
-  'BEGIN:VALARM',
-  'TRIGGER:-P7D',
-  'ACTION:DISPLAY',
-  'DESCRIPTION:Za týden je svatba Karin & Jana!',
-  'END:VALARM',
-  'END:VEVENT',
-  'END:VCALENDAR',
-].join('\r\n')
-
 export const Header = () => {
   const imagesRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-
-  const handleAddToCalendar = useCallback(() => {
-    const blob = new Blob([ICS_CONTENT], {type: 'text/calendar;charset=utf-8'})
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = 'svatba-blazejovi.ics'
-    link.click()
-    URL.revokeObjectURL(url)
-  }, [])
 
   useEffect(() => {
     const context = gsap.context(() => {
@@ -117,7 +66,7 @@ export const Header = () => {
   }, [])
 
   return (
-    <header className="flex flex-col flex-none items-center justify-between w-full h-screen md:max-h-220 max-h-200 relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-8">
+    <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-8">
       <div ref={imagesRef} className="flex flex-row items-start relative w-full px-6 md:px-8 gap-4 min-h-0">
         <div className="flex relative items-start">
           <HeaderImage url="/png/header-1.png" />
@@ -139,15 +88,6 @@ export const Header = () => {
           <SectionParagraph>
             S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.
           </SectionParagraph>
-          <p className="text-[16px] leading-[150%] tracking-normal text-body/60 text-left">
-            4. července 2026, Resort Nová Polana, Dolní Lomná
-          </p>
-          <div className="pt-2">
-            <Button onClick={handleAddToCalendar}>
-              <Image src="/svg/calendar-plus.svg" alt="calendar" width={16} height={16} className="w-4 h-4 invert" />
-              Přidat do kalendáře
-            </Button>
-          </div>
         </div>
       </div>
     </header>
