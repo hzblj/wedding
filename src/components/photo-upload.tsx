@@ -60,9 +60,9 @@ const EmptyUpload = ({dragging}: {dragging: boolean}) => (
     </div>
     <div className="text-center">
       <p className="text-body/70 text-base font-medium">
-        {dragging ? 'Drop your photos here' : 'Drag & drop photos here'}
+        {dragging ? 'Pusťte soubory zde' : 'Přetáhněte fotky nebo videa'}
       </p>
-      <p className="text-body/40 text-sm mt-1">or click to browse</p>
+      <p className="text-body/40 text-sm mt-1">nebo klikněte pro výběr</p>
     </div>
   </div>
 )

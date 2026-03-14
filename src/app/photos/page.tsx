@@ -9,7 +9,7 @@ const PageTitle = () => (
     <SectionTitle eyebrow="Sdílej" className="w-full items-center text-center">
       Fotky
     </SectionTitle>
-    <SectionParagraph className="max-w-130 text-center">
+    <SectionParagraph className="max-w-110 text-center">
       Budeme rádi, když s námi budete sdílet fotografie z celého dne.
     </SectionParagraph>
     <PhotoUpload />

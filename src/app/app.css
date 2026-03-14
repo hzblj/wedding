@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@layer base {
+  ::selection {
+    background-color: var(--color-border);
+    color: var(--color-heading);
+  }
+}
+
 @theme {
   --font-inter: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-playfair: var(--font-playfair), Georgia, serif;
@@ -128,6 +135,7 @@ body {
     filter: blur(0);
   }
 }
+
 
 .paper-texture {
   position: relative;

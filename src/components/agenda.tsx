@@ -24,9 +24,11 @@ export const Agenda = ({id}: {id?: string}) => {
           <SectionTitle eyebrow="Plán">Svatební den</SectionTitle>
           <div className="flex flex-col gap-4">
             <SectionParagraph className="max-w-130 text-justify">
-              Tady najdete <strong>orientační plán</strong> našeho svatebního dne. Berte ho prosím s&nbsp;rezervou. Nejdůležitější pro
-              nás je, abyste si den užili spolu s&nbsp;námi. Pokud se něco posune o&nbsp;pár minut (nebo i&nbsp;víc), nic
-              se neděje. Hlavní je pohoda, dobrá nálada a&nbsp;společně strávený&nbsp;čas.
+              Tady najdete <strong>orientační plán</strong> našeho svatebního dne. Berte ho prosím s&nbsp;rezervou.
+            </SectionParagraph>
+            <SectionParagraph className="max-w-130 text-justify">
+              <strong>Nejdůležitější pro nás je, abyste si den užili spolu s&nbsp;námi.</strong> Pokud se něco posune o&nbsp;pár minut
+              (nebo i&nbsp;víc), nic se neděje. Hlavní je pohoda, dobrá nálada a&nbsp;společně strávený&nbsp;čas.
             </SectionParagraph>
           </div>
         </div>
