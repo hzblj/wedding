@@ -194,7 +194,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
         }
       })
     }
-  }, [isOpen, isMounted, animateClose, unlockScroll])
+  }, [isOpen, isMounted, animateClose, unlockScroll, router.push])
 
   useEffect(() => {
     if (!isMounted) {

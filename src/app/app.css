@@ -3,9 +3,9 @@
 @theme {
   --font-inter: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-playfair: var(--font-playfair), Georgia, serif;
-  --color-heading: #3E332B;
-  --color-body: #5C5046;
-  --color-border: #DDD0BE;
+  --color-heading: #3e332b;
+  --color-body: #5c5046;
+  --color-border: #ddd0be;
   --color-surface: #e8ddd0;
 }
 
@@ -46,7 +46,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #5C5046;
+  color: #5c5046;
 }
 
 * {

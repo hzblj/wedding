@@ -8,26 +8,26 @@ import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 import {ListSlider, type ListSliderItem, SectionParagraph, SectionTitle} from './ui'
 
 const galleryItems: ListSliderItem[] = [
-  {details: [], image: '/png/gallery-1.png', title: ''},
-  {details: [], image: '/png/gallery-2.png', title: ''},
-  {details: [], image: '/png/gallery-3.png', title: ''},
-  {details: [], image: '/png/gallery-4.png', title: ''},
-  {details: [], image: '/png/gallery-5.png', title: ''},
-  {details: [], image: '/png/gallery-6.png', title: ''},
-  {details: [], image: '/png/gallery-7.png', title: ''},
-  {details: [], image: '/png/gallery-8.png', title: ''},
-  {details: [], image: '/png/gallery-9.png', title: ''},
-  {details: [], image: '/png/gallery-10.png', title: ''},
-  {details: [], image: '/png/gallery-11.png', title: ''},
-  {details: [], image: '/png/gallery-12.png', title: ''},
-  {details: [], image: '/png/gallery-13.png', title: ''},
-  {details: [], image: '/png/gallery-14.png', title: ''},
-  {details: [], image: '/png/gallery-15.png', title: ''},
-  {details: [], image: '/png/gallery-16.png', title: ''},
-  {details: [], image: '/png/gallery-17.png', title: ''},
-  {details: [], image: '/png/gallery-18.png', title: ''},
-  {details: [], image: '/png/gallery-19.png', title: ''},
-  {details: [], image: '/png/gallery-20.png', title: ''},
+  {details: ['červenec, 2023', 'Praha'], image: '/png/gallery-2.png', title: 'Kari & Mam'},
+  {details: ['září, 2023', 'Český Těšín'], image: '/png/gallery-3.png', title: 'Kari & Daw'},
+  {details: ['březen, 2022', 'Tallinn'], image: '/png/gallery-21.png', title: 'Mama & Tata'},
+  {details: ['červenec, 2022', 'Ostrava'], image: '/png/gallery-4.png', title: 'Hania & Vlado'},
+  {details: ['květen, 2022', 'Helsinky'], image: '/png/gallery-5.png', title: 'Kari & BaŚ'},
+  {details: ['prosinec, 2021', 'Češký Těšín'], image: '/png/gallery-6.png', title: 'Kari & Meguszi'},
+  {details: ['červenec, 2025', 'Krmelín'], image: '/png/gallery-7.png', title: 'Kiki & Marek'},
+  {details: ['říjen, 2015', 'Ostrava'], image: '/png/gallery-8.png', title: 'Jan & Rodina'},
+  {details: ['srpen, 2022', 'Finkenberg'], image: '/png/gallery-9.png', title: 'Jan & Marek'},
+  {details: ['říjen, 2022', 'Oldřichovice'], image: '/png/gallery-10.png', title: 'Janka & Doris'},
+  {details: ['únor, 2026', 'Praha'], image: '/png/gallery-11.png', title: 'Kari & Magdzia'},
+  {details: ['červenec, 2024', 'Ostrý'], image: '/png/gallery-13.png', title: 'Kari & Krysia'},
+  {details: ['srpen, 2025', 'Praha'], image: '/png/gallery-14.png', title: 'Jan & Šimon'},
+  {details: ['srpen, 2025', 'Praha'], image: '/png/gallery-15.png', title: 'Kari & Terik'},
+  {details: ['březen, 2012', 'Český Těšín'], image: '/png/gallery-12.png', title: 'Kari & Edzia'},
+  {details: ['srpen, 2023', 'Praha'], image: '/png/gallery-16.png', title: 'Eva & Rodiče'},
+  {details: ['únor, 2025', 'Paříž'], image: '/png/gallery-17.png', title: 'Jan & Jaro'},
+  {details: ['říjen, 2025', 'Praha'], image: '/png/gallery-18.png', title: 'Kari & Katya'},
+  {details: ['únor, 2025', 'Paříž'], image: '/png/gallery-19.png', title: 'Lapz & Boys'},
+  {details: ['srpen, 2025', 'Praha'], image: '/png/gallery-20.png', title: 'Jan & Miro'},
 ]
 
 export const Gallery = ({id}: {id?: string}) => {
@@ -39,8 +39,10 @@ export const Gallery = ({id}: {id?: string}) => {
 
   const handleSliderReady = useCallback(() => {
     const el = sliderRef.current
-    if (!el) return
-    gsap.fromTo(el, {y: 20, scale: 0.98}, {y: 0, scale: 1, duration: 0.6, ease: 'power2.out'})
+    if (!el) {
+      return
+    }
+    gsap.fromTo(el, {scale: 0.98, y: 20}, {duration: 0.6, ease: 'power2.out', scale: 1, y: 0})
   }, [])
 
   return (
@@ -60,7 +62,7 @@ export const Gallery = ({id}: {id?: string}) => {
         </SectionParagraph>
       </div>
       <div ref={sliderRef} className="w-full">
-        <ListSlider items={galleryItems} autoSlide={5000} onReady={handleSliderReady} />
+        <ListSlider items={galleryItems} autoSlide={0} onReady={handleSliderReady} />
       </div>
     </section>
   )

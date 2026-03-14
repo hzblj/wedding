@@ -103,7 +103,10 @@ export const Photos: FC<PhotosProps> = ({images}) => {
     <>
       <section className="flex flex-row gap-4 md:gap-6 lg:gap-8 items-start justify-center w-full max-w-278.5 mx-auto">
         {cols.map((col, colIdx) => (
-          <div key={colIdx} className="flex items-start flex-1 min-w-0 flex-col gap-16 md:gap-24 lg:gap-32 h-min p-0 relative">
+          <div
+            key={colIdx}
+            className="flex items-start flex-1 min-w-0 flex-col gap-16 md:gap-24 lg:gap-32 h-min p-0 relative"
+          >
             {Array.from({length: maxLen}, (_, rowIdx) => (
               <div key={rowIdx} className="contents">
                 {[0, 1, 2].map(slot =>
@@ -111,7 +114,7 @@ export const Photos: FC<PhotosProps> = ({images}) => {
                     <PhotoCard key={slot} image={col[rowIdx]} onSelect={setSelectedImage} />
                   ) : (
                     <PhotoCard key={slot} hidden />
-                  ),
+                  )
                 )}
               </div>
             ))}

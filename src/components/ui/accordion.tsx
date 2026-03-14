@@ -131,7 +131,10 @@ const AccordionRow: FC<{
             </span>
           </div>
         </button>
-        <div ref={progressRef} className="absolute bottom-0 left-0 w-full h-0.5 bg-heading origin-left scale-x-0 transform-gpu" />
+        <div
+          ref={progressRef}
+          className="absolute bottom-0 left-0 w-full h-0.5 bg-heading origin-left scale-x-0 transform-gpu"
+        />
       </div>
       <div ref={contentRef} className="overflow-hidden transform-gpu" style={{height: 0, visibility: 'hidden'}}>
         <div className="pt-3 pb-5 pl-8 text-[18px] leading-[170%] text-body">{item.content}</div>

@@ -51,8 +51,12 @@ const ICS_CONTENT = [
 ].join('\r\n')
 
 const czechPlural = (n: number, one: string, few: string, many: string) => {
-  if (n === 1) return one
-  if (n >= 2 && n <= 4) return few
+  if (n === 1) {
+    return one
+  }
+  if (n >= 2 && n <= 4) {
+    return few
+  }
   return many
 }
 
@@ -135,10 +139,16 @@ export const WeddingDate = ({id}: {id?: string}) => {
       const time = getTimeLeft()
       UNITS.forEach(unit => {
         const refs = unitRefs.current.get(unit.key)
-        if (!refs) return
+        if (!refs) {
+          return
+        }
         const val = time[unit.key]
-        if (refs.value) refs.value.textContent = formatNumber(val)
-        if (refs.label) refs.label.textContent = czechPlural(val, unit.one, unit.few, unit.many)
+        if (refs.value) {
+          refs.value.textContent = formatNumber(val)
+        }
+        if (refs.label) {
+          refs.label.textContent = czechPlural(val, unit.one, unit.few, unit.many)
+        }
       })
     }
 

@@ -14,7 +14,7 @@ export const FAQ = ({id}: {id?: string}) => {
   const accordionRef = useRef<HTMLDivElement>(null)
 
   useScrollReveal(sectionRef, [imageRef], {})
-  useScrollReveal(titleRef, [titleRef, accordionRef], {stagger: true, delay: 0.15})
+  useScrollReveal(titleRef, [titleRef, accordionRef], {delay: 0.15, stagger: true})
 
   return (
     <Section

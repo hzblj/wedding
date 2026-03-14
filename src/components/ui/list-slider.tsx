@@ -45,11 +45,21 @@ const INITIAL_POSITIONS = [
 const initialIndex = (index: number, total: number) => {
   // Map: center=0, right=1, far-right=2, left=last, far-left=second-to-last
   const map = [2, 3, 4, 1, 0]
-  if (index === 0) return map[0]
-  if (index === 1) return map[1]
-  if (index === 2) return map[2]
-  if (index === total - 1) return map[3]
-  if (index === total - 2) return map[4]
+  if (index === 0) {
+    return map[0]
+  }
+  if (index === 1) {
+    return map[1]
+  }
+  if (index === 2) {
+    return map[2]
+  }
+  if (index === total - 1) {
+    return map[3]
+  }
+  if (index === total - 2) {
+    return map[4]
+  }
   return -1
 }
 
@@ -69,34 +79,42 @@ const ListSliderCard = forwardRef<HTMLLIElement, {index: number; item: ListSlide
               )
         )}
       >
-    <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-hidden">
-      <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_0px] relative overflow-hidden">
-        <div className="relative overflow-hidden w-px h-full flex-[1_0_0] bg-black/90">
-          <div className="absolute inset-0">
-            <Image src={item.image} alt={item.title} fill className="object-cover" />
-          </div>
-          <div className="absolute inset-0 z-2 bg-[url('/jpg/texture-paper.jpg')] bg-cover mix-blend-multiply pointer-events-none opacity-[0.15]" />
-        </div>
-      </div>
-      <div className="flex flex-none flex-row items-start place-content-[flex-start_space-between] w-full h-min p-[8px_16px_16px] relative overflow-hidden">
-        <div className="flex flex-col justify-start outline-none whitespace-pre-wrap wrap-break-word break-normal flex-[1_0_0] w-px h-auto relative max-w-30">
-          <p className="font-semibold text-black text-[22px] leading-[120%] uppercase">{item.title}</p>
-        </div>
-        <div className="flex flex-col flex-none items-end gap-1 w-min h-min p-0 relative overflow-hidden ml-auto">
-          {item.details.map(detail => (
-            <div key={detail} className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
-              <p className="text-[14px] text-black text-right uppercase leading-[13.2px]">{detail}</p>
+        <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-hidden">
+          <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_0px] relative overflow-hidden">
+            <div className="relative overflow-hidden w-px h-full flex-[1_0_0] bg-black/90">
+              <div className="absolute inset-0">
+                <Image src={item.image} alt={item.title} fill className="object-cover" />
+              </div>
+              <div className="absolute inset-0 z-2 bg-[url('/jpg/texture-paper.jpg')] bg-cover mix-blend-multiply pointer-events-none opacity-[0.15]" />
             </div>
-          ))}
+          </div>
+          <div className="flex flex-none flex-row items-center place-content-[flex-start_space-between] w-full h-min p-[8px_16px_16px] relative">
+            <div className="flex flex-col justify-start outline-none whitespace-pre-wrap wrap-break-word break-normal flex-[1_0_0] w-px h-auto relative max-w-30">
+              <p className="font-semibold text-heading text-[22px] leading-[120%] uppercase">{item.title}</p>
+            </div>
+            <div className="flex flex-col flex-none items-end gap-1 w-min h-min p-0 relative ml-auto">
+              {item.details.map(detail => (
+                <div key={detail} className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
+                  <p className="text-[14px] text-heading text-right uppercase leading-[13.2px]">{detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </li>
+      </li>
     )
   }
 )
 
-export const ListSlider = ({items, autoSlide, onReady}: {items: ListSliderItem[]; autoSlide?: number; onReady?: () => void}) => {
+export const ListSlider = ({
+  items,
+  autoSlide,
+  onReady,
+}: {
+  items: ListSliderItem[]
+  autoSlide?: number
+  onReady?: () => void
+}) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
@@ -109,10 +127,14 @@ export const ListSlider = ({items, autoSlide, onReady}: {items: ListSliderItem[]
 
     const container = containerRef.current
     const wrapper = wrapperRef.current
-    if (!container || !wrapper) return
+    if (!container || !wrapper) {
+      return
+    }
 
     const elements = itemRefs.current.filter(Boolean) as HTMLElement[]
-    if (elements.length === 0) return
+    if (elements.length === 0) {
+      return
+    }
 
     const gap = 16
     const itemWidth = elements[0].offsetWidth
@@ -187,7 +209,9 @@ export const ListSlider = ({items, autoSlide, onReady}: {items: ListSliderItem[]
     let autoInterval: ReturnType<typeof setInterval> | null = null
 
     const startAutoSlide = () => {
-      if (!autoSlide) return
+      if (!autoSlide) {
+        return
+      }
       autoInterval = setInterval(() => {
         navigateRef.current?.(1)
       }, autoSlide)
@@ -223,7 +247,7 @@ export const ListSlider = ({items, autoSlide, onReady}: {items: ListSliderItem[]
       draggable[0]?.kill()
       proxy.remove()
     }
-  }, [autoSlide])
+  }, [autoSlide, onReady])
 
   const navigate = useCallback((direction: -1 | 1) => {
     navigateRef.current?.(direction)

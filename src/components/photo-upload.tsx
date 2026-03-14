@@ -358,7 +358,9 @@ export const PhotoUpload = () => {
         onClick={() => inputRef.current?.click()}
         className={cn(
           'relative w-full rounded-2xl border border-dashed cursor-pointer transition-all duration-200 p-6',
-          dragging ? 'border-body/60 bg-heading/10' : 'border-border bg-heading/3 hover:border-body/40 hover:bg-heading/6'
+          dragging
+            ? 'border-body/60 bg-heading/10'
+            : 'border-border bg-heading/3 hover:border-body/40 hover:bg-heading/6'
         )}
       >
         {!hasItems && <EmptyUpload dragging={dragging} />}
