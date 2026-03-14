@@ -115,7 +115,7 @@ const AccordionRow: FC<{
           <div className="flex flex-row items-center gap-3">
             <span
               className={cn(
-                'text-[14px] leading-[120%] font-semibold transition-colors duration-300 ease-in-out',
+                'text-[18px] leading-[120%] font-semibold transition-colors duration-300 ease-in-out',
                 isOpen ? 'text-heading' : 'text-body/40 group-hover:text-body/70'
               )}
             >
@@ -123,7 +123,7 @@ const AccordionRow: FC<{
             </span>
             <span
               className={cn(
-                'text-[16px] leading-[120%] italic font-semibold transition-colors duration-300 ease-in-out',
+                'text-[18px] leading-[120%] italic font-semibold transition-colors duration-300 ease-in-out',
                 isOpen ? 'text-heading' : 'text-body/40 group-hover:text-body/70'
               )}
             >
@@ -134,7 +134,7 @@ const AccordionRow: FC<{
         <div ref={progressRef} className="absolute bottom-0 left-0 w-full h-0.5 bg-heading origin-left scale-x-0 transform-gpu" />
       </div>
       <div ref={contentRef} className="overflow-hidden transform-gpu" style={{height: 0, visibility: 'hidden'}}>
-        <div className="pt-3 pb-5 pl-8 text-[14px] leading-[170%] text-body">{item.content}</div>
+        <div className="pt-3 pb-5 pl-8 text-[18px] leading-[170%] text-body">{item.content}</div>
       </div>
     </div>
   )

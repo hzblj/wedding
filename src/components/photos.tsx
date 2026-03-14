@@ -74,8 +74,8 @@ const PhotoUploadEmpty = () => (
       <polyline points="21 15 16 10 5 21" />
     </svg>
     <div className="pt-4">
-      <p className="text-body/50 text-xl font-bold">Zatím žádné fotky</p>
-      <p className="text-body/40 text-sm">Nahrajte první fotky z oslavy</p>
+      <p className="text-body/50 text-2xl font-bold">Zatím žádné fotky</p>
+      <p className="text-body/40 text-base">Nahrajte první fotky z oslavy</p>
     </div>
   </div>
 )

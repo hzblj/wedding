@@ -135,10 +135,11 @@ export const Header = () => {
           </h1>
         </div>
         <div ref={contentRef} className="flex flex-col basis-0 md:basis-75 lg:basis-90 max-w-100 md:ml-auto gap-4">
+          <Eyebrow className="pt-2">Pozvání</Eyebrow>
           <SectionParagraph>
             S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.
           </SectionParagraph>
-          <p className="text-[14px] leading-[150%] tracking-normal text-body/60 text-left">
+          <p className="text-[16px] leading-[150%] tracking-normal text-body/60 text-left">
             4. července 2026, Resort Nová Polana, Dolní Lomná
           </p>
           <div className="pt-2">
@@ -147,7 +148,6 @@ export const Header = () => {
               Přidat do kalendáře
             </Button>
           </div>
-          <Eyebrow className="pt-2">Více informací</Eyebrow>
         </div>
       </div>
     </header>

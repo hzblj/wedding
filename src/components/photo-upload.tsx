@@ -59,10 +59,10 @@ const EmptyUpload = ({dragging}: {dragging: boolean}) => (
       <Image src="/svg/upload.svg" alt="upload" width={20} height={20} className="w-5 h-5 opacity-90" />
     </div>
     <div className="text-center">
-      <p className="text-body/70 text-sm font-medium">
+      <p className="text-body/70 text-base font-medium">
         {dragging ? 'Drop your photos here' : 'Drag & drop photos here'}
       </p>
-      <p className="text-body/40 text-xs mt-1">or click to browse</p>
+      <p className="text-body/40 text-sm mt-1">or click to browse</p>
     </div>
   </div>
 )
@@ -376,7 +376,7 @@ export const PhotoUpload = () => {
       {hasItems && (
         <div className="flex items-center gap-4">
           <button
-            className="text-sm text-body/40 hover:text-body/70 transition-colors cursor-pointer"
+            className="text-base text-body/40 hover:text-body/70 transition-colors cursor-pointer"
             onClick={handleCancel}
           >
             Zrušit

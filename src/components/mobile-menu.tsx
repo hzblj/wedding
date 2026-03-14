@@ -231,7 +231,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
             <div className="flex items-baseline gap-3">
               <span
                 className={cn(
-                  'text-2xl font-semibold uppercase tracking-wide',
+                  'text-3xl font-semibold uppercase tracking-wide',
                   isHome ? 'text-heading' : 'text-body/60'
                 )}
               >
@@ -241,7 +241,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                 <Link
                   href="/"
                   className={cn(
-                    'text-2xl font-semibold uppercase tracking-wide transition-colors duration-500',
+                    'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
                     isHome ? 'text-heading' : 'text-body/60'
                   )}
                   onClick={event => handleNavigate(event, '/')}
@@ -254,7 +254,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                       <button
                         key={link.href}
                         type="button"
-                        className="text-body/50 text-sm uppercase tracking-wide text-left cursor-pointer transition-colors duration-500 hover:text-heading"
+                        className="text-body/50 text-base uppercase tracking-wide text-left cursor-pointer transition-colors duration-500 hover:text-heading"
                         onClick={() => handleSectionClick(link.href)}
                       >
                         {link.label}
@@ -270,7 +270,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
             <div className="flex items-baseline gap-3">
               <span
                 className={cn(
-                  'text-2xl font-semibold uppercase tracking-wide',
+                  'text-3xl font-semibold uppercase tracking-wide',
                   isPhotos ? 'text-heading' : 'text-body/60'
                 )}
               >
@@ -279,7 +279,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
               <Link
                 href="/photos"
                 className={cn(
-                  'text-2xl font-semibold uppercase tracking-wide transition-colors duration-500',
+                  'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
                   isPhotos ? 'text-heading' : 'text-body/60'
                 )}
                 onClick={event => handleNavigate(event, '/photos')}
@@ -292,7 +292,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
       </div>
       <Link
         href="/"
-        className="fixed top-3 left-8 z-1003 text-heading font-semibold text-[14px] pt-[env(safe-area-inset-top)] transition-colors duration-500 hover:text-body"
+        className="fixed top-3 left-8 z-1003 text-heading font-semibold text-[16px] pt-[env(safe-area-inset-top)] transition-colors duration-500 hover:text-body"
         onClick={event => handleNavigate(event, '/')}
       >
         [ Karin & Jan ]
@@ -342,7 +342,7 @@ export const MobileMenu: FC = () => {
       {createPortal(
         <button
           type="button"
-          className="md:hidden fixed top-3 right-8 z-1003 text-heading font-semibold text-[14px] uppercase cursor-pointer pt-[env(safe-area-inset-top)]"
+          className="md:hidden fixed top-3 right-8 z-1003 text-heading font-semibold text-[16px] uppercase cursor-pointer pt-[env(safe-area-inset-top)]"
           style={{perspective: '200px'}}
           onClick={handleToggle}
         >

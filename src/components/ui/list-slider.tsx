@@ -80,12 +80,12 @@ const ListSliderCard = forwardRef<HTMLLIElement, {index: number; item: ListSlide
       </div>
       <div className="flex flex-none flex-row items-start place-content-[flex-start_space-between] w-full h-min p-[8px_16px_16px] relative overflow-hidden">
         <div className="flex flex-col justify-start outline-none whitespace-pre-wrap wrap-break-word break-normal flex-[1_0_0] w-px h-auto relative max-w-30">
-          <p className="font-semibold text-black text-[20px] leading-[120%] uppercase">{item.title}</p>
+          <p className="font-semibold text-black text-[22px] leading-[120%] uppercase">{item.title}</p>
         </div>
         <div className="flex flex-col flex-none items-end gap-1 w-min h-min p-0 relative overflow-hidden ml-auto">
           {item.details.map(detail => (
             <div key={detail} className="flex flex-col justify-end flex-none w-auto h-auto relative whitespace-pre">
-              <p className="text-[12px] text-black text-right uppercase leading-[13.2px]">{detail}</p>
+              <p className="text-[14px] text-black text-right uppercase leading-[13.2px]">{detail}</p>
             </div>
           ))}
         </div>

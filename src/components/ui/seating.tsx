@@ -22,7 +22,7 @@ type NameLabelProps = {
 }
 
 const NameLabel = ({children, className, style}: NameLabelProps) => (
-  <span className={cn('text-[12px] tracking-wider text-body/70 whitespace-nowrap', className)} style={style}>
+  <span className={cn('text-[14px] tracking-wider text-body/70 whitespace-nowrap', className)} style={style}>
     {children}
   </span>
 )
