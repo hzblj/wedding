@@ -60,7 +60,7 @@ export const Gallery = ({id}: {id?: string}) => {
         </SectionParagraph>
       </div>
       <div ref={sliderRef} className="w-full">
-        <ListSlider items={galleryItems} autoSlide={0} onReady={handleSliderReady} />
+        <ListSlider items={galleryItems} autoSlide={3000} onReady={handleSliderReady} />
       </div>
     </section>
   )

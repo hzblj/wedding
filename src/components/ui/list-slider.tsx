@@ -225,12 +225,17 @@ export const ListSlider = ({
     }
 
     const draggable = Draggable.create(proxy, {
+      minimumMovement: 5,
       onDrag() {
         offset = this.x
         updatePositions(offset)
       },
       onDragEnd() {
-        animateTo(snapOffset(this.x))
+        const velocity = this.getDirection('start') === 'left' ? -1 : 1
+        const moved = Math.abs(this.x - this.startX)
+        const threshold = step * 0.15
+        const snapTo = moved > threshold ? snapOffset(this.x + velocity * step * 0.3) : snapOffset(this.x)
+        animateTo(snapTo)
         startAutoSlide()
       },
       onDragStart() {
