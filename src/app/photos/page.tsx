@@ -24,7 +24,7 @@ const SkeletonCard = ({hidden = false}: {hidden?: boolean}) => (
         <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-visible">
           <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[8px_8px_32px] md:p-[12px_12px_48px] lg:p-[16px_16px_64px] relative overflow-hidden">
             <div className="relative overflow-hidden w-px h-full flex-[1_0_0]">
-              <div className="absolute inset-0 bg-neutral-200 animate-pulse" />
+              <div className="absolute inset-0 bg-black/90 animate-pulse" />
             </div>
           </div>
         </div>

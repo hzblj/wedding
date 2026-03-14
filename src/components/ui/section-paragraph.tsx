@@ -8,5 +8,5 @@ export type SectionParagraphProps = {
 }
 
 export const SectionParagraph: FC<SectionParagraphProps> = ({children, className}) => (
-  <p className={cn('text-[16px] leading-[150%] tracking-normal  text-white text-left', className)}>{children}</p>
+  <p className={cn('text-[16px] leading-[150%] tracking-normal text-body text-left', className)}>{children}</p>
 )

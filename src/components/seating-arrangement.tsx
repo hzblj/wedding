@@ -18,7 +18,7 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
     <section
       ref={sectionRef}
       id={id}
-      className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10"
+      className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-border"
     >
       <div ref={headerRef} className="flex flex-col gap-6">
         <SectionTitle eyebrow="Kde sedím" className="w-full items-center text-center">

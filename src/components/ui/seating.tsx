@@ -22,7 +22,7 @@ type NameLabelProps = {
 }
 
 const NameLabel = ({children, className, style}: NameLabelProps) => (
-  <span className={cn('text-[12px] tracking-wider text-white/70 whitespace-nowrap', className)} style={style}>
+  <span className={cn('text-[12px] tracking-wider text-body/70 whitespace-nowrap', className)} style={style}>
     {children}
   </span>
 )
@@ -88,7 +88,7 @@ export const SeatingArrangementTables = forwardRef<HTMLDivElement, SeatingArrang
           </div>
 
           <div
-            className="border-t-12 border-l-12 border-r-12 border-b-0 border-white/10 rounded-t-lg self-stretch"
+            className="border-t-12 border-l-12 border-r-12 border-b-0 border-border rounded-t-lg self-stretch"
             style={{gridColumn: '2 / 7', gridRow: `2 / ${maxRows + 3}`}}
           />
 

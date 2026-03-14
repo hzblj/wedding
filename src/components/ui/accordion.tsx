@@ -108,7 +108,7 @@ const AccordionRow: FC<{
           type="button"
           onClick={onToggle}
           className={cn(
-            'group flex w-full items-center justify-between gap-4 py-5 text-left border-b-2 border-solid border-white/10',
+            'group flex w-full items-center justify-between gap-4 py-5 text-left border-b-2 border-solid border-border',
             isOpen ? 'cursor-default' : 'cursor-pointer'
           )}
         >
@@ -116,7 +116,7 @@ const AccordionRow: FC<{
             <span
               className={cn(
                 'text-[14px] leading-[120%] font-semibold transition-colors duration-300 ease-in-out',
-                isOpen ? 'text-white' : 'text-white/40 group-hover:text-white/60'
+                isOpen ? 'text-heading' : 'text-body/40 group-hover:text-body/70'
               )}
             >
               (0{index + 1})
@@ -124,17 +124,17 @@ const AccordionRow: FC<{
             <span
               className={cn(
                 'text-[16px] leading-[120%] italic font-semibold transition-colors duration-300 ease-in-out',
-                isOpen ? 'text-white' : 'text-white/40 group-hover:text-white/60'
+                isOpen ? 'text-heading' : 'text-body/40 group-hover:text-body/70'
               )}
             >
               {item.title}
             </span>
           </div>
         </button>
-        <div ref={progressRef} className="absolute bottom-0 left-0 w-full h-0.5 bg-white origin-left scale-x-0 transform-gpu" />
+        <div ref={progressRef} className="absolute bottom-0 left-0 w-full h-0.5 bg-heading origin-left scale-x-0 transform-gpu" />
       </div>
       <div ref={contentRef} className="overflow-hidden transform-gpu" style={{height: 0, visibility: 'hidden'}}>
-        <div className="pt-3 pb-5 pl-8 text-[14px] leading-[170%] text-white/80">{item.content}</div>
+        <div className="pt-3 pb-5 pl-8 text-[14px] leading-[170%] text-body">{item.content}</div>
       </div>
     </div>
   )

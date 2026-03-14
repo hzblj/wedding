@@ -144,7 +144,7 @@ export const PhotoModal: FC<PhotoModalProps> = ({src, isVideo, onClose, videoRen
       <div ref={cardRef} className="relative w-[85vw] max-w-md aspect-[0.7]" onClick={event => event.stopPropagation()}>
         <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-visible">
           <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_64px] relative overflow-hidden">
-            <div className="relative overflow-hidden w-px h-full flex-[1_0_0]">
+            <div className="relative overflow-hidden w-px h-full flex-[1_0_0] bg-black/90">
               {isVideo && videoRenderer ? (
                 videoRenderer(src!)
               ) : (

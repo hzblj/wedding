@@ -9,8 +9,8 @@ export type TimelineItem = {
 }
 
 const TimelineDot = () => (
-  <div className="absolute -left-7.25 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border border-solid border-white/40 bg-white/10 shadow-[0_0_6px_rgba(255,255,255,0.2)] backdrop-blur-sm flex items-center justify-center">
-    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+  <div className="absolute -left-7.25 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full border border-solid border-border bg-border/30 shadow-[0_0_6px_rgba(62,51,43,0.15)] backdrop-blur-sm flex items-center justify-center">
+    <div className="w-1.5 h-1.5 rounded-full bg-heading" />
   </div>
 )
 
@@ -26,18 +26,18 @@ const TimelineRow: FC<TimelineRowProps> = ({item, isFirst, isLast}) => (
       {!(isFirst && isLast) && (
         <div
           className={cn(
-            'absolute -left-6 w-px bg-white/20',
+            'absolute -left-6 w-px bg-border',
             isFirst ? 'top-1/2 -bottom-6' : 'top-0',
             isLast ? 'bottom-1/2' : '-bottom-6'
           )}
         />
       )}
       <TimelineDot />
-      <p className="text-[12px] leading-[150%] text-gray-400 uppercase w-auto block">
+      <p className="text-[12px] leading-[150%] text-body/60 uppercase w-auto block">
         {item.from}
         {item.to ? ` — ${item.to}` : ''}
       </p>
-      <p className="text-[16px] leading-[150%] text-white">{item.name}</p>
+      <p className="text-[16px] leading-[150%] text-heading">{item.name}</p>
     </div>
   </div>
 )

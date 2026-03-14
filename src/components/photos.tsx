@@ -32,7 +32,7 @@ const PhotoCard: FC<PhotoCardProps> = ({hidden = false, image, onSelect}) => {
         <div className="relative w-full aspect-[0.7] cursor-pointer" onClick={handleClick}>
           <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-visible">
             <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[8px_8px_32px] md:p-[12px_12px_48px] lg:p-[16px_16px_64px] relative overflow-hidden">
-              <div className="relative overflow-hidden w-px h-full flex-[1_0_0]">
+              <div className="relative overflow-hidden w-px h-full flex-[1_0_0] bg-black/90">
                 {isVideo(image) ? (
                   <PhotoCardVideo src={image} />
                 ) : (
@@ -61,7 +61,7 @@ export type PhotosProps = {
 const PhotoUploadEmpty = () => (
   <div className="flex flex-col items-center py-16 text-center">
     <svg
-      className="w-10 h-10 text-white/15"
+      className="w-10 h-10 text-border"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -74,8 +74,8 @@ const PhotoUploadEmpty = () => (
       <polyline points="21 15 16 10 5 21" />
     </svg>
     <div className="pt-4">
-      <p className="text-white/40 text-xl font-bold">Zatím žádné fotky</p>
-      <p className="text-white/30 text-sm">Nahrajte první fotky z oslavy</p>
+      <p className="text-body/50 text-xl font-bold">Zatím žádné fotky</p>
+      <p className="text-body/40 text-sm">Nahrajte první fotky z oslavy</p>
     </div>
   </div>
 )

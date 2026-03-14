@@ -135,8 +135,6 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
 
       onClose()
 
-      // The close animation will play via the isOpen effect,
-      // and after unmount, scroll to the section
       const checkAndScroll = () => {
         requestAnimationFrame(() => {
           const element = document.getElementById(targetId)
@@ -148,7 +146,6 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
         })
       }
 
-      // Store the scroll target to execute after close animation
       sectionScrollTarget.current = checkAndScroll
     },
     [onClose]
@@ -167,7 +164,6 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
     [onClose]
   )
 
-  // Handle open/close transitions
   useEffect(() => {
     if (isOpen) {
       setIsMounted(true)
@@ -175,14 +171,12 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
     }
   }, [isOpen, lockScroll])
 
-  // Run open animation after mount
   useEffect(() => {
     if (isMounted && isOpen) {
       animateOpen()
     }
   }, [isMounted, isOpen, animateOpen])
 
-  // Run close animation when isOpen becomes false while still mounted
   useEffect(() => {
     if (!isOpen && isMounted) {
       animateClose(() => {
@@ -202,7 +196,6 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
     }
   }, [isOpen, isMounted, animateClose, unlockScroll])
 
-  // Keyboard listener
   useEffect(() => {
     if (!isMounted) {
       return
@@ -224,7 +217,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
     <>
       <div
         ref={backdropRef}
-        className="fixed inset-0 z-1002 bg-black/95 backdrop-blur-2xl"
+        className="fixed inset-0 z-1002 bg-surface/95 backdrop-blur-2xl"
         onClick={handleBackdropClose}
       />
       <div
@@ -234,12 +227,12 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
       >
         <div ref={linksRef} className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
-            <div className="h-px w-full bg-white/15" />
+            <div className="h-px w-full bg-border" />
             <div className="flex items-baseline gap-3">
               <span
                 className={cn(
                   'text-2xl font-semibold uppercase tracking-wide',
-                  isHome ? 'text-white' : 'text-white/60'
+                  isHome ? 'text-heading' : 'text-body/60'
                 )}
               >
                 (01)
@@ -249,7 +242,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                   href="/"
                   className={cn(
                     'text-2xl font-semibold uppercase tracking-wide transition-colors duration-500',
-                    isHome ? 'text-white' : 'text-white/60'
+                    isHome ? 'text-heading' : 'text-body/60'
                   )}
                   onClick={event => handleNavigate(event, '/')}
                 >
@@ -261,7 +254,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                       <button
                         key={link.href}
                         type="button"
-                        className="text-white/50 text-sm uppercase tracking-wide text-left cursor-pointer transition-colors duration-500 hover:text-white"
+                        className="text-body/50 text-sm uppercase tracking-wide text-left cursor-pointer transition-colors duration-500 hover:text-heading"
                         onClick={() => handleSectionClick(link.href)}
                       >
                         {link.label}
@@ -273,12 +266,12 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="h-px w-full bg-white/15" />
+            <div className="h-px w-full bg-border" />
             <div className="flex items-baseline gap-3">
               <span
                 className={cn(
                   'text-2xl font-semibold uppercase tracking-wide',
-                  isPhotos ? 'text-white' : 'text-white/60'
+                  isPhotos ? 'text-heading' : 'text-body/60'
                 )}
               >
                 (02)
@@ -287,7 +280,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                 href="/photos"
                 className={cn(
                   'text-2xl font-semibold uppercase tracking-wide transition-colors duration-500',
-                  isPhotos ? 'text-white' : 'text-white/60'
+                  isPhotos ? 'text-heading' : 'text-body/60'
                 )}
                 onClick={event => handleNavigate(event, '/photos')}
               >
@@ -299,7 +292,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
       </div>
       <Link
         href="/"
-        className="fixed top-3 left-8 z-1003 text-white font-semibold text-[14px] pt-[env(safe-area-inset-top)] transition-colors duration-500 hover:text-white/60"
+        className="fixed top-3 left-8 z-1003 text-heading font-semibold text-[14px] pt-[env(safe-area-inset-top)] transition-colors duration-500 hover:text-body"
         onClick={event => handleNavigate(event, '/')}
       >
         [ Karin & Jan ]
@@ -349,7 +342,7 @@ export const MobileMenu: FC = () => {
       {createPortal(
         <button
           type="button"
-          className="md:hidden fixed top-3 right-8 z-1003 text-white font-semibold text-[14px] uppercase cursor-pointer pt-[env(safe-area-inset-top)]"
+          className="md:hidden fixed top-3 right-8 z-1003 text-heading font-semibold text-[14px] uppercase cursor-pointer pt-[env(safe-area-inset-top)]"
           style={{perspective: '200px'}}
           onClick={handleToggle}
         >

@@ -12,17 +12,19 @@ const REVEAL_DURATION = 0.8
 const REVEAL_EASE = 'power2.out'
 
 const HeaderImage = ({className = '', url}: {className?: string; url: string}) => (
-  <div className={cn('bg-white h-52 sm:h-64 md:h-84 w-auto max-w-50 p-2 paper-texture', className)}>
-    <Image
-      src={url}
-      alt="image"
-      width={256}
-      height={306}
-      className="h-full w-full object-cover"
-      draggable={false}
-      priority
-      fetchPriority="high"
-    />
+  <div className={cn('bg-white h-52 sm:h-64 md:h-84 aspect-[200/306] p-2 paper-texture', className)}>
+    <div className="relative h-full w-full bg-black/90">
+      <Image
+        src={url}
+        alt="image"
+        width={256}
+        height={306}
+        className="h-full w-full object-cover"
+        draggable={false}
+        priority
+        fetchPriority="high"
+      />
+    </div>
   </div>
 )
 
@@ -115,7 +117,7 @@ export const Header = () => {
   }, [])
 
   return (
-    <header className="flex flex-col flex-none items-center justify-between w-full h-screen max-h-200 relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-8">
+    <header className="flex flex-col flex-none items-center justify-between w-full h-screen md:max-h-220 max-h-200 relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-8">
       <div ref={imagesRef} className="flex flex-row items-start relative w-full px-6 md:px-8 gap-4 min-h-0">
         <div className="flex relative items-start">
           <HeaderImage url="/png/header-1.png" />
@@ -128,7 +130,7 @@ export const Header = () => {
       </div>
       <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-6 md:px-8 relative gap-6 md:gap-x-8 md:gap-y-6">
         <div ref={titleRef} className="relative flex flex-col justify-center outline-none h-auto w-auto min-w-0 shrink">
-          <h1 className="font-playfair tracking-normal font-bold leading-[100%] text-[56px] md:text-[62px] lg:text-[104px] lg:leading-[0.9] uppercase">
+          <h1 className="font-playfair tracking-normal font-bold leading-[100%] text-[56px] md:text-[62px] lg:text-[104px] lg:leading-[0.9] uppercase text-heading">
             Blažejovi
           </h1>
         </div>
@@ -136,12 +138,12 @@ export const Header = () => {
           <SectionParagraph>
             S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.
           </SectionParagraph>
-          <p className="text-[14px] leading-[150%] tracking-normal text-gray-400 text-left">
+          <p className="text-[14px] leading-[150%] tracking-normal text-body/60 text-left">
             4. července 2026, Resort Nová Polana, Dolní Lomná
           </p>
           <div className="pt-2">
             <Button onClick={handleAddToCalendar}>
-              <Image src="/svg/calendar-plus.svg" alt="calendar" width={16} height={16} className="w-4 h-4" />
+              <Image src="/svg/calendar-plus.svg" alt="calendar" width={16} height={16} className="w-4 h-4 invert" />
               Přidat do kalendáře
             </Button>
           </div>

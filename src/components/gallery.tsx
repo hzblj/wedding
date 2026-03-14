@@ -1,6 +1,7 @@
 'use client'
 
-import {useRef} from 'react'
+import gsap from 'gsap'
+import {useCallback, useRef} from 'react'
 
 import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 
@@ -35,13 +36,18 @@ export const Gallery = ({id}: {id?: string}) => {
   const sliderRef = useRef<HTMLDivElement>(null)
 
   useScrollReveal(sectionRef, [headerRef], {})
-  useScrollReveal(sectionRef, [sliderRef], {delay: 0.2})
+
+  const handleSliderReady = useCallback(() => {
+    const el = sliderRef.current
+    if (!el) return
+    gsap.fromTo(el, {y: 20, scale: 0.98}, {y: 0, scale: 1, duration: 0.6, ease: 'power2.out'})
+  }, [])
 
   return (
     <section
       ref={sectionRef}
       id={id}
-      className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-white/10"
+      className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-border"
     >
       <div ref={headerRef} className="flex flex-col gap-6">
         <SectionTitle eyebrow="KDO" className="w-full items-center text-center">
@@ -54,7 +60,7 @@ export const Gallery = ({id}: {id?: string}) => {
         </SectionParagraph>
       </div>
       <div ref={sliderRef} className="w-full">
-        <ListSlider items={galleryItems} autoSlide={5000} />
+        <ListSlider items={galleryItems} autoSlide={5000} onReady={handleSliderReady} />
       </div>
     </section>
   )

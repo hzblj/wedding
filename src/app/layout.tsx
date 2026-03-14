@@ -7,7 +7,7 @@ import {Navigation} from '@/components'
 import './app.css'
 
 export const viewport: Viewport = {
-  themeColor: '#050505',
+  themeColor: '#e8ddd0',
   viewportFit: 'cover',
 }
 

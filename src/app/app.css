@@ -3,6 +3,10 @@
 @theme {
   --font-inter: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-playfair: var(--font-playfair), Georgia, serif;
+  --color-heading: #3E332B;
+  --color-body: #5C5046;
+  --color-border: #DDD0BE;
+  --color-surface: #e8ddd0;
 }
 
 html {
@@ -22,7 +26,7 @@ body {
   padding: 0;
   min-height: 100%;
   width: 100%;
-  background-color: #050505;
+  background-color: var(--color-surface);
 }
 
 html,
@@ -42,15 +46,34 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--color-white);
+  color: #5C5046;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-body);
 }
 
 .app-background {
-  background:
-    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(45, 35, 20, 0.5) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 85% 30%, rgba(35, 25, 40, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 90% 50% at 50% 100%, rgba(40, 28, 15, 0.4) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 70% 70%, rgba(50, 35, 20, 0.2) 0%, transparent 50%), #050505;
+  background: var(--color-surface);
 }
 
 .grain {

@@ -7,7 +7,7 @@ import {useEffect, useRef} from 'react'
 import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 import {cn} from '@/utils'
 
-import {Button, Section, SectionParagraph, SectionTitle} from './ui'
+import {Section, SectionParagraph, SectionTitle} from './ui'
 
 type PlaceImagePaperProps = {
   variant?: 'top-left' | 'bottom-right'
@@ -75,7 +75,10 @@ export const Place = ({id}: {id?: string}) => {
       left={
         <div ref={imageRef} className="flex-1 w-full md:w-px max-w-110 aspect-[0.90] max-h-150 relative p-12">
           <div className="paper-texture bg-white h-full max-h-full max-w-full w-full -rotate-[2.5deg] p-[16px_16px_64px]">
-            <div ref={imagesContainerRef} className="z-1 flex-none absolute inset-[16px_16px_64px] overflow-hidden">
+            <div
+              ref={imagesContainerRef}
+              className="z-1 flex-none absolute inset-[16px_16px_64px] overflow-hidden bg-black/90"
+            >
               {PLACE_IMAGES.map(src => (
                 <Image key={src} src={src} alt="place" fill className="object-cover" />
               ))}
@@ -104,9 +107,9 @@ export const Place = ({id}: {id?: string}) => {
               href="https://www.google.com/maps/dir/?api=1&destination=49.551680,18.687632"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 uppercase text-sm font-medium bg-white text-black px-6 py-3 rounded-full hover:bg-white/80 transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-2 uppercase text-sm font-medium bg-heading text-white px-6 py-3 rounded-full hover:bg-heading/80 transition-all duration-300 cursor-pointer"
             >
-              <Image src="/svg/navigate.svg" alt="navigate" width={16} height={16} className="w-4 h-4" />
+              <Image src="/svg/navigate.svg" alt="navigate" width={16} height={16} className="w-4 h-4 invert" />
               Navigovat
             </a>
           </div>

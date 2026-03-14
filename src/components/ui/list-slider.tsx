@@ -4,7 +4,7 @@ import gsap from 'gsap'
 // @ts-ignore
 import {Draggable} from 'gsap/Draggable'
 import Image from 'next/image'
-import {forwardRef, useCallback, useEffect, useRef} from 'react'
+import {forwardRef, useCallback, useLayoutEffect, useRef, useState} from 'react'
 import {cn} from '@/utils'
 
 gsap.registerPlugin(Draggable)
@@ -19,12 +19,12 @@ const SliderArrow = ({direction, onClick}: SliderArrowProps) => (
     type="button"
     onClick={onClick}
     className={cn(
-      'min-[800px]:hidden absolute top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm hover:bg-black/60 transition-colors cursor-pointer',
+      'min-[800px]:hidden absolute top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border border-border bg-surface/80 backdrop-blur-sm hover:bg-surface transition-colors cursor-pointer',
       direction === 'left' ? 'left-2' : 'right-2'
     )}
     aria-label={direction === 'left' ? 'Previous' : 'Next'}
   >
-    <Image src={`/svg/arrow-${direction}.svg`} alt="" width={20} height={20} className="w-5 h-5 invert" />
+    <Image src={`/svg/arrow-${direction}.svg`} alt="" width={20} height={20} className="w-5 h-5" />
   </button>
 )
 
@@ -34,14 +34,44 @@ export type ListSliderItem = {
   details: string[]
 }
 
-const ListSliderCard = forwardRef<HTMLLIElement, {item: ListSliderItem}>(({item}, ref) => (
-  <li
-    ref={ref}
-    className="absolute top-0 h-full w-full min-[800px]:w-[calc(33.3333%-10.6667px)] transform-gpu will-change-[transform,opacity,visibility]"
-  >
+const INITIAL_POSITIONS = [
+  'left-[calc(-33.3333%-5.3333px)]',
+  'left-0',
+  'left-[calc(33.3333%+5.3333px)]',
+  'left-[calc(66.6667%+10.6667px)]',
+  'left-[calc(100%+16px)]',
+]
+
+const initialIndex = (index: number, total: number) => {
+  // Map: center=0, right=1, far-right=2, left=last, far-left=second-to-last
+  const map = [2, 3, 4, 1, 0]
+  if (index === 0) return map[0]
+  if (index === 1) return map[1]
+  if (index === 2) return map[2]
+  if (index === total - 1) return map[3]
+  if (index === total - 2) return map[4]
+  return -1
+}
+
+const ListSliderCard = forwardRef<HTMLLIElement, {index: number; item: ListSliderItem; ready?: boolean; total: number}>(
+  ({index, item, ready, total}, ref) => {
+    const pos = initialIndex(index, total)
+    return (
+      <li
+        ref={ref}
+        className={cn(
+          'absolute top-0 h-full w-full min-[800px]:w-[calc(33.3333%-10.6667px)] transform-gpu',
+          ready
+            ? 'will-change-[transform,opacity,visibility]'
+            : cn(
+                pos >= 0 ? cn('min-[800px]:block', INITIAL_POSITIONS[pos]) : 'min-[800px]:hidden',
+                pos === 2 ? 'block' : 'hidden'
+              )
+        )}
+      >
     <div className="paper-texture bg-white h-full w-full opacity-100 flex flex-col items-center gap-2 p-0 relative overflow-hidden">
       <div className="flex flex-[1_0_0] flex-row items-center gap-0 w-full h-px p-[16px_16px_0px] relative overflow-hidden">
-        <div className="relative overflow-hidden w-px h-full flex-[1_0_0]">
+        <div className="relative overflow-hidden w-px h-full flex-[1_0_0] bg-black/90">
           <div className="absolute inset-0">
             <Image src={item.image} alt={item.title} fill className="object-cover" />
           </div>
@@ -62,26 +92,27 @@ const ListSliderCard = forwardRef<HTMLLIElement, {item: ListSliderItem}>(({item}
       </div>
     </div>
   </li>
-))
+    )
+  }
+)
 
-export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSlide?: number}) => {
+export const ListSlider = ({items, autoSlide, onReady}: {items: ListSliderItem[]; autoSlide?: number; onReady?: () => void}) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLLIElement | null)[]>([])
   const navigateRef = useRef<(direction: -1 | 1) => void>(null)
+  const [ready, setReady] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setReady(true)
+    onReady?.()
+
     const container = containerRef.current
     const wrapper = wrapperRef.current
-    if (!container || !wrapper) {
-      return
-    }
+    if (!container || !wrapper) return
 
     const elements = itemRefs.current.filter(Boolean) as HTMLElement[]
-
-    if (elements.length === 0) {
-      return
-    }
+    if (elements.length === 0) return
 
     const gap = 16
     const itemWidth = elements[0].offsetWidth
@@ -93,7 +124,6 @@ export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSli
 
     const updatePositions = (value: number) => {
       const center = wrapperWidth / 2
-
       const clipWidth = container.offsetWidth
       const overflow = Math.max(0, (clipWidth - wrapperWidth) / 2)
       const viewLeft = -overflow
@@ -118,6 +148,7 @@ export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSli
         gsap.set(item, {opacity, visibility: visible ? 'visible' : 'hidden', x})
       })
     }
+
     const snapOffset = (value: number) => {
       const base = wrapperWidth / 2 - itemWidth / 2
       return base + Math.round((value - base) / step) * step
@@ -156,10 +187,7 @@ export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSli
     let autoInterval: ReturnType<typeof setInterval> | null = null
 
     const startAutoSlide = () => {
-      if (!autoSlide) {
-        return
-      }
-
+      if (!autoSlide) return
       autoInterval = setInterval(() => {
         navigateRef.current?.(1)
       }, autoSlide)
@@ -214,7 +242,10 @@ export const ListSlider = ({items, autoSlide}: {items: ListSliderItem[]; autoSli
           {items.map((item, index) => (
             <ListSliderCard
               key={index.toString()}
+              index={index}
               item={item}
+              ready={ready}
+              total={items.length}
               ref={el => {
                 itemRefs.current[index] = el
               }}

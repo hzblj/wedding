@@ -55,14 +55,14 @@ const Checkmark = () => (
 
 const EmptyUpload = ({dragging}: {dragging: boolean}) => (
   <div className="flex flex-col items-center gap-3">
-    <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
+    <div className="w-10 h-10 rounded-full bg-heading/15 flex items-center justify-center">
       <Image src="/svg/upload.svg" alt="upload" width={20} height={20} className="w-5 h-5 opacity-90" />
     </div>
     <div className="text-center">
-      <p className="text-white/70 text-sm font-medium">
+      <p className="text-body/70 text-sm font-medium">
         {dragging ? 'Drop your photos here' : 'Drag & drop photos here'}
       </p>
-      <p className="text-white/40 text-xs mt-1">or click to browse</p>
+      <p className="text-body/40 text-xs mt-1">or click to browse</p>
     </div>
   </div>
 )
@@ -108,7 +108,7 @@ const UploadItem = forwardRef<HTMLDivElement, {item: UploadItemData; onRemove: (
     const showOverlay = item.status === 'uploading' || item.status === 'error'
 
     return (
-      <div ref={ref} className="group relative w-20 h-20 rounded-lg overflow-hidden border border-white/10 shrink-0">
+      <div ref={ref} className="group relative w-20 h-20 rounded-lg overflow-hidden border border-border shrink-0">
         {item.file.type.startsWith('video/') ? (
           <video src={item.preview} muted className="w-full h-full object-cover" />
         ) : (
@@ -159,9 +159,9 @@ const UploadItem = forwardRef<HTMLDivElement, {item: UploadItemData; onRemove: (
 )
 
 const AddMore = () => (
-  <div className="w-20 h-20 rounded-lg border border-dashed border-white/20 flex items-center justify-center hover:border-white/40 transition-colors">
+  <div className="w-20 h-20 rounded-lg border border-dashed border-border flex items-center justify-center hover:border-body/40 transition-colors">
     <svg
-      className="w-5 h-5 text-white/40"
+      className="w-5 h-5 text-body/40"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -358,7 +358,7 @@ export const PhotoUpload = () => {
         onClick={() => inputRef.current?.click()}
         className={cn(
           'relative w-full rounded-2xl border border-dashed cursor-pointer transition-all duration-200 p-6',
-          dragging ? 'border-white/60 bg-white/10' : 'border-white/20 bg-white/3 hover:border-white/40 hover:bg-white/6'
+          dragging ? 'border-body/60 bg-heading/10' : 'border-border bg-heading/3 hover:border-body/40 hover:bg-heading/6'
         )}
       >
         {!hasItems && <EmptyUpload dragging={dragging} />}
@@ -376,7 +376,7 @@ export const PhotoUpload = () => {
       {hasItems && (
         <div className="flex items-center gap-4">
           <button
-            className="text-sm text-white/40 hover:text-white/70 transition-colors cursor-pointer"
+            className="text-sm text-body/40 hover:text-body/70 transition-colors cursor-pointer"
             onClick={handleCancel}
           >
             Zrušit
@@ -386,7 +386,7 @@ export const PhotoUpload = () => {
             className={cn((!hasUploadable || isUploading) && 'opacity-40 pointer-events-none')}
             onClick={handleSubmit}
           >
-            <Image src="/svg/upload.svg" alt="" width={16} height={16} className="w-4 h-4" />
+            <Image src="/svg/upload.svg" alt="" width={16} height={16} className="w-4 h-4 invert" />
             Nahrát
           </Button>
         </div>
