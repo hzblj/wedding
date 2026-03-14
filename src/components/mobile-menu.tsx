@@ -35,6 +35,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
   const router = useRouter()
   const isHome = pathname === '/'
   const isPhotos = pathname === '/photos'
+  const isMusic = pathname === '/music'
   const pendingNavigation = useRef<string | null>(null)
 
   const lockScroll = useCallback(() => {
@@ -286,6 +287,29 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                 onClick={event => handleNavigate(event, '/photos')}
               >
                 Fotky
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="h-px w-full bg-border" />
+            <div className="flex items-baseline gap-3">
+              <span
+                className={cn(
+                  'text-3xl font-semibold uppercase tracking-wide',
+                  isMusic ? 'text-heading' : 'text-body/60'
+                )}
+              >
+                (03)
+              </span>
+              <Link
+                href="/music"
+                className={cn(
+                  'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
+                  isMusic ? 'text-heading' : 'text-body/60'
+                )}
+                onClick={event => handleNavigate(event, '/music')}
+              >
+                Hudba
               </Link>
             </div>
           </div>

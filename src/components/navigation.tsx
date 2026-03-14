@@ -83,6 +83,7 @@ export const Navigation = () => {
   const pathname = usePathname()
   const isHome = pathname === '/'
   const isPhotos = pathname === '/photos'
+  const isMusic = pathname === '/music'
 
   return (
     <nav
@@ -117,6 +118,16 @@ export const Navigation = () => {
             )}
           >
             Fotky
+          </Link>
+          <span className="text-[16px] leading-4.25 font-semibold uppercase text-body/70">/</span>
+          <Link
+            href="/music"
+            className={cn(
+              'text-[16px] leading-4.25 font-semibold uppercase transition-colors duration-500',
+              isMusic ? 'text-heading' : 'text-body/70 hover:text-heading'
+            )}
+          >
+            Hudba
           </Link>
         </div>
       </div>

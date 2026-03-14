@@ -54,7 +54,7 @@ const faq = [
   },
   {
     content:
-      'V případě jakýchkoliv komplikací nás neváhejte kontaktovat. Ženich: +420 724 937 056, Dawid svědek: +420 778 880 894.',
+      'V případě jakýchkoliv komplikací nás neváhejte kontaktovat. Ženich: +420 724 937 056, Dawid svědek: +420 724 560 122.',
     title: 'Na koho se obrátit v případě problému?',
   },
 ]
@@ -66,7 +66,7 @@ export const FAQ = ({id}: {id?: string}) => {
   const accordionRef = useRef<HTMLDivElement>(null)
 
   useScrollReveal(sectionRef, [imageRef], {once: true})
-  useScrollReveal(titleRef, [titleRef, accordionRef], {delay: 0.15, once: true, start: 'top 50%', stagger: true})
+  useScrollReveal(titleRef, [titleRef, accordionRef], {delay: 0.15, once: true, stagger: true, start: 'top 50%'})
 
   return (
     <Section

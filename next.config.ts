@@ -4,7 +4,8 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             new URL('https://picsum.photos/**'),
-            new URL('https://hmhwnelhxbrgxirdlrzc.supabase.co/**')
+            new URL('https://hmhwnelhxbrgxirdlrzc.supabase.co/**'),
+            new URL('https://i.scdn.co/**')
         ],
     },
     experimental: {

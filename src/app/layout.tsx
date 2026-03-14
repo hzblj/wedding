@@ -2,6 +2,8 @@ import type {Metadata, Viewport} from 'next'
 import {Inter, Playfair_Display} from 'next/font/google'
 import {type ReactNode} from 'react'
 
+import {Toaster} from 'sonner'
+
 import {Navigation} from '@/components'
 
 import './app.css'
@@ -51,6 +53,7 @@ export default function Layout({
   return (
     <html lang="cz" className={`${inter.variable} ${playfair.variable}`}>
       <body>
+        <Toaster position="top-center" />
         <Navigation />
         {children}
       </body>
