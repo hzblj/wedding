@@ -155,7 +155,7 @@ export const SongSearch: FC = () => {
 
   return (
     <div className="flex flex-col gap-0 w-full max-w-lg mx-auto">
-      <div className="flex items-start gap-3">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3">
         <div className="flex flex-col flex-1 min-w-0">
           <div
             className={cn(
