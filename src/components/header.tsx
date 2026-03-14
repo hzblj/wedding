@@ -12,8 +12,8 @@ const REVEAL_DURATION = 0.8
 const REVEAL_EASE = 'power2.out'
 
 const HeaderImage = ({className = '', url}: {className?: string; url: string}) => (
-  <div className={cn('bg-white h-52 sm:h-64 md:h-84 aspect-[200/306] p-2 paper-texture', className)}>
-    <div className="relative h-full w-full bg-black/90">
+  <div className={cn('bg-white h-52 sm:h-64 md:h-84 aspect-[200/306] p-[8px_8px_32px] sm:p-[10px_10px_40px] md:p-[12px_12px_48px] paper-texture', className)}>
+    <div className="relative h-full w-full bg-black/90 overflow-hidden">
       <Image
         src={url}
         alt="image"
