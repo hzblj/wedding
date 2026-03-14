@@ -38,7 +38,7 @@ export const Agenda = ({id}: {id?: string}) => {
           <Timeline
             ref={timelineRef}
             items={[
-              {from: '11:00', name: 'Příjezd hostů', to: '11:50'},
+              {from: '11:00', name: 'Příjezd hostů', to: '11:30'},
               {from: '12:00', name: 'Svatební obřad', to: '12:30'},
               {from: '12:30', name: 'Gratulace & společné foto', to: '13:00'},
               {from: '13:00', name: 'Svatební oběd', to: '14:00'},
