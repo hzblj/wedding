@@ -1,4 +1,4 @@
-import {Agenda, FAQ, Footer, Gallery, Header, Place, SeatingArrangement, WeddingDate} from '@/components'
+import {Agenda, FAQ, Footer, Gallery, Header, Menu, Place, SeatingArrangement, WeddingDate} from '@/components'
 
 export default function HomePage() {
   return (
@@ -9,6 +9,7 @@ export default function HomePage() {
       <Agenda id="agenda" />
       <Gallery id="gallery" />
       <SeatingArrangement id="seating" />
+      <Menu id="menu" />
       <FAQ id="faq" />
       <Footer />
     </>
