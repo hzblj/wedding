@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import {type ChangeEvent, type FC, type KeyboardEvent, useCallback, useEffect, useRef, useState} from 'react'
 
+import {useDictionary} from '@/i18n'
 import {cn} from '@/utils'
 
 import {useSaveSongMutation} from './hooks/use-song-requests'
@@ -105,6 +106,7 @@ export const SongSearch: FC = () => {
   const {saveSong, isPending, isSuccess, reset, isSongAlreadyAdded} = useSaveSongMutation()
   const inputRef = useRef<HTMLInputElement>(null)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
+  const {dictionary} = useDictionary()
 
   useEffect(() => {
     setHighlightedIndex(-1)
@@ -175,7 +177,7 @@ export const SongSearch: FC = () => {
                 value={query}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                placeholder="Hledej písničku..."
+                placeholder={dictionary.songSearch.placeholder}
                 className="flex-1 bg-transparent text-heading text-[16px] leading-6 placeholder:text-body/30 outline-none"
               />
             )}
@@ -217,7 +219,7 @@ export const SongSearch: FC = () => {
                 : 'bg-heading hover:bg-heading/80 cursor-pointer'
             )}
           >
-            {isPending ? <LoadingSpinner /> : isAlreadyAdded ? 'Přidáno' : 'Přidat'}
+            {isPending ? <LoadingSpinner /> : isAlreadyAdded ? dictionary.songSearch.added : dictionary.songSearch.add}
           </button>
         )}
         {isSuccess && (
@@ -227,7 +229,7 @@ export const SongSearch: FC = () => {
             className="flex-shrink-0 inline-flex items-center justify-center gap-1.5 uppercase text-[14px] font-medium text-heading px-4 py-3 rounded-full border border-border hover:bg-heading/5 transition-all duration-300 cursor-pointer"
           >
             <CheckIcon />
-            Další
+            {dictionary.songSearch.next}
           </button>
         )}
       </div>

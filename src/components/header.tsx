@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import {useEffect, useRef} from 'react'
 
+import {useDictionary} from '@/i18n'
 import {cn} from '@/utils'
 
 import {Eyebrow, SectionParagraph} from './ui'
@@ -37,6 +38,7 @@ export const Header = () => {
   const imagesRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+  const {dictionary} = useDictionary()
 
   useEffect(() => {
     const context = gsap.context(() => {
@@ -85,14 +87,14 @@ export const Header = () => {
       <div className="flex flex-col md:flex-row md:flex-wrap flex-none items-start md:items-center justify-between md:justify-center w-full h-min px-6 md:px-8 relative gap-6 md:gap-x-8 md:gap-y-6">
         <div ref={titleRef} className="relative flex flex-col justify-center outline-none h-auto w-auto min-w-0 shrink">
           <h1 className="font-playfair tracking-normal font-bold leading-[100%] text-[56px] md:text-[62px] lg:text-[104px] lg:leading-[0.9] uppercase text-heading">
-            Blažejovi
+            {dictionary.header.title}
           </h1>
         </div>
         <div ref={contentRef} className="flex flex-col basis-0 md:basis-75 lg:basis-90 max-w-100 md:ml-auto gap-4">
-          <Eyebrow className="pt-2">Milí hosté</Eyebrow>
+          <Eyebrow className="pt-2">{dictionary.header.eyebrow}</Eyebrow>
           <SectionParagraph>
-            S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života –{' '}
-            <strong>den naší svatby</strong>.
+            {dictionary.header.text}{' '}
+            <strong>{dictionary.header.textBold}</strong>.
           </SectionParagraph>
         </div>
       </div>

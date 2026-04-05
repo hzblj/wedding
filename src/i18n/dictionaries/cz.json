@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "title": "Karin & Jan Blažejovi",
+    "description": "Svatba Karin & Jana — všechny informace o našem velkém dni.",
+    "ogTitle": "Karin & Jan Blažejovi"
+  },
+  "nav": {
+    "home": "Úvod",
+    "photos": "Fotky",
+    "music": "Hudba",
+    "menu": "[ menu ]",
+    "close": "[ close ]",
+    "sections": {
+      "when": "Kdy",
+      "where": "Kde",
+      "plan": "Plán",
+      "who": "Kdo",
+      "seating": "Kde sedím",
+      "questions": "Otázky"
+    }
+  },
+  "header": {
+    "eyebrow": "Milí hosté",
+    "title": "Blažejovi",
+    "text": "S radostí vás zveme, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života –",
+    "textBold": "den naší svatby"
+  },
+  "weddingDate": {
+    "eyebrow": "Kdy",
+    "date": "4. ČERVENCE 2026",
+    "addToCalendar": "Přidat do kalendáře",
+    "units": {
+      "days": { "one": "Den", "few": "Dny", "many": "Dnů" },
+      "hours": { "one": "Hodina", "few": "Hodiny", "many": "Hodin" },
+      "minutes": { "one": "Minuta", "few": "Minuty", "many": "Minut" },
+      "seconds": { "one": "Sekunda", "few": "Sekundy", "many": "Sekund" }
+    },
+    "ics": {
+      "summary": "Svatba - Blažejovi",
+      "location": "Resort Nová Polana\\, Dolní Lomná 126\\, 739 91 Dolní Lomná",
+      "description": "S radostí vás zveme\\, abyste s námi sdíleli jeden z nejkrásnějších dnů našeho života – den naší svatby.",
+      "alarm": "Za týden je svatba Karin & Jana!",
+      "filename": "svatba-blazejovi.ics"
+    }
+  },
+  "place": {
+    "eyebrow": "Kde",
+    "title": "Resort Nová Polana",
+    "text": "Svatba se bude konat v\u00a0",
+    "textBold": "Resortu Nová Polana v\u00a0Dolní Lomné",
+    "textAfter": ".\nV\u00a0místě obklopeném horami a\u00a0přírodou, kde spolu strávíme celý den, od obřadu až po večerní párty.",
+    "navigate": "Navigovat"
+  },
+  "agenda": {
+    "eyebrow": "Plán",
+    "title": "Svatební den",
+    "text1": "Zde najdete <strong>orientační plán</strong> našeho svatebního dne. Berte ho prosím s\u00a0rezervou.",
+    "text2": "<strong>Nejdůležitější pro nás je, abyste si den užili spolu s\u00a0námi.</strong> Pokud se něco posune o\u00a0pár minut (nebo i\u00a0víc), nic se neděje. Hlavní je pohoda, dobrá nálada a\u00a0společně strávený\u00a0čas.",
+    "timeline": [
+      { "from": "11:00", "to": "11:30", "name": "Příjezd hostů" },
+      { "from": "12:00", "to": "12:30", "name": "Svatební obřad" },
+      { "from": "12:30", "to": "13:00", "name": "Gratulace & společné foto" },
+      { "from": "13:00", "to": "14:00", "name": "Svatební oběd" },
+      { "from": "14:00", "name": "Ubytování hostů" },
+      { "from": "14:30", "to": "15:00", "name": "Focení s novomanželi" },
+      { "from": "15:00", "to": "16:O0", "name": "Krájení dortu, Kafe, Hry" },
+      { "from": "16:00", "to": "17:00", "name": "Volná zábava" },
+      { "from": "17:00", "to": "18:00", "name": "Házení kytice, Hry, Volná zábava" },
+      { "from": "18:00", "name": "Večerní raut" },
+      { "from": "19:00", "to": "24:00", "name": "První tanec & Párty" },
+      { "from": "24:00", "to": "2:00", "name": "Afterparty pro vytrvalé" }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "KDO",
+    "title": "RODINA A PŘÁTELÉ",
+    "text": "Každý z vás je součástí našeho příběhu a jsme rádi, že tento den můžeme prožít právě s vámi.",
+    "months": {
+      "1": "leden",
+      "2": "únor",
+      "3": "březen",
+      "4": "duben",
+      "5": "květen",
+      "6": "červen",
+      "7": "červenec",
+      "8": "srpen",
+      "9": "září",
+      "10": "říjen",
+      "11": "listopad",
+      "12": "prosinec"
+    }
+  },
+  "seating": {
+    "eyebrow": "Kde sedím",
+    "title": "Zasedací pořádek"
+  },
+  "menu": {
+    "eyebrow": "Co se podává",
+    "title": "Menu",
+    "items": [
+      "Paštika ala šéf s pečivem",
+      "Svatební vývar s játrovými knedlíčky, zeleninou a nudlemi",
+      "Medailonky z vepřové panenky s bramborovým pyré a brusinkovou omáčkou"
+    ]
+  },
+  "faq": {
+    "eyebrow": "Otázky",
+    "title": "FAQ",
+    "items": [
+      {
+        "title": "V kolik mají hosté dorazit?",
+        "content": "Prosíme hosty o příjezd mezi 11:00–11:30, aby mohl obřad začít včas ve 12:00. Bude pro Vás nachystáno občerstvení."
+      },
+      {
+        "title": "Jaký je dress code?",
+        "content": "Dress code je formální. Pánové oblek, dámy šaty nebo elegantní kostýmek. Barvy nejsou omezeny."
+      },
+      {
+        "title": "Bude obřad venku?",
+        "content": "Ano, obřad proběhne venku. Doporučujeme proto zvolit pohodlnou obuv vhodnou na venkovní prostředí."
+      },
+      {
+        "title": "Můžeme během obřadu fotit?",
+        "content": "Během obřadu prosíme o odložení telefonů a fotoaparátů. O fotografie se postará náš fotograf – budeme rádi, když si tento okamžik užijeme společně."
+      },
+      {
+        "title": "Kde mohu zaparkovat?",
+        "content": "Parkování je k dispozici přímo u místa konání. Kapacita je dostatečná pro všechny hosty."
+      },
+      {
+        "title": "Jsou děti vítány?",
+        "content": "Svatba je plánována jako akce pro dospělé. Pokud pro vás není možné přijít bez dětí, dejte nám prosím předem vědět."
+      },
+      {
+        "title": "Je zajištěno ubytování?",
+        "content": "Hosté, kteří přijedou z větší dálky, mají zajištěné ubytování přímo v resortu. Pokud budete chtít ubytování, dejte nám prosím vědět."
+      },
+      {
+        "title": "Bude zajištěna doprava po skončení akce?",
+        "content": "Ano, doprava z místa konání bude zajištěna ve dvou časech během večera."
+      },
+      {
+        "title": "Co když bude špatné počasí?",
+        "content": "V případě nepříznivého počasí máme připravenou variantu v krytém prostoru."
+      },
+      {
+        "title": "Svatební dary",
+        "content": "Nemáme žádný seznam darů. Největší radost nám udělá příspěvek na svatební cestu. Květiny prosím nenoste."
+      },
+      {
+        "title": "Na koho se obrátit v případě problému?",
+        "content": "V případě jakýchkoliv komplikací nás neváhejte kontaktovat. Ženich: +420 724 937 056, Dawid svědek: +420 724 560 122."
+      }
+    ]
+  },
+  "footer": {
+    "eyebrow": "závěrem",
+    "title": "Těšíme se na každého z vás."
+  },
+  "photos": {
+    "eyebrow": "Sdílej",
+    "title": "Fotky",
+    "text": "Budeme rádi, když s námi budete sdílet fotografie z celého dne.",
+    "emptyTitle": "Zatím žádné fotky",
+    "emptyText": "Nahrajte první fotky z oslavy"
+  },
+  "photoUpload": {
+    "dropHere": "Pusťte soubory zde",
+    "dragText": "Přetáhněte fotky nebo videa",
+    "clickText": "nebo klikněte pro výběr",
+    "cancel": "Zrušit",
+    "upload": "Nahrát"
+  },
+  "music": {
+    "eyebrow": "Přej si",
+    "title": "Hudba",
+    "text": "Přejte si písničku, kterou chcete slyšet na svatbě."
+  },
+  "songSearch": {
+    "placeholder": "Hledej písničku...",
+    "added": "Přidáno",
+    "add": "Přidat",
+    "next": "Další"
+  },
+  "songRequests": {
+    "title": "Přání hostů",
+    "loading": "načítání...",
+    "songs": { "one": "písnička", "few": "písničky", "many": "písniček" }
+  }
+}

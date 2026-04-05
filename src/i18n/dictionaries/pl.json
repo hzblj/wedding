@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "title": "Karin & Jan Blažejovi",
+    "description": "Ślub Karin & Jana — wszystkie informacje o naszym wielkim dniu.",
+    "ogTitle": "Karin & Jan Blažejovi"
+  },
+  "nav": {
+    "home": "Start",
+    "photos": "Zdjęcia",
+    "music": "Muzyka",
+    "menu": "[ menu ]",
+    "close": "[ close ]",
+    "sections": {
+      "when": "Kiedy",
+      "where": "Gdzie",
+      "plan": "Plan",
+      "who": "Kto",
+      "seating": "Gdzie siedzę",
+      "questions": "Pytania"
+    }
+  },
+  "header": {
+    "eyebrow": "Drodzy Goście",
+    "title": "Blažejovi",
+    "text": "Z radością zapraszamy Was, abyście dzielili z nami jeden z najpiękniejszych dni naszego życia –",
+    "textBold": "dzień naszego ślubu"
+  },
+  "weddingDate": {
+    "eyebrow": "Kiedy",
+    "date": "4 LIPCA 2026",
+    "addToCalendar": "Dodaj do kalendarza",
+    "units": {
+      "days": { "one": "Dzień", "few": "Dni", "many": "Dni" },
+      "hours": { "one": "Godzina", "few": "Godziny", "many": "Godzin" },
+      "minutes": { "one": "Minuta", "few": "Minuty", "many": "Minut" },
+      "seconds": { "one": "Sekunda", "few": "Sekundy", "many": "Sekund" }
+    },
+    "ics": {
+      "summary": "Ślub - Blažejovi",
+      "location": "Resort Nová Polana\\, Dolní Lomná 126\\, 739 91 Dolní Lomná",
+      "description": "Z radością zapraszamy Was\\, abyście dzielili z nami jeden z najpiękniejszych dni naszego życia – dzień naszego ślubu.",
+      "alarm": "Za tydzień ślub Karin & Jana!",
+      "filename": "slub-blazejovi.ics"
+    }
+  },
+  "place": {
+    "eyebrow": "Gdzie",
+    "title": "Resort Nová Polana",
+    "text": "Ślub odbędzie się w\u00a0",
+    "textBold": "Resorcie Nová Polana w\u00a0Dolní Lomná",
+    "textAfter": ".\nW\u00a0miejscu otoczonym górami i\u00a0przyrodą, gdzie razem spędzimy cały dzień, od ceremonii po wieczorną imprezę.",
+    "navigate": "Nawiguj"
+  },
+  "agenda": {
+    "eyebrow": "Plan",
+    "title": "Dzień ślubu",
+    "text1": "Tutaj znajdziecie <strong>orientacyjny plan</strong> naszego dnia ślubu. Prosimy, traktujcie go z\u00a0rezerwą.",
+    "text2": "<strong>Najważniejsze dla nas jest, abyście ten dzień spędzili razem z\u00a0nami.</strong> Jeśli coś się przesunie o\u00a0kilka minut (lub więcej), nic się nie dzieje. Najważniejszy jest dobry humor i\u00a0wspólnie spędzony\u00a0czas.",
+    "timeline": [
+      { "from": "11:00", "to": "11:30", "name": "Przyjazd gości" },
+      { "from": "12:00", "to": "12:30", "name": "Ceremonia ślubna" },
+      { "from": "12:30", "to": "13:00", "name": "Gratulacje & wspólne zdjęcie" },
+      { "from": "13:00", "to": "14:00", "name": "Obiad weselny" },
+      { "from": "14:00", "name": "Zakwaterowanie gości" },
+      { "from": "14:30", "to": "15:00", "name": "Sesja zdjęciowa z nowożeńcami" },
+      { "from": "15:00", "to": "16:O0", "name": "Krojenie tortu, Kawa, Zabawy" },
+      { "from": "16:00", "to": "17:00", "name": "Czas wolny" },
+      { "from": "17:00", "to": "18:00", "name": "Rzut bukietem, Zabawy" },
+      { "from": "18:00", "name": "Kolacja" },
+      { "from": "19:00", "to": "24:00", "name": "Pierwszy taniec & Impreza" },
+      { "from": "24:00", "to": "2:00", "name": "Afterparty dla wytrwałych" }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "KTO",
+    "title": "RODZINA I PRZYJACIELE",
+    "text": "Każdy z Was jest częścią naszej historii i cieszymy się, że ten dzień możemy przeżyć właśnie z Wami.",
+    "months": {
+      "1": "styczeń",
+      "2": "luty",
+      "3": "marzec",
+      "4": "kwiecień",
+      "5": "maj",
+      "6": "czerwiec",
+      "7": "lipiec",
+      "8": "sierpień",
+      "9": "wrzesień",
+      "10": "październik",
+      "11": "listopad",
+      "12": "grudzień"
+    }
+  },
+  "seating": {
+    "eyebrow": "Gdzie siedzę",
+    "title": "Plan miejsc"
+  },
+  "menu": {
+    "eyebrow": "Co podajemy",
+    "title": "Menu",
+    "items": [
+      "Pasztet szefa kuchni z pieczywem",
+      "Rosół weselny z kluskami wątróbkowymi, warzywami i makaronem",
+      "Medaliony z polędwiczki wieprzowej z puree ziemniaczanym i sosem żurawinowym"
+    ]
+  },
+  "faq": {
+    "eyebrow": "Pytania",
+    "title": "FAQ",
+    "items": [
+      {
+        "title": "O której godzinie mają przybyć goście?",
+        "content": "Prosimy gości o przyjazd między 11:00 a 11:30, aby ceremonia mogła rozpocząć się punktualnie o 12:00. Będzie dla Was przygotowany poczęstunek."
+      },
+      {
+        "title": "Jaki jest dress code?",
+        "content": "Dress code jest formalny. Panowie garnitur, panie sukienka lub elegancki kostium. Kolory nie są ograniczone."
+      },
+      {
+        "title": "Czy ceremonia odbędzie się na zewnątrz?",
+        "content": "Tak, ceremonia odbędzie się na zewnątrz. Zalecamy więc wygodne obuwie odpowiednie na zewnątrz."
+      },
+      {
+        "title": "Czy można fotografować podczas ceremonii?",
+        "content": "Podczas ceremonii prosimy o odłożenie telefonów i aparatów. O zdjęcia zadba nasz fotograf – będziemy wdzięczni, jeśli ten moment przeżyjemy razem."
+      },
+      {
+        "title": "Gdzie mogę zaparkować?",
+        "content": "Parking jest dostępny bezpośrednio przy miejscu ceremonii. Pojemność jest wystarczająca dla wszystkich gości."
+      },
+      {
+        "title": "Czy dzieci są mile widziane?",
+        "content": "Ślub jest planowany jako impreza dla dorosłych. Jeśli nie macie możliwości przyjść bez dzieci, prosimy o wcześniejsze poinformowanie nas."
+      },
+      {
+        "title": "Czy jest zapewnione zakwaterowanie?",
+        "content": "Goście, którzy przyjadą z daleka, mają zapewnione zakwaterowanie bezpośrednio w resorcie. Jeśli będziecie chcieli zakwaterowanie, prosimy o kontakt."
+      },
+      {
+        "title": "Czy będzie zapewniony transport po zakończeniu imprezy?",
+        "content": "Tak, transport z miejsca ceremonii będzie zapewniony w dwóch terminach w ciągu wieczoru."
+      },
+      {
+        "title": "Co jeśli będzie zła pogoda?",
+        "content": "W przypadku niepogody mamy przygotowany wariant w zadaszonym miejscu."
+      },
+      {
+        "title": "Prezenty ślubne",
+        "content": "Nie mamy żadnej listy prezentów. Największą radość sprawi nam wkład na podróż poślubną. Prosimy nie przynosić kwiatów."
+      },
+      {
+        "title": "Z kim się kontaktować w razie problemu?",
+        "content": "W razie jakichkolwiek komplikacji prosimy o kontakt. Pan młody: +420 724 937 056, Dawid świadek: +420 724 560 122."
+      }
+    ]
+  },
+  "footer": {
+    "eyebrow": "na koniec",
+    "title": "Czekamy na każdego z Was."
+  },
+  "photos": {
+    "eyebrow": "Udostępnij",
+    "title": "Zdjęcia",
+    "text": "Będziemy wdzięczni, jeśli podzielicie się z nami zdjęciami z całego dnia.",
+    "emptyTitle": "Brak zdjęć",
+    "emptyText": "Prześlij pierwsze zdjęcia z uroczystości"
+  },
+  "photoUpload": {
+    "dropHere": "Upuść pliki tutaj",
+    "dragText": "Przeciągnij zdjęcia lub filmy",
+    "clickText": "lub kliknij, aby wybrać",
+    "cancel": "Anuluj",
+    "upload": "Prześlij"
+  },
+  "music": {
+    "eyebrow": "Zamów",
+    "title": "Muzyka",
+    "text": "Zamów piosenkę, którą chcesz usłyszeć na ślubie."
+  },
+  "songSearch": {
+    "placeholder": "Szukaj piosenki...",
+    "added": "Dodano",
+    "add": "Dodaj",
+    "next": "Dalej"
+  },
+  "songRequests": {
+    "title": "Życzenia gości",
+    "loading": "ładowanie...",
+    "songs": { "one": "piosenka", "few": "piosenki", "many": "piosenek" }
+  }
+}

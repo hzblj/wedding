@@ -1,0 +1,6 @@
+export {DEFAULT_LOCALE, LOCALE_TO_HTML_LANG, LOCALES, isValidLocale} from './config'
+export type {Locale} from './config'
+export {DictionaryProvider, useDictionary} from './dictionary-provider'
+export {getDictionary} from './get-dictionary'
+export type {Dictionary} from './get-dictionary'
+export {plural} from './plural'

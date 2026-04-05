@@ -2,6 +2,7 @@
 
 import {useRef} from 'react'
 
+import {useDictionary} from '@/i18n'
 import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 
 import {SeatingArrangementTables, SectionParagraph, SectionTitle} from './ui'
@@ -10,6 +11,7 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const tablesRef = useRef<HTMLDivElement>(null)
+  const {dictionary} = useDictionary()
 
   useScrollReveal(sectionRef, [headerRef], {})
   useScrollReveal(sectionRef, [tablesRef], {delay: 0.2})
@@ -21,8 +23,8 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
       className="flex flex-col flex-none place-content-[center_flex-start] items-center gap-16 w-full h-min p-[96px_24px] md:p-[96px_32px] relative overflow-hidden border-t border-solid border-border"
     >
       <div ref={headerRef} className="flex flex-col gap-6">
-        <SectionTitle eyebrow="Kde sedím" className="w-full items-center text-center">
-          Zasedací pořádek
+        <SectionTitle eyebrow={dictionary.seating.eyebrow} className="w-full items-center text-center">
+          {dictionary.seating.title}
         </SectionTitle>
       </div>
       <SeatingArrangementTables

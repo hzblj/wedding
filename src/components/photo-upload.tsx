@@ -5,6 +5,7 @@ import Image from 'next/image'
 import {useRouter} from 'next/navigation'
 import {type DragEvent, forwardRef, useCallback, useEffect, useRef, useState} from 'react'
 
+import {useDictionary} from '@/i18n'
 import {createClient} from '@/lib'
 import {Button} from '@/ui'
 import {cn} from '@/utils'
@@ -53,19 +54,23 @@ const Checkmark = () => (
   </svg>
 )
 
-const EmptyUpload = ({dragging}: {dragging: boolean}) => (
-  <div className="flex flex-col items-center gap-3">
-    <div className="w-10 h-10 rounded-full bg-heading/15 flex items-center justify-center">
-      <Image src="/svg/upload.svg" alt="upload" width={20} height={20} className="w-5 h-5 opacity-90" />
+const EmptyUpload = ({dragging}: {dragging: boolean}) => {
+  const {dictionary} = useDictionary()
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-10 h-10 rounded-full bg-heading/15 flex items-center justify-center">
+        <Image src="/svg/upload.svg" alt="upload" width={20} height={20} className="w-5 h-5 opacity-90" />
+      </div>
+      <div className="text-center">
+        <p className="text-body/70 text-base font-medium">
+          {dragging ? dictionary.photoUpload.dropHere : dictionary.photoUpload.dragText}
+        </p>
+        <p className="text-body/40 text-sm mt-1">{dictionary.photoUpload.clickText}</p>
+      </div>
     </div>
-    <div className="text-center">
-      <p className="text-body/70 text-base font-medium">
-        {dragging ? 'Pusťte soubory zde' : 'Přetáhněte fotky nebo videa'}
-      </p>
-      <p className="text-body/40 text-sm mt-1">nebo klikněte pro výběr</p>
-    </div>
-  </div>
-)
+  )
+}
 
 const ErrorIcon = () => (
   <svg
@@ -180,6 +185,7 @@ export const PhotoUpload = () => {
   const [items, setItems] = useState<UploadItemData[]>([])
   const [dragging, setDragging] = useState(false)
   const dragCounter = useRef(0)
+  const {dictionary} = useDictionary()
 
   const handleFiles = useCallback((files: FileList) => {
     const imageFiles = Array.from(files).filter(f => f.type.startsWith('image/') || f.type.startsWith('video/'))
@@ -381,7 +387,7 @@ export const PhotoUpload = () => {
             className="text-base text-body/40 hover:text-body/70 transition-colors cursor-pointer"
             onClick={handleCancel}
           >
-            Zrušit
+            {dictionary.photoUpload.cancel}
           </button>
           <Button
             disabled={!hasUploadable || isUploading}
@@ -389,7 +395,7 @@ export const PhotoUpload = () => {
             onClick={handleSubmit}
           >
             <Image src="/svg/upload.svg" alt="" width={16} height={16} className="w-4 h-4 invert" />
-            Nahrát
+            {dictionary.photoUpload.upload}
           </Button>
         </div>
       )}

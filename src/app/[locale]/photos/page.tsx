@@ -1,20 +1,29 @@
 import {Suspense} from 'react'
 
 import {Photos, PhotoUpload} from '@/components'
+import {type Locale, getDictionary, isValidLocale} from '@/i18n'
 import {createClientServer} from '@/lib'
 import {SectionParagraph, SectionTitle} from '@/ui'
 
-const PageTitle = () => (
-  <section className="flex flex-col gap-6 items-center h-min overflow-hidden w-full p-0 flex-[0_0_auto]">
-    <SectionTitle eyebrow="Sdílej" className="w-full items-center text-center">
-      Fotky
-    </SectionTitle>
-    <SectionParagraph className="max-w-110 text-center">
-      Budeme rádi, když s námi budete sdílet fotografie z celého dne.
-    </SectionParagraph>
-    <PhotoUpload />
-  </section>
-)
+type Params = {
+  locale: string
+}
+
+const PageTitle = async ({locale}: {locale: Locale}) => {
+  const dictionary = await getDictionary(locale)
+
+  return (
+    <section className="flex flex-col gap-6 items-center h-min overflow-hidden w-full p-0 flex-[0_0_auto]">
+      <SectionTitle eyebrow={dictionary.photos.eyebrow} className="w-full items-center text-center">
+        {dictionary.photos.title}
+      </SectionTitle>
+      <SectionParagraph className="max-w-110 text-center">
+        {dictionary.photos.text}
+      </SectionParagraph>
+      <PhotoUpload />
+    </section>
+  )
+}
 
 const SkeletonCard = ({hidden = false}: {hidden?: boolean}) => (
   <div className="relative w-full h-min">
@@ -70,10 +79,13 @@ const PhotosList = async () => {
   return <Photos images={images} />
 }
 
-export default function PhotosPage() {
+export default async function PhotosPage({params}: {params: Promise<Params>}) {
+  const {locale} = await params
+  const validLocale = isValidLocale(locale) ? locale : 'cz'
+
   return (
     <>
-      <PageTitle />
+      <PageTitle locale={validLocale} />
       <Suspense fallback={<PhotosSkeleton />}>
         <PhotosList />
       </Suspense>

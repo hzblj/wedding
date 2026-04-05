@@ -2,25 +2,23 @@
 
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import {FC, useCallback, useRef, useState} from 'react'
+import {FC, useCallback, useMemo, useRef, useState} from 'react'
 
-import {MobileMenu} from '@/components/mobile-menu'
+import {useDictionary} from '@/i18n'
 import {cn} from '@/utils'
 
-const SECTION_LINKS = [
-  {href: '#date', label: 'Kdy'},
-  {href: '#where', label: 'Kde'},
-  {href: '#agenda', label: 'Plán'},
-  {href: '#gallery', label: 'Kdo'},
-  {href: '#seating', label: 'Kde sedím'},
-  {href: '#faq', label: 'Otázky'},
-] as const
+import {LanguageSwitcher} from './language-switcher'
+import {MobileMenu} from './mobile-menu'
+
+const SECTION_KEYS = ['when', 'where', 'plan', 'who', 'seating', 'questions'] as const
+const SECTION_HREFS = ['#date', '#where', '#agenda', '#gallery', '#seating', '#faq'] as const
 
 const HOVER_DELAY = 150
 
 const HomeDropdown: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout>>(null)
+  const {dictionary, locale} = useDictionary()
 
   const handleEnter = useCallback(() => {
     if (closeTimer.current) {
@@ -52,23 +50,23 @@ const HomeDropdown: FC = () => {
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <Link
-        href="/"
+        href={`/${locale}`}
         className="text-heading text-[16px] leading-4.25 font-semibold uppercase transition-colors duration-500"
       >
-        Úvod
+        {dictionary.nav.home}
       </Link>
       {isOpen && (
         <div className="fixed top-full left-1/2 -translate-x-1/2 pt-4">
           <div className="flex items-center gap-2 rounded-xl bg-heading/8 backdrop-blur-2xl border border-border py-2.5 px-4 shadow-lg shadow-heading/10">
-            {SECTION_LINKS.map((link, index) => (
-              <div key={link.href} className="flex items-center gap-2">
+            {SECTION_KEYS.map((key, index) => (
+              <div key={key} className="flex items-center gap-2">
                 {index > 0 && <span className="text-border text-sm">/</span>}
                 <button
                   type="button"
                   className="text-body/70 text-sm tracking-wide uppercase whitespace-nowrap cursor-pointer transition-colors duration-500 hover:text-heading"
-                  onClick={() => handleClick(link.href)}
+                  onClick={() => handleClick(SECTION_HREFS[index])}
                 >
-                  {link.label}
+                  {dictionary.nav.sections[key]}
                 </button>
               </div>
             ))}
@@ -81,9 +79,16 @@ const HomeDropdown: FC = () => {
 
 export const Navigation = () => {
   const pathname = usePathname()
-  const isHome = pathname === '/'
-  const isPhotos = pathname === '/photos'
-  const isMusic = pathname === '/music'
+  const {dictionary, locale} = useDictionary()
+
+  const {isHome, isMusic, isPhotos} = useMemo(
+    () => ({
+      isHome: pathname === `/${locale}` || pathname === `/${locale}/`,
+      isMusic: pathname === `/${locale}/music`,
+      isPhotos: pathname === `/${locale}/photos`,
+    }),
+    [pathname, locale]
+  )
 
   return (
     <nav
@@ -92,7 +97,7 @@ export const Navigation = () => {
     >
       <div className="flex flex-row items-center justify-between w-full max-w-full h-min py-3 px-8 relative overflow-visible">
         <Link
-          href="/"
+          href={`/${locale}`}
           className="text-heading font-semibold text-[14px] md:text-[16px] transition-colors duration-500 hover:text-body"
         >
           [ Karin & Jan ]
@@ -103,32 +108,35 @@ export const Navigation = () => {
             <HomeDropdown />
           ) : (
             <Link
-              href="/"
+              href={`/${locale}`}
               className="text-body/70 text-[16px] leading-4.25 font-semibold uppercase transition-colors duration-500 hover:text-heading"
             >
-              Úvod
+              {dictionary.nav.home}
             </Link>
           )}
           <span className="text-[16px] leading-4.25 font-semibold uppercase text-body/70">/</span>
           <Link
-            href="/photos"
+            href={`/${locale}/photos`}
             className={cn(
               'text-[16px] leading-4.25 font-semibold uppercase transition-colors duration-500',
               isPhotos ? 'text-heading' : 'text-body/70 hover:text-heading'
             )}
           >
-            Fotky
+            {dictionary.nav.photos}
           </Link>
           <span className="text-[16px] leading-4.25 font-semibold uppercase text-body/70">/</span>
           <Link
-            href="/music"
+            href={`/${locale}/music`}
             className={cn(
               'text-[16px] leading-4.25 font-semibold uppercase transition-colors duration-500',
               isMusic ? 'text-heading' : 'text-body/70 hover:text-heading'
             )}
           >
-            Hudba
+            {dictionary.nav.music}
           </Link>
+        </div>
+        <div className="hidden md:flex">
+          <LanguageSwitcher />
         </div>
       </div>
     </nav>

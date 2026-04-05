@@ -6,18 +6,15 @@ import {usePathname, useRouter} from 'next/navigation'
 import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {createPortal} from 'react-dom'
 
+import {useDictionary} from '@/i18n'
 import {cn} from '@/utils'
+
+import {LanguageSwitcher} from './language-switcher'
 
 const SCROLL_OFFSET = 80
 
-const SECTION_LINKS = [
-  {href: '#date', label: 'Kdy'},
-  {href: '#where', label: 'Kde'},
-  {href: '#agenda', label: 'Plán'},
-  {href: '#gallery', label: 'Kdo'},
-  {href: '#seating', label: 'Kde sedím'},
-  {href: '#faq', label: 'Otázky'},
-] as const
+const SECTION_KEYS = ['when', 'where', 'plan', 'who', 'seating', 'questions'] as const
+const SECTION_HREFS = ['#date', '#where', '#agenda', '#gallery', '#seating', '#faq'] as const
 
 type MobileMenuModalProps = {
   isOpen: boolean
@@ -33,9 +30,11 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
   const savedScrollY = useRef(0)
   const pathname = usePathname()
   const router = useRouter()
-  const isHome = pathname === '/'
-  const isPhotos = pathname === '/photos'
-  const isMusic = pathname === '/music'
+  const {dictionary, locale} = useDictionary()
+
+  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`
+  const isPhotos = pathname === `/${locale}/photos`
+  const isMusic = pathname === `/${locale}/music`
   const pendingNavigation = useRef<string | null>(null)
 
   const lockScroll = useCallback(() => {
@@ -228,6 +227,9 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
         onClick={event => event.stopPropagation()}
       >
         <div ref={linksRef} className="flex flex-col gap-4">
+          <div className="pb-2">
+            <LanguageSwitcher />
+          </div>
           <div className="flex flex-col gap-4">
             <div className="h-px w-full bg-border" />
             <div className="flex items-baseline gap-3">
@@ -241,25 +243,25 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
               </span>
               <div className="flex flex-col gap-3">
                 <Link
-                  href="/"
+                  href={`/${locale}`}
                   className={cn(
                     'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
                     isHome ? 'text-heading' : 'text-body/60'
                   )}
-                  onClick={event => handleNavigate(event, '/')}
+                  onClick={event => handleNavigate(event, `/${locale}`)}
                 >
-                  Úvod
+                  {dictionary.nav.home}
                 </Link>
                 {isHome && (
                   <div ref={sectionLinksRef} className="flex flex-col gap-3">
-                    {SECTION_LINKS.map(link => (
+                    {SECTION_KEYS.map((key, index) => (
                       <button
-                        key={link.href}
+                        key={key}
                         type="button"
                         className="text-body/50 text-base uppercase tracking-wide text-left cursor-pointer transition-colors duration-500 hover:text-heading"
-                        onClick={() => handleSectionClick(link.href)}
+                        onClick={() => handleSectionClick(SECTION_HREFS[index])}
                       >
-                        {link.label}
+                        {dictionary.nav.sections[key]}
                       </button>
                     ))}
                   </div>
@@ -279,14 +281,14 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                 (02)
               </span>
               <Link
-                href="/photos"
+                href={`/${locale}/photos`}
                 className={cn(
                   'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
                   isPhotos ? 'text-heading' : 'text-body/60'
                 )}
-                onClick={event => handleNavigate(event, '/photos')}
+                onClick={event => handleNavigate(event, `/${locale}/photos`)}
               >
-                Fotky
+                {dictionary.nav.photos}
               </Link>
             </div>
           </div>
@@ -302,23 +304,23 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                 (03)
               </span>
               <Link
-                href="/music"
+                href={`/${locale}/music`}
                 className={cn(
                   'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
                   isMusic ? 'text-heading' : 'text-body/60'
                 )}
-                onClick={event => handleNavigate(event, '/music')}
+                onClick={event => handleNavigate(event, `/${locale}/music`)}
               >
-                Hudba
+                {dictionary.nav.music}
               </Link>
             </div>
           </div>
         </div>
       </div>
       <Link
-        href="/"
+        href={`/${locale}`}
         className="fixed top-3 left-8 z-1003 text-heading font-semibold text-[16px] pt-[env(safe-area-inset-top)] transition-colors duration-500 hover:text-body"
-        onClick={event => handleNavigate(event, '/')}
+        onClick={event => handleNavigate(event, `/${locale}`)}
       >
         [ Karin & Jan ]
       </Link>
@@ -331,6 +333,7 @@ export const MobileMenu: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isClientMounted, setIsClientMounted] = useState(false)
   const cubeRef = useRef<HTMLSpanElement>(null)
+  const {dictionary} = useDictionary()
 
   useEffect(() => {
     setIsClientMounted(true)
@@ -380,13 +383,13 @@ export const MobileMenu: FC = () => {
               className="inline-block"
               style={{backfaceVisibility: 'hidden', transform: `translateZ(${CUBE_HALF_HEIGHT}px)`}}
             >
-              [ menu ]
+              {dictionary.nav.menu}
             </span>
             <span
               className="absolute inline-block"
               style={{backfaceVisibility: 'hidden', transform: `rotateX(-90deg) translateZ(${CUBE_HALF_HEIGHT}px)`}}
             >
-              [ close ]
+              {dictionary.nav.close}
             </span>
           </span>
         </button>,

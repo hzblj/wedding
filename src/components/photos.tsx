@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import {FC, useCallback, useState} from 'react'
 
+import {useDictionary} from '@/i18n'
 import {PhotoCardVideo} from '@/components/photo-card-video'
 import {PhotoModal} from '@/components/ui'
 
@@ -58,27 +59,31 @@ export type PhotosProps = {
   images: string[]
 }
 
-const PhotoUploadEmpty = () => (
-  <div className="flex flex-col items-center py-16 text-center">
-    <svg
-      className="w-10 h-10 text-border"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-      <circle cx="8.5" cy="8.5" r="1.5" />
-      <polyline points="21 15 16 10 5 21" />
-    </svg>
-    <div className="pt-4">
-      <p className="text-body/50 text-2xl font-bold">Zatím žádné fotky</p>
-      <p className="text-body/40 text-base">Nahrajte první fotky z oslavy</p>
+const PhotoUploadEmpty = () => {
+  const {dictionary} = useDictionary()
+
+  return (
+    <div className="flex flex-col items-center py-16 text-center">
+      <svg
+        className="w-10 h-10 text-border"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+        <polyline points="21 15 16 10 5 21" />
+      </svg>
+      <div className="pt-4">
+        <p className="text-body/50 text-2xl font-bold">{dictionary.photos.emptyTitle}</p>
+        <p className="text-body/40 text-base">{dictionary.photos.emptyText}</p>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export const Photos: FC<PhotosProps> = ({images}) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)

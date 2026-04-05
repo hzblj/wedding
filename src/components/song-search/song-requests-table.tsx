@@ -4,6 +4,8 @@ import {useVirtualizer} from '@tanstack/react-virtual'
 import Image from 'next/image'
 import {type FC, useRef} from 'react'
 
+import {useDictionary, plural} from '@/i18n'
+
 import {type SongRequest, useSongRequests} from './hooks/use-song-requests'
 
 const TABLE_IMAGE_SIZE = 36
@@ -112,13 +114,14 @@ const VirtualizedList: FC<{songs: SongRequest[]}> = ({songs}) => {
 
 export const SongRequestsTable: FC = () => {
   const {data: songs, isLoading} = useSongRequests()
+  const {dictionary} = useDictionary()
 
   if (isLoading) {
     return (
       <div className="flex flex-col w-full max-w-2xl mx-auto">
         <div className="flex items-center px-4 py-3 border-b border-border">
-          <span className="text-body/40 text-[13px] uppercase tracking-wide font-medium">Přání hostů</span>
-          <span className="text-body/20 text-[13px] ml-auto">načítání...</span>
+          <span className="text-body/40 text-[13px] uppercase tracking-wide font-medium">{dictionary.songRequests.title}</span>
+          <span className="text-body/20 text-[13px] ml-auto">{dictionary.songRequests.loading}</span>
         </div>
         <TableSkeleton />
       </div>
@@ -129,12 +132,14 @@ export const SongRequestsTable: FC = () => {
     return null
   }
 
+  const songsPlural = dictionary.songRequests.songs
+
   return (
     <div className="flex flex-col w-full max-w-2xl mx-auto bg-white/40 backdrop-blur-sm border border-border rounded-xl overflow-hidden">
       <div className="flex items-center px-4 py-3 border-b border-border">
-        <span className="text-body/40 text-[13px] uppercase tracking-wide font-medium">Přání hostů</span>
+        <span className="text-body/40 text-[13px] uppercase tracking-wide font-medium">{dictionary.songRequests.title}</span>
         <span className="text-body/20 text-[13px] ml-auto tabular-nums">
-          {songs.length} {songs.length === 1 ? 'písnička' : songs.length < 5 ? 'písničky' : 'písniček'}
+          {songs.length} {plural(songs.length, songsPlural.one, songsPlural.few, songsPlural.many)}
         </span>
       </div>
       <VirtualizedList songs={songs} />

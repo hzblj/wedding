@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import {useEffect, useRef} from 'react'
 
+import {useDictionary} from '@/i18n'
 import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 import {cn} from '@/utils'
 
@@ -38,6 +39,7 @@ export const Place = ({id}: {id?: string}) => {
   const titleRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLDivElement>(null)
+  const {dictionary} = useDictionary()
 
   useScrollReveal(sectionRef, [imageRef], {})
   useScrollReveal(titleRef, [titleRef, textRef, buttonRef], {
@@ -97,14 +99,14 @@ export const Place = ({id}: {id?: string}) => {
       right={
         <>
           <div ref={titleRef}>
-            <SectionTitle eyebrow="Kde">Resort Nová Polana</SectionTitle>
+            <SectionTitle eyebrow={dictionary.place.eyebrow}>{dictionary.place.title}</SectionTitle>
           </div>
           <div ref={textRef}>
             <SectionParagraph className="max-w-140">
-              Svatba se bude konat v&nbsp;<strong>Resortu Nová Polana v&nbsp;Dolní Lomné</strong>.
+              {dictionary.place.text}
+              <strong>{dictionary.place.textBold}</strong>.
               <br />
-              V&nbsp;místě obklopeném horami a&nbsp;přírodou, kde spolu strávíme celý den, od obřadu až po večerní
-              párty.
+              {dictionary.place.textAfter.split('\n').pop()}
             </SectionParagraph>
           </div>
           <div ref={buttonRef}>
@@ -115,7 +117,7 @@ export const Place = ({id}: {id?: string}) => {
               className="inline-flex items-center gap-2 uppercase text-base font-medium bg-heading text-white px-6 py-3 rounded-full hover:bg-heading/80 transition-all duration-300 cursor-pointer"
             >
               <Image src="/svg/navigate.svg" alt="navigate" width={16} height={16} className="w-4 h-4 invert" />
-              Navigovat
+              {dictionary.place.navigate}
             </a>
           </div>
         </>
