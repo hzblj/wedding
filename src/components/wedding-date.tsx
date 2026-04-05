@@ -8,7 +8,7 @@ import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 
 import {Button, SectionTitle} from './ui'
 
-const WEDDING_DATE = new Date('2026-07-04T11:00:00+02:00')
+const WEDDING_DATE = new Date('2026-07-04T10:00:00+02:00')
 
 const formatNumber = (n: number) => String(n).padStart(2, '0')
 
