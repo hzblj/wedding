@@ -57,18 +57,18 @@
     "text1": "Zde najdete <strong>orientační plán</strong> našeho svatebního dne. Berte ho prosím s\u00a0rezervou.",
     "text2": "<strong>Nejdůležitější pro nás je, abyste si den užili spolu s\u00a0námi.</strong> Pokud se něco posune o\u00a0pár minut (nebo i\u00a0víc), nic se neděje. Hlavní je pohoda, dobrá nálada a\u00a0společně strávený\u00a0čas.",
     "timeline": [
-      { "from": "11:00", "to": "11:30", "name": "Příjezd hostů" },
-      { "from": "12:00", "to": "12:30", "name": "Svatební obřad" },
-      { "from": "12:30", "to": "13:00", "name": "Gratulace & společné foto" },
-      { "from": "13:00", "to": "14:00", "name": "Svatební oběd" },
-      { "from": "14:00", "name": "Ubytování hostů" },
-      { "from": "14:30", "to": "15:00", "name": "Focení s novomanželi" },
-      { "from": "15:00", "to": "16:O0", "name": "Krájení dortu, Kafe, Hry" },
-      { "from": "16:00", "to": "17:00", "name": "Volná zábava" },
-      { "from": "17:00", "to": "18:00", "name": "Házení kytice, Hry, Volná zábava" },
-      { "from": "18:00", "name": "Večerní raut" },
-      { "from": "19:00", "to": "24:00", "name": "První tanec & Párty" },
-      { "from": "24:00", "to": "2:00", "name": "Afterparty pro vytrvalé" }
+      { "from": "10:00", "to": "10:30", "name": "Příjezd hostů" },
+      { "from": "11:00", "to": "11:30", "name": "Svatební obřad" },
+      { "from": "11:30", "to": "12:00", "name": "Gratulace & společné foto" },
+      { "from": "12:00", "to": "13:00", "name": "Svatební oběd" },
+      { "from": "13:00", "name": "Ubytování hostů" },
+      { "from": "13:30", "to": "14:00", "name": "Focení s novomanželi" },
+      { "from": "14:00", "to": "15:00", "name": "Krájení dortu, Kafe, Hry" },
+      { "from": "15:00", "to": "16:00", "name": "Volná zábava" },
+      { "from": "16:00", "to": "17:00", "name": "Házení kytice, Hry, Volná zábava" },
+      { "from": "17:00", "name": "Večerní raut" },
+      { "from": "18:00", "to": "23:00", "name": "První tanec & Párty" },
+      { "from": "23:00", "to": "1:00", "name": "Afterparty pro vytrvalé" }
     ]
   },
   "gallery": {
@@ -109,7 +109,7 @@
     "items": [
       {
         "title": "V kolik mají hosté dorazit?",
-        "content": "Prosíme hosty o příjezd mezi 11:00–11:30, aby mohl obřad začít včas ve 12:00. Bude pro Vás nachystáno občerstvení."
+        "content": "Prosíme hosty o příjezd mezi 10:00–10:30, aby mohl obřad začít včas v 11:00. Bude pro Vás nachystáno občerstvení."
       },
       {
         "title": "Jaký je dress code?",

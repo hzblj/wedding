@@ -57,18 +57,18 @@
     "text1": "Tutaj znajdziecie <strong>orientacyjny plan</strong> naszego dnia ślubu. Prosimy, traktujcie go z\u00a0rezerwą.",
     "text2": "<strong>Najważniejsze dla nas jest, abyście ten dzień spędzili razem z\u00a0nami.</strong> Jeśli coś się przesunie o\u00a0kilka minut (lub więcej), nic się nie dzieje. Najważniejszy jest dobry humor i\u00a0wspólnie spędzony\u00a0czas.",
     "timeline": [
-      { "from": "11:00", "to": "11:30", "name": "Przyjazd gości" },
-      { "from": "12:00", "to": "12:30", "name": "Ceremonia ślubna" },
-      { "from": "12:30", "to": "13:00", "name": "Gratulacje & wspólne zdjęcie" },
-      { "from": "13:00", "to": "14:00", "name": "Obiad weselny" },
-      { "from": "14:00", "name": "Zakwaterowanie gości" },
-      { "from": "14:30", "to": "15:00", "name": "Sesja zdjęciowa z nowożeńcami" },
-      { "from": "15:00", "to": "16:O0", "name": "Krojenie tortu, Kawa, Zabawy" },
-      { "from": "16:00", "to": "17:00", "name": "Czas wolny" },
-      { "from": "17:00", "to": "18:00", "name": "Rzut bukietem, Zabawy" },
-      { "from": "18:00", "name": "Kolacja" },
-      { "from": "19:00", "to": "24:00", "name": "Pierwszy taniec & Impreza" },
-      { "from": "24:00", "to": "2:00", "name": "Afterparty dla wytrwałych" }
+      { "from": "10:00", "to": "10:30", "name": "Przyjazd gości" },
+      { "from": "11:00", "to": "11:30", "name": "Ceremonia ślubna" },
+      { "from": "11:30", "to": "12:00", "name": "Gratulacje & wspólne zdjęcie" },
+      { "from": "12:00", "to": "13:00", "name": "Obiad weselny" },
+      { "from": "13:00", "name": "Zakwaterowanie gości" },
+      { "from": "13:30", "to": "14:00", "name": "Sesja zdjęciowa z nowożeńcami" },
+      { "from": "14:00", "to": "15:00", "name": "Krojenie tortu, Kawa, Zabawy" },
+      { "from": "15:00", "to": "16:00", "name": "Czas wolny" },
+      { "from": "16:00", "to": "17:00", "name": "Rzut bukietem, Zabawy" },
+      { "from": "17:00", "name": "Kolacja" },
+      { "from": "18:00", "to": "23:00", "name": "Pierwszy taniec & Impreza" },
+      { "from": "23:00", "to": "1:00", "name": "Afterparty dla wytrwałych" }
     ]
   },
   "gallery": {
@@ -109,7 +109,7 @@
     "items": [
       {
         "title": "O której godzinie mają przybyć goście?",
-        "content": "Prosimy gości o przyjazd między 11:00 a 11:30, aby ceremonia mogła rozpocząć się punktualnie o 12:00. Będzie dla Was przygotowany poczęstunek."
+        "content": "Prosimy gości o przyjazd między 10:00 a 10:30, aby ceremonia mogła rozpocząć się punktualnie o 11:00. Będzie dla Was przygotowany poczęstunek."
       },
       {
         "title": "Jaki jest dress code?",
