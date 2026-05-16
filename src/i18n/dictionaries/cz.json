@@ -162,7 +162,13 @@
     "title": "Fotky",
     "text": "Budeme rádi, když s námi budete sdílet fotografie z celého dne.",
     "emptyTitle": "Zatím žádné fotky",
-    "emptyText": "Nahrajte první fotky z oslavy"
+    "emptyText": "Nahrajte první fotky z oslavy",
+    "locked": {
+      "eyebrow": "Zamčeno",
+      "title": "Otevřeme to v den D",
+      "text": "Sdílení fotek bude dostupné od 10:00 dne 4. července 2026. Vydržte to s námi do svatby — pak to spustíme.",
+      "opensIn": "Otevírá se za"
+    }
   },
   "photoUpload": {
     "dropHere": "Pusťte soubory zde",

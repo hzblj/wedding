@@ -1,9 +1,12 @@
 import {Suspense} from 'react'
 
-import {Photos, PhotoUpload} from '@/components'
-import {type Locale, getDictionary, isValidLocale} from '@/i18n'
+import {Photos, PhotosLocked, PhotoUpload} from '@/components'
+import {getDictionary, isValidLocale, type Locale} from '@/i18n'
 import {createClientServer} from '@/lib'
 import {SectionParagraph, SectionTitle} from '@/ui'
+import {isWeddingStarted} from '@/utils'
+
+export const dynamic = 'force-dynamic'
 
 type Params = {
   locale: string
@@ -17,9 +20,7 @@ const PageTitle = async ({locale}: {locale: Locale}) => {
       <SectionTitle eyebrow={dictionary.photos.eyebrow} className="w-full items-center text-center">
         {dictionary.photos.title}
       </SectionTitle>
-      <SectionParagraph className="max-w-110 text-center">
-        {dictionary.photos.text}
-      </SectionParagraph>
+      <SectionParagraph className="max-w-110 text-center">{dictionary.photos.text}</SectionParagraph>
       <PhotoUpload />
     </section>
   )
@@ -82,6 +83,10 @@ const PhotosList = async () => {
 export default async function PhotosPage({params}: {params: Promise<Params>}) {
   const {locale} = await params
   const validLocale = isValidLocale(locale) ? locale : 'cz'
+
+  if (!isWeddingStarted()) {
+    return <PhotosLocked />
+  }
 
   return (
     <>

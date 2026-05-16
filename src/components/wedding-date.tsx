@@ -2,13 +2,13 @@
 
 import Image from 'next/image'
 import {useCallback, useEffect, useMemo, useRef} from 'react'
-
-import {useDictionary, plural} from '@/i18n'
 import {useScrollReveal} from '@/hooks/use-scroll-reveal'
+import {plural, useDictionary} from '@/i18n'
+import {WEDDING_START_AT} from '@/utils'
 
 import {Button, SectionTitle} from './ui'
 
-const WEDDING_DATE = new Date('2026-07-04T10:00:00+02:00')
+const WEDDING_DATE = WEDDING_START_AT
 
 const formatNumber = (n: number) => String(n).padStart(2, '0')
 

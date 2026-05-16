@@ -162,7 +162,13 @@
     "title": "Zdjęcia",
     "text": "Będziemy wdzięczni, jeśli podzielicie się z nami zdjęciami z całego dnia.",
     "emptyTitle": "Brak zdjęć",
-    "emptyText": "Prześlij pierwsze zdjęcia z uroczystości"
+    "emptyText": "Prześlij pierwsze zdjęcia z uroczystości",
+    "locked": {
+      "eyebrow": "Zamknięte",
+      "title": "Otworzymy to w wielki dzień",
+      "text": "Udostępnianie zdjęć będzie dostępne od 10:00 dnia 4 lipca 2026. Wytrzymajcie z nami do ślubu — wtedy to uruchomimy.",
+      "opensIn": "Otwiera się za"
+    }
   },
   "photoUpload": {
     "dropHere": "Upuść pliki tutaj",
