@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import {type ChangeEvent, type FC, type KeyboardEvent, useCallback, useEffect, useRef, useState} from 'react'
+import {toast} from 'sonner'
 
 import {useDictionary} from '@/i18n'
 import {cn} from '@/utils'
@@ -93,14 +94,6 @@ const ClearIcon: FC = () => {
   )
 }
 
-const CheckIcon: FC = () => {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-heading">
-      <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 export const SongSearch: FC = () => {
   const {query, setQuery, results, isLoading, selectedTrack, selectTrack, clearSelection} = useSpotifySearch()
   const {saveSong, isPending, isSuccess, reset, isSongAlreadyAdded} = useSaveSongMutation()
@@ -150,6 +143,14 @@ export const SongSearch: FC = () => {
     saveSong(selectedTrack)
   }, [selectedTrack, saveSong])
 
+  useEffect(() => {
+    if (!isSuccess) {
+      return
+    }
+    toast.success(dictionary.songSearch.added)
+    handleClear()
+  }, [isSuccess, dictionary, handleClear])
+
   const hasResults = results.length > 0
   const hasQuery = query.trim().length > 0
   const isEmptyState = hasQuery && !isLoading && !hasResults && !selectedTrack
@@ -158,7 +159,7 @@ export const SongSearch: FC = () => {
   return (
     <div className="flex flex-col gap-0 w-full max-w-lg mx-auto">
       <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3">
-        <div className="flex flex-col flex-1 min-w-0">
+        <div className="relative flex flex-col flex-1 min-w-0">
           <div
             className={cn(
               'flex items-center gap-3 bg-white/60 backdrop-blur-sm border border-border px-4 py-3 transition-all duration-300 focus-within:border-heading/30 focus-within:bg-white/80',
@@ -192,7 +193,7 @@ export const SongSearch: FC = () => {
             )}
           </div>
           {hasResults && (
-            <div className="flex flex-col bg-white/60 backdrop-blur-sm border border-border border-t-0 rounded-b-xl overflow-hidden">
+            <div className="absolute top-full left-0 right-0 z-20 flex flex-col bg-white/95 backdrop-blur-sm border border-border border-t-0 rounded-b-xl overflow-hidden shadow-lg shadow-heading/10">
               <div className="h-px w-full bg-border/50 mx-4" />
               <div className="flex flex-col p-1 max-h-96 overflow-y-auto">
                 {results.map((track, index) => (
@@ -207,31 +208,19 @@ export const SongSearch: FC = () => {
             </div>
           )}
         </div>
-        {!isSuccess && (
-          <button
-            type="button"
-            onClick={handleSave}
-            disabled={!selectedTrack || isPending || isAlreadyAdded}
-            className={cn(
-              'flex-shrink-0 inline-flex items-center justify-center uppercase text-[14px] font-medium text-white px-5 py-3 rounded-full transition-all duration-300 ease-in-out',
-              !selectedTrack || isPending || isAlreadyAdded
-                ? 'bg-heading/30 cursor-not-allowed'
-                : 'bg-heading hover:bg-heading/80 cursor-pointer'
-            )}
-          >
-            {isPending ? <LoadingSpinner /> : isAlreadyAdded ? dictionary.songSearch.added : dictionary.songSearch.add}
-          </button>
-        )}
-        {isSuccess && (
-          <button
-            type="button"
-            onClick={handleClear}
-            className="flex-shrink-0 inline-flex items-center justify-center gap-1.5 uppercase text-[14px] font-medium text-heading px-4 py-3 rounded-full border border-border hover:bg-heading/5 transition-all duration-300 cursor-pointer"
-          >
-            <CheckIcon />
-            {dictionary.songSearch.next}
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={handleSave}
+          disabled={!selectedTrack || isPending || isAlreadyAdded}
+          className={cn(
+            'flex-shrink-0 inline-flex items-center justify-center uppercase text-[14px] font-medium text-white px-5 py-3 rounded-full transition-all duration-300 ease-in-out',
+            !selectedTrack || isPending || isAlreadyAdded
+              ? 'bg-heading/30 cursor-not-allowed'
+              : 'bg-heading hover:bg-heading/80 cursor-pointer'
+          )}
+        >
+          {isPending ? <LoadingSpinner /> : isAlreadyAdded ? dictionary.songSearch.added : dictionary.songSearch.add}
+        </button>
       </div>
     </div>
   )
