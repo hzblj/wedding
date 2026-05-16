@@ -1,10 +1,9 @@
 'use client'
 
 import gsap from 'gsap'
-import {useCallback, useMemo, useRef} from 'react'
-
-import {useDictionary} from '@/i18n'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import {useScrollReveal} from '@/hooks/use-scroll-reveal'
+import {useDictionary} from '@/i18n'
 
 import {ListSlider, type ListSliderItem, SectionParagraph, SectionTitle} from './ui'
 
@@ -39,13 +38,27 @@ const GALLERY_DATA: GalleryItemData[] = [
   {city: 'Praha', image: '/png/gallery-20.png', month: 8, title: 'Jan & Miro', year: 2025},
 ]
 
+const shuffle = <T,>(items: readonly T[]): T[] => {
+  const arr = [...items]
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
+
 export const Gallery = ({id}: {id?: string}) => {
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const sliderRef = useRef<HTMLDivElement>(null)
   const {dictionary} = useDictionary()
+  const [orderedData, setOrderedData] = useState<GalleryItemData[]>(GALLERY_DATA)
 
   useScrollReveal(sectionRef, [headerRef], {start: 'top 70%'})
+
+  useEffect(() => {
+    setOrderedData(shuffle(GALLERY_DATA))
+  }, [])
 
   const handleSliderReady = useCallback(() => {
     const el = sliderRef.current
@@ -57,7 +70,7 @@ export const Gallery = ({id}: {id?: string}) => {
 
   const galleryItems: ListSliderItem[] = useMemo(
     () =>
-      GALLERY_DATA.map(item => {
+      orderedData.map(item => {
         const monthName = dictionary.gallery.months[String(item.month) as keyof typeof dictionary.gallery.months]
         return {
           details: [`${monthName}, ${item.year}`, item.city],
@@ -65,7 +78,7 @@ export const Gallery = ({id}: {id?: string}) => {
           title: item.title,
         }
       }),
-    [dictionary]
+    [dictionary, orderedData]
   )
 
   return (
@@ -78,9 +91,7 @@ export const Gallery = ({id}: {id?: string}) => {
         <SectionTitle eyebrow={dictionary.gallery.eyebrow} className="w-full items-center text-center">
           {dictionary.gallery.title}
         </SectionTitle>
-        <SectionParagraph className="max-w-130 text-center">
-          {dictionary.gallery.text}
-        </SectionParagraph>
+        <SectionParagraph className="max-w-130 text-center">{dictionary.gallery.text}</SectionParagraph>
       </div>
       <div ref={sliderRef} className="w-full">
         <ListSlider items={galleryItems} autoSlide={3000} onReady={handleSliderReady} />
