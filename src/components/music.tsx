@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import {useRef} from 'react'
+import {trackMusicClick} from '@/domain/google-analytics'
 import {useScrollReveal} from '@/hooks/use-scroll-reveal'
 import {useDictionary} from '@/i18n'
 
@@ -80,6 +81,7 @@ export const Music = ({id}: {id?: string}) => {
       <div ref={buttonRef}>
         <Link
           href={`/${locale}/music`}
+          onClick={() => trackMusicClick('home_cta')}
           className="inline-flex items-center gap-2 uppercase text-base font-medium bg-heading text-white px-6 py-3 rounded-full hover:bg-heading/80 transition-all duration-300 cursor-pointer"
         >
           <NoteIcon />

@@ -1,6 +1,6 @@
 import {type NextRequest, NextResponse} from 'next/server'
 
-import {DEFAULT_LOCALE, type Locale, LOCALES} from '@/i18n/config'
+import {DEFAULT_LOCALE, LOCALES, type Locale} from '@/i18n/config'
 import {updateSession} from '@/lib'
 
 const detectLocaleFromHeaders = (request: NextRequest): Locale => {
@@ -40,7 +40,7 @@ export async function proxy(request: NextRequest) {
     const detectedLocale = detectLocaleFromHeaders(request)
     const url = request.nextUrl.clone()
     url.pathname = `/${detectedLocale}${pathname}`
-    return NextResponse.redirect(url)
+    return NextResponse.redirect(url, 308)
   }
 
   return await updateSession(request)
@@ -48,6 +48,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|webmanifest)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|sitemap-.*\\.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|webmanifest|txt|xml)$).*)',
   ],
 }

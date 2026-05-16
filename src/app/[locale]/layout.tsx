@@ -5,8 +5,16 @@ import {type ReactNode} from 'react'
 import {Toaster} from 'sonner'
 
 import {Navigation} from '@/components'
-import {LOCALE_TO_HTML_LANG, LOCALES, type Locale, getDictionary, isValidLocale} from '@/i18n'
-import {DictionaryProvider} from '@/i18n'
+import {
+  DEFAULT_LOCALE,
+  DictionaryProvider,
+  getDictionary,
+  isValidLocale,
+  LOCALE_TO_HTML_LANG,
+  LOCALES,
+  type Locale,
+} from '@/i18n'
+import {SITE_URL} from '@/utils'
 
 type Params = {
   locale: string
@@ -23,7 +31,13 @@ export const generateMetadata = async ({params}: {params: Promise<Params>}): Pro
 
   const dictionary = await getDictionary(locale)
 
+  const languages = Object.fromEntries(LOCALES.map(l => [LOCALE_TO_HTML_LANG[l], `${SITE_URL}/${l}`]))
+
   return {
+    alternates: {
+      canonical: `${SITE_URL}/${locale}`,
+      languages: {...languages, 'x-default': `${SITE_URL}/${DEFAULT_LOCALE}`},
+    },
     appleWebApp: {
       statusBarStyle: 'black-translucent',
     },
@@ -36,9 +50,13 @@ export const generateMetadata = async ({params}: {params: Promise<Params>}): Pro
       ],
     },
     manifest: '/site.webmanifest',
+    metadataBase: new URL(SITE_URL),
     openGraph: {
       images: ['/png/og-image.png'],
+      locale: LOCALE_TO_HTML_LANG[locale as Locale],
       title: dictionary.metadata.ogTitle,
+      type: 'website',
+      url: `${SITE_URL}/${locale}`,
     },
     title: dictionary.metadata.title,
   }

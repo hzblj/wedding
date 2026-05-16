@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {FC, useCallback, useMemo, useRef, useState} from 'react'
 
+import {trackMusicClick, trackPhotosClick} from '@/domain/google-analytics'
 import {useDictionary} from '@/i18n'
 import {cn} from '@/utils'
 
@@ -117,6 +118,7 @@ export const Navigation = () => {
           <span className="text-[16px] leading-4.25 font-semibold uppercase text-body/70">/</span>
           <Link
             href={`/${locale}/photos`}
+            onClick={() => trackPhotosClick('nav_desktop')}
             className={cn(
               'text-[16px] leading-4.25 font-semibold uppercase transition-colors duration-500',
               isPhotos ? 'text-heading' : 'text-body/70 hover:text-heading'
@@ -127,6 +129,7 @@ export const Navigation = () => {
           <span className="text-[16px] leading-4.25 font-semibold uppercase text-body/70">/</span>
           <Link
             href={`/${locale}/music`}
+            onClick={() => trackMusicClick('nav_desktop')}
             className={cn(
               'text-[16px] leading-4.25 font-semibold uppercase transition-colors duration-500',
               isMusic ? 'text-heading' : 'text-body/70 hover:text-heading'

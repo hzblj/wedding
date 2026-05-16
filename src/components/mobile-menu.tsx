@@ -6,6 +6,7 @@ import {usePathname, useRouter} from 'next/navigation'
 import {FC, useCallback, useEffect, useRef, useState} from 'react'
 import {createPortal} from 'react-dom'
 
+import {trackMusicClick, trackPhotosClick} from '@/domain/google-analytics'
 import {useDictionary} from '@/i18n'
 import {cn} from '@/utils'
 
@@ -286,7 +287,10 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                   'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
                   isPhotos ? 'text-heading' : 'text-body/60'
                 )}
-                onClick={event => handleNavigate(event, `/${locale}/photos`)}
+                onClick={event => {
+                  trackPhotosClick('nav_mobile')
+                  handleNavigate(event, `/${locale}/photos`)
+                }}
               >
                 {dictionary.nav.photos}
               </Link>
@@ -309,7 +313,10 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({isOpen, onClose}) => {
                   'text-3xl font-semibold uppercase tracking-wide transition-colors duration-500',
                   isMusic ? 'text-heading' : 'text-body/60'
                 )}
-                onClick={event => handleNavigate(event, `/${locale}/music`)}
+                onClick={event => {
+                  trackMusicClick('nav_mobile')
+                  handleNavigate(event, `/${locale}/music`)
+                }}
               >
                 {dictionary.nav.music}
               </Link>

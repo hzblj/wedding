@@ -1,8 +1,11 @@
+import {GoogleAnalytics} from '@next/third-parties/google'
 import type {Viewport} from 'next'
 import {Inter, Playfair_Display} from 'next/font/google'
 import {type ReactNode} from 'react'
 
 import './app.css'
+
+const GA_MEASUREMENT_ID = 'G-JE80ZGP2N8'
 
 export const viewport: Viewport = {
   themeColor: '#e8ddd0',
@@ -29,6 +32,7 @@ export default function Layout({
   return (
     <html className={`${inter.variable} ${playfair.variable}`}>
       <body>{children}</body>
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   )
 }
