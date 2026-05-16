@@ -174,7 +174,11 @@
   "music": {
     "eyebrow": "Přej si",
     "title": "Hudba",
-    "text": "Přejte si písničku, kterou chcete slyšet na svatbě."
+    "text": "Přejte si písničku, kterou chcete slyšet na svatbě.",
+    "cta": {
+      "text": "Chceš na svatbě slyšet svou oblíbenou písničku? Přidej ji do našeho playlistu — ať toho večera zazní právě ta tvoje.",
+      "button": "Vyber písničku"
+    }
   },
   "songSearch": {
     "placeholder": "Hledej písničku...",

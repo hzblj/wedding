@@ -174,7 +174,11 @@
   "music": {
     "eyebrow": "Zamów",
     "title": "Muzyka",
-    "text": "Zamów piosenkę, którą chcesz usłyszeć na ślubie."
+    "text": "Zamów piosenkę, którą chcesz usłyszeć na ślubie.",
+    "cta": {
+      "text": "Chcesz usłyszeć na ślubie swoją ulubioną piosenkę? Dodaj ją do naszej playlisty — żeby tego wieczoru zabrzmiała właśnie Twoja.",
+      "button": "Wybierz piosenkę"
+    }
   },
   "songSearch": {
     "placeholder": "Szukaj piosenki...",
