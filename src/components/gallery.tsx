@@ -36,6 +36,8 @@ const GALLERY_DATA: GalleryItemData[] = [
   {city: 'Praha', image: '/png/gallery-18.png', month: 10, title: 'Kari & Katya', year: 2025},
   {city: 'Paříž', image: '/png/gallery-19.png', month: 2, title: 'Lapz & Boys', year: 2025},
   {city: 'Praha', image: '/png/gallery-20.png', month: 8, title: 'Jan & Miro', year: 2025},
+  {city: 'Praha', image: '/png/gallery-22.png', month: 11, title: 'Ondra & Jan', year: 2021},
+  {city: 'Londýn', image: '/png/gallery-23.png', month: 8, title: 'Jan & Vojta', year: 2015},
 ]
 
 const shuffle = <T,>(items: readonly T[]): T[] => {

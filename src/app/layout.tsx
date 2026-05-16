@@ -32,7 +32,7 @@ export default function Layout({
   return (
     <html className={`${inter.variable} ${playfair.variable}`}>
       <body>{children}</body>
-      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+      {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
     </html>
   )
 }
