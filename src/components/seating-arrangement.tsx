@@ -29,38 +29,40 @@ export const SeatingArrangement = ({id}: {id?: string}) => {
       </div>
       <SeatingArrangementTables
         ref={tablesRef}
-        main={['Darius Lebeda', 'Ligia Lebedová', 'Karin Blažej', 'Jan Blažej', 'Iva Konečná', 'Radim Konečný']}
+        main={['Darius Lebeda', 'Ligia Lebedová', 'Karin', 'Jan', 'Iva Konečná', 'Radim Konečný']}
         left={[
           {
             head: 'Marta Dänemarková',
             seats: [
               ['Andrzej Dänemark', 'Dawid Lebeda'],
-              ['Adam Dänemark', 'Nela Dänemarková'],
-              ['Roman Dänemark', 'Radka Dänemarková'],
-              ['Dorota Giemza', 'Barbara Firla'],
-              ['Łukasz Giemza', 'Hana Donociková'],
-              ['Edyta Giemzová', 'Vladimír Sedlák'],
-              ['Marcel Giemza', 'Magdalena Bubík'],
-              ['Krystyna Ivanov', 'Janina Gaurová'],
-              ['Foto Pavel', 'DJ Štěpa'],
-              ['Kamera Vít', ''],
+              ['Adam Dänemark', 'Barbara Firla'],
+              ['Roman Dänemark', 'Hana Donociková'],
+              ['Nela Dänemarková', 'Vladimír Sedlák'],
+              ['Barbara Lebeda', 'Małgorzata Franek'],
+              ['Dorota Giemza', 'Tomasz Franek'],
+              ['Łukasz Giemza', 'Edyta Giemzová'],
+              ['Krystyna Ivanov', 'Marcel Giemza'],
+              ['Magdalena Bubík', 'Janina Gaurová'],
+              ['', 'Vít Baranec'],
             ],
           },
         ]}
         right={[
           {
-            head: 'Miluše Teichmanová',
+            head: 'Miluše Teichmannová',
             seats: [
-              ['Marek Buš', 'Jiří Teichman'],
-              ['Kristýna Buš', 'Radim Teichman'],
-              ['Lukáš Teichman', 'Miriam Teichmanová'],
-              ['holka', 'Tomáš Balej'],
-              ['Šimon Rico', 'Tereza Balejová'],
-              ['Kateryna Holotova', 'Eva Rojíková'],
-              ['Jaroslav Maťas', 'Vojta Bínek'],
-              ['Ema Kmeťová', 'Klára Honysch'],
-              ['Kateřina Faktorová', 'Miroslav Honysch'],
-              ['Jan Holínka', 'Ondřej Valuštík'],
+              ['Marek Buš', 'Jiří Teichmann'],
+              ['Kristýna Buš', 'Radim Teichmann'],
+              ['Lukáš Teichmann', 'Miriam Teichmannová'],
+              ['Adéla Boczková', 'Jaroslav Maťas'],
+              ['Šimon Rico', 'Ema Kmeťová'],
+              ['Kateryna Holovata', 'Tomáš Balej'],
+              ['Kateřina Faktorová', 'Tereza Balej'],
+              ['Jan Holínka', 'Eva Rojíková'],
+              ['Miroslav Honysch', 'Vojtěch Bínek'],
+              ['Ondřej Valuštík', 'Šťěpan Peřina'],
+              ['Petr Gavel', ''],
+              ['Vít Kanýza', ''],
             ],
           },
         ]}

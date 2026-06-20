@@ -1,8 +1,6 @@
 import {Agenda, FAQ, Footer, Gallery, Header, Menu, Music, Place, SeatingArrangement, WeddingDate} from '@/components'
 
 export default function HomePage() {
-  const hideSeatingArrangement = true
-
   return (
     <>
       <Header />
@@ -10,7 +8,7 @@ export default function HomePage() {
       <Place id="where" />
       <Agenda id="agenda" />
       <Gallery id="gallery" />
-      {!hideSeatingArrangement && <SeatingArrangement id="seating" />}
+      <SeatingArrangement id="seating" />
       <Menu id="menu" />
       <FAQ id="faq" />
       <Music id="music" />
